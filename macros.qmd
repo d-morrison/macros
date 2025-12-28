@@ -170,7 +170,7 @@
 \providecommand{\lime}[1]{{\color{lime}#1}}
 \providecommand{\olive}[1]{{\color{olive}#1}}
 \providecommand{\orange}[1]{{\color{orange}#1}}
-\providecommand{\pink}[1]{{\color{purple}#1}}
+\providecommand{\pink}[1]{{\color{pink}#1}}
 \providecommand{\purple}[1]{{\color{purple}#1}}
 \providecommand{\teal}[1]{{\color{teal}#1}}
 \providecommand{\violet}[1]{{\color{violet}#1}}
@@ -322,7 +322,7 @@
 \providecommand{\lp}[2]{#1 \' \beta}
 \def\odds{\omega}
 \def\OR{\text{OR}}
-\def\ror{\theta} 
+\def\ror{\theta}
 <!-- \def\or{\theta}  --> 
 <!-- doesn't work for some reason -->
 \def\logodds{\eta}
@@ -331,7 +331,6 @@
 \def\hdifflogodds{\widehat{\Delta \eta}}
 \def\diffeta{\Delta \eta}
 \def\oddst{\text{odds}}
-\def\OR{\text{OR}}
 \def\probst{\text{probs}}
 \def\probt{\text{prob}}
 \def\riskt{\text{risk}}

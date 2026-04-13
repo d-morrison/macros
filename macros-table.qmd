@@ -2,6 +2,20 @@
 title: "Macro Reference"
 ---
 
+```{r}
+#| label: embed-macros
+#| echo: false
+#| results: asis
+
+# Embed macro definitions in a hidden display-math block so MathJax defines
+# them globally for the rendered example column below.
+lines <- readLines("macros.qmd", warn = FALSE)
+lines <- lines[!grepl("^\\s*<!--", lines) & nzchar(trimws(lines))]
+cat('<div style="display:none">\n$$\n')
+cat(paste(lines, collapse = "\n"), "\n")
+cat('$$\n</div>\n')
+```
+
 This page provides a searchable table of all macros defined in `macros.qmd`.
 
 ```{r}
@@ -75,6 +89,24 @@ parse_macros <- function(file_path = "macros.qmd") {
 }
 
 macros <- parse_macros("macros.qmd")
+
+# Build example usage strings based on argument count.
+# 0-arg macros: \name  |  n-arg macros: \name{x}{y}...
+arg_placeholders <- c("x", "y", "z", "w")
+make_arg_str <- function(n) {
+  if (n == 0L) return("")
+  paste0("{", arg_placeholders[seq_len(min(n, 4L))], "}", collapse = "")
+}
+example_call <- paste0(
+  macros$name,
+  vapply(macros$args, make_arg_str, character(1L))
+)
+
+# Plain-text source column (searchable, not HTML-escaped in output)
+macros$example_source <- example_call
+
+# Rendered column: MathJax inline-math delimiters; DT renders with escape=FALSE
+macros$example_rendered <- paste0("\\(", example_call, "\\)")
 ```
 
 ```{r}
@@ -82,13 +114,18 @@ macros <- parse_macros("macros.qmd")
 #| echo: false
 
 DT::datatable(
-  macros,
-  colnames  = c("Macro", "# Args", "Definition"),
+  macros[, c("name", "args", "definition", "example_source", "example_rendered")],
+  colnames  = c("Macro", "# Args", "Definition", "Example Source", "Example"),
   rownames  = FALSE,
+  escape    = FALSE,
   filter    = "top",
   options   = list(
     pageLength = 25,
-    dom        = "lftip"
+    dom        = "lftip",
+    # Re-typeset MathJax after each DataTables draw (pagination, search, etc.)
+    drawCallback = DT::JS(
+      "function() { if (window.MathJax) { MathJax.typesetPromise(); } }"
+    )
   )
 )
 ```

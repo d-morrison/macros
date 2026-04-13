@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "macros",
+    "section": "",
+    "text": "This repository contains LaTeX macros for mathematical notation used in statistical and regression modeling, originally from the rme repository."
+  },
+  {
+    "objectID": "index.html#contents",
+    "href": "index.html#contents",
+    "title": "macros",
+    "section": "Contents",
+    "text": "Contents\n\nmacros.qmd: LaTeX macro definitions for use in Quarto documents\nMacro Reference: Searchable table of all macros\n\nThese macros provide convenient shorthand for common mathematical expressions used in:\n\nProbability and statistics\nRegression models (linear, logistic, Poisson, survival analysis)\nMaximum likelihood estimation\nMathematical notation (vectors, matrices, derivatives, etc.)"
+  },
+  {
+    "objectID": "index.html#using-as-a-git-submodule",
+    "href": "index.html#using-as-a-git-submodule",
+    "title": "macros",
+    "section": "Using as a Git Submodule",
+    "text": "Using as a Git Submodule\n\nAdding the submodule to your project\nFrom the root of your project repository, run:\ngit submodule add https://github.com/d-morrison/macros.git macros\ngit commit -m \"Add macros submodule\"\nThis will clone the macros repository into a macros/ subdirectory and record it as a submodule.\n\n\nCloning a project that already uses this submodule\nWhen cloning a repository that includes this submodule, initialize and fetch the submodule content with:\ngit clone --recurse-submodules &lt;your-repo-url&gt;\nOr, if you have already cloned the repository without --recurse-submodules:\ngit submodule update --init\n\n\nUpdating the submodule\nTo pull the latest changes from this repository into your project:\ngit submodule update --remote macros\ngit commit -m \"Update macros submodule\"\n\n\nIncluding the macros in a Quarto document\nIn your Quarto document’s YAML front matter, reference the macros.qmd file using the include-in-header or via _quarto.yml:\n---\ninclude-in-header:\n  - macros/macros.qmd\n---\nOr, in a shared _quarto.yml configuration file:\nformat:\n  html:\n    include-in-header:\n      - macros/macros.qmd\n  pdf:\n    include-in-header:\n      - macros/macros.qmd"
+  },
+  {
+    "objectID": "macros-table.html",
+    "href": "macros-table.html",
+    "title": "Macro Reference",
+    "section": "",
+    "text": "This page provides a searchable table of all macros defined in macros.qmd."
+  }
+]

@@ -309,6 +309,10 @@
 \def\dpr{\cdot}
 \def\Xx1n{X_1=x_1, \ldots, X_n = x_n}
 \providecommand{\dprodf}[2]{#1 \cdot #2}
+\providecommand{\iprod}[2]{\tp{#1} #2}
+\providecommand{\oprod}[2]{#1 \tp{#2}}
+\providecommand{\siprod}[1]{\tp{#1} #1}
+\providecommand{\soprod}[1]{#1 \tp{#1}}
 \providecommand{\dsvn}[2]{#1_1=#2_1, \ldots, #1_n = #2_n}
 \providecommand{\sumn}[1]{\sum_{#1=1}^n}
 \def\sumin{\sum_{i=1}^n}

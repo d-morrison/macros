@@ -5,7 +5,7 @@
 \providecommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}
 \providecommand{\sparen}[1]{(#1)}
 \providecommand{\sb}[1]{{\left[#1\right]}}
-\def\distop{\text}
+\def\distop{\operatorname}
 \providecommand{\sbmat}[1]{\begin{bmatrix}#1\end{bmatrix}}
 \providecommand{\Prf}[1]{\Pr\paren{#1}}
 \def\am{\arg \max}
@@ -36,15 +36,15 @@
 \providecommand{\floor}[1]{\left \lfloor{#1}\right \rfloor}
 \providecommand{\ceiling}[1]{\left \lceil{#1}\right \rceil}
 \providecommand{\ceil}[1]{\left \lceil{#1}\right \rceil}
-\def\Ber{\text{Ber}}
-\def\Bernoulli{\text{Bernoulli}}
-\def\Pois{\text{Pois}}
-\def\Poisson{\text{Poisson}}
-\def\Gaus{\text{Gaussian}}
-\def\Normal{\text{N}}
+\def\Ber{\operatorname{Ber}}
+\def\Bernoulli{\operatorname{Bernoulli}}
+\def\Pois{\operatorname{Pois}}
+\def\Poisson{\operatorname{Poisson}}
+\def\Gaus{\operatorname{Gaussian}}
+\def\Normal{\operatorname{N}}
 \providecommand{\ndist}[1]{\Normal\paren{#1}}
-\def\NB{\text{NegBin}}
-\def\NegBin{\text{NegBin}}
+\def\NB{\operatorname{NegBin}}
+\def\NegBin{\operatorname{NegBin}}
 \def\vbeta{\vec \beta}
 \def\vb{\vec \b}
 \def\v0{\vec{0}}
@@ -68,9 +68,9 @@
 \def\lam{\lambda}
 \def\gs{\sigma}
 \def\gm{\mu}
-\def\M{\text{M}}
-\def\gM{\text{M}}
-\def\Mu{\text{M}}
+\def\M{\operatorname{M}}
+\def\gM{\operatorname{M}}
+\def\Mu{\operatorname{M}}
 \def\cd{\cdot}
 \def\cds{\cdots}
 \def\lds{\ldots}
@@ -81,7 +81,7 @@
 \def\hl{\hat \lambda}
 \def\hy{\hat y}
 \def\yh{\hat y}
-\def\V{{\text{Var}}}
+\def\V{{\operatorname{Var}}}
 \def\hs{\hat \sigma}
 \def\hsig{\hat \sigma}
 \def\hS{\hat \Sigma}
@@ -108,8 +108,8 @@
 \def\indpt{\ind}
 \def\indold{⫫}
 \def\all{\forall}
-\def\iid{\text{iid}}
-\def\ciid{\text{ciid}}
+\def\iid{\operatorname{iid}}
+\def\ciid{\operatorname{ciid}}
 \def\simind{\ \sim_{\ind}\ }
 \def\siid{\ \sim_{\iid}\ }
 \def\sciid{\ \sim_{\ciid}\ }
@@ -176,16 +176,16 @@
 \providecommand{\purple}[1]{{\color{purple}#1}}
 \providecommand{\teal}[1]{{\color{teal}#1}}
 \providecommand{\violet}[1]{{\color{violet}#1}}
-\providecommand{\hE}[1]{\hat{\text{E}}\sb{#1}}
-\providecommand{\hExp}[1]{\hat{\text{E}}\sb{#1}}
-\providecommand{\hExpf}[1]{\hat{\text{E}}\sb{#1}}
+\providecommand{\hE}[1]{\hat{\operatorname{E}}\sb{#1}}
+\providecommand{\hExp}[1]{\hat{\operatorname{E}}\sb{#1}}
+\providecommand{\hExpf}[1]{\hat{\operatorname{E}}\sb{#1}}
 \providecommand{\hmu}[1]{\hat{\mu}\sb{#1}}
 \def\Expp{\distop{E}}
 \def\Ep{\distop{E}}
-\def\expit{\text{expit}}
+\def\expit{\operatorname{expit}}
 \providecommand{\expitf}[1]{\expit\cb{#1}}
 \providecommand{\dexpitf}[1]{\expit'\cb{#1}}
-\def\logit{\text{logit}}
+\def\logit{\operatorname{logit}}
 \providecommand{\logitf}[1]{\logit\cb{#1}}
 \providecommand{\E}[1]{\distop{E}\sb{#1}}
 \providecommand{\Ef}[1]{\distop{E}\sb{#1}}
@@ -193,18 +193,18 @@
 \providecommand{\Expf}[1]{\distop{E}\sb{#1}}
 \providecommand{\Expfc}[2]{\distop{E}_{#1}\sb{#2}}
 \providecommand{\evalAt}[2]{\left.{#1}\right|_{#2}}
-\def\Varr{\text{Var}}
-\def\Vart{\text{Var}}
+\def\Varr{\operatorname{Var}}
+\def\Vart{\operatorname{Var}}
 \def\hvar{\widehat{\Vart}}
 \def\hvart{\widehat{\Vart}}
-\def\Covt{\text{Cov}}
+\def\Covt{\operatorname{Cov}}
 \def\hcovt{\widehat{\Covt}}
 \def\hCovt{\widehat{\Covt}}
-\providecommand{\var}[1]{\text{Var}\paren{#1}}
-\providecommand{\varf}[1]{\text{Var}\paren{#1}}
-\providecommand{\Var}[1]{\text{Var}\paren{#1}}
-\providecommand{\hVar}[1]{\widehat{\text{Var}}\paren{#1}}
-\providecommand{\Varf}[1]{\text{Var}\paren{#1}}
+\providecommand{\var}[1]{\operatorname{Var}\paren{#1}}
+\providecommand{\varf}[1]{\operatorname{Var}\paren{#1}}
+\providecommand{\Var}[1]{\operatorname{Var}\paren{#1}}
+\providecommand{\hVar}[1]{\widehat{\operatorname{Var}}\paren{#1}}
+\providecommand{\Varf}[1]{\operatorname{Var}\paren{#1}}
 \providecommand{\hvarf}[1]{\hvart\paren{#1}}
 \providecommand{\Cov}[1]{\Covt \paren{#1}}
 \providecommand{\Covs}[2]{\Covt \paren{#1, #2}}
@@ -212,35 +212,35 @@
 \providecommand{\covh}[1]{\widehat{\Covt}\paren{#1}}
 \providecommand{\covhf}[1]{\widehat{\Covt}\paren{#1}}
 \providecommand{\hcovf}[1]{\widehat{\Covt}\paren{#1}}
-\def\varht{\widehat{\text{Var}}}
+\def\varht{\widehat{\operatorname{Var}}}
 \providecommand{\varh}[1]{\varht\paren{#1}}
 \providecommand{\varhf}[1]{\varht\paren{#1}}
 \providecommand{\vc}[1]{\boldsymbol{#1}}
-\providecommand{\sd}[1]{\text{sd}\paren{#1}}
-\providecommand{\SD}[1]{\text{SD}\paren{#1}}
-\providecommand{\hSD}[1]{\widehat{\text{SD}}\paren{#1}}
-\providecommand{\hSDf}[1]{\widehat{\text{SD}}\paren{#1}}
-\providecommand{\se}[1]{\text{se}\paren{#1}}
-\def\hset{\widehat{\text{se}}}
-\def\hSE{\widehat{\text{SE}}}
-\def\hSEt{\widehat{\text{SE}}}
-\providecommand{\sef}[1]{\text{se}\paren{#1}}
-\providecommand{\hse}[1]{\widehat{\text{se}}\paren{#1}}
-\providecommand{\hsef}[1]{\widehat{\text{se}}\paren{#1}}
-\providecommand{\SE}[1]{\text{SE}\paren{#1}}
-\providecommand{\SEf}[1]{\text{SE}\paren{#1}}
-\providecommand{\SDf}[1]{\text{SD}\paren{#1}}
-\providecommand{\HSE}[1]{\widehat{\text{SE}}\paren{#1}}
-\providecommand{\hSEf}[1]{\widehat{\text{SE}}\paren{#1}}
-\def\logt{\text{log}}
+\providecommand{\sd}[1]{\operatorname{sd}\paren{#1}}
+\providecommand{\SD}[1]{\operatorname{SD}\paren{#1}}
+\providecommand{\hSD}[1]{\widehat{\operatorname{SD}}\paren{#1}}
+\providecommand{\hSDf}[1]{\widehat{\operatorname{SD}}\paren{#1}}
+\providecommand{\se}[1]{\operatorname{se}\paren{#1}}
+\def\hset{\widehat{\operatorname{se}}}
+\def\hSE{\widehat{\operatorname{SE}}}
+\def\hSEt{\widehat{\operatorname{SE}}}
+\providecommand{\sef}[1]{\operatorname{se}\paren{#1}}
+\providecommand{\hse}[1]{\widehat{\operatorname{se}}\paren{#1}}
+\providecommand{\hsef}[1]{\widehat{\operatorname{se}}\paren{#1}}
+\providecommand{\SE}[1]{\operatorname{SE}\paren{#1}}
+\providecommand{\SEf}[1]{\operatorname{SE}\paren{#1}}
+\providecommand{\SDf}[1]{\operatorname{SD}\paren{#1}}
+\providecommand{\HSE}[1]{\widehat{\operatorname{SE}}\paren{#1}}
+\providecommand{\hSEf}[1]{\widehat{\operatorname{SE}}\paren{#1}}
+\def\logt{\operatorname{log}}
 \providecommand{\logf}[1]{\logt\cb{#1}}
 \def\dlog{\logt'}
 \providecommand{\dlogf}[1]{\dlog \cb{#1}}
-\renewcommand{\exp}[1]{\text{exp}\cb{#1}}
-\def\expt{\text{exp}}
-\providecommand{\expf}[1]{\text{exp}\cb{#1}}
+\renewcommand{\exp}[1]{\operatorname{exp}\cb{#1}}
+\def\expt{\operatorname{exp}}
+\providecommand{\expf}[1]{\operatorname{exp}\cb{#1}}
 \providecommand{\expfn}[1]{\expf{#1}}
-\def\dexp{\text{exp}'}
+\def\dexp{\operatorname{exp}'}
 \providecommand{\dexpf}[1]{\dexp \cb{#1}}
 \providecommand{\e}[1]{\text{e}^{#1}}
 \providecommand{\ef}[1]{\text{e}^{#1}}
@@ -267,12 +267,12 @@
 \providecommand{\set}[1]{\cb{#1}}
 \providecommand{\pf}[1]{\p \paren{#1}}
 \providecommand{\Pf}[1]{\P \paren{#1}}
-\providecommand{\Bias}[1]{\text{Bias}\paren{#1}}
-\providecommand{\bias}[1]{\text{Bias}\paren{#1}}
+\providecommand{\Bias}[1]{\operatorname{Bias}\paren{#1}}
+\providecommand{\bias}[1]{\operatorname{Bias}\paren{#1}}
 \def\ss{\sigma^2}
 \providecommand{\ssqf}[1]{\sigma^2\paren{#1}}
-\providecommand{\mselr}[1]{\text{MSE}\paren{#1}}
-\providecommand{\maelr}[1]{\text{MAE}\paren{#1}}
+\providecommand{\mselr}[1]{\operatorname{MSE}\paren{#1}}
+\providecommand{\maelr}[1]{\operatorname{MAE}\paren{#1}}
 \providecommand{\abs}[1]{\left|#1\right|}
 \providecommand{\sqf}[1]{\paren{#1}^2}
 \providecommand{\sq}{^2}
@@ -327,7 +327,7 @@
 \def\prodi1n{\prod_{i=1}^n}
 \providecommand{\lp}[2]{#1 \' \beta}
 \def\odds{\omega}
-\def\OR{\text{OR}}
+\def\OR{\operatorname{OR}}
 \def\ror{\theta}
 <!-- \def\or{\theta}  --> 
 <!-- doesn't work for some reason -->
@@ -336,17 +336,17 @@
 \def\difflogodds{\Delta \eta}
 \def\hdifflogodds{\widehat{\Delta \eta}}
 \def\diffeta{\Delta \eta}
-\def\oddst{\text{odds}}
-\def\probst{\text{probs}}
-\def\probt{\text{prob}}
-\def\riskt{\text{risk}}
+\def\oddst{\operatorname{odds}}
+\def\probst{\operatorname{probs}}
+\def\probt{\operatorname{prob}}
+\def\riskt{\operatorname{risk}}
 \def\prob{\pi}
 \def\probs{\pi}
-\def\probit{\text{probit}}
+\def\probit{\operatorname{probit}}
 \providecommand{\oddsf}[1]{\oddst\cb{#1}}
 \providecommand{\doddsf}[1]{{\oddst}'\cb{#1}}
 \def\oddsinv{\oddst^{-1}}
-\def\invodds{\text{invodds}}
+\def\invodds{\operatorname{invodds}}
 \providecommand{\oddsinvf}[1]{\oddsinv\cb{#1}}
 \providecommand{\invoddsf}[1]{\invodds\cb{#1}}
 \providecommand{\doddsinvf}[1]{{\oddsinv}'\cb{#1}}
@@ -386,6 +386,6 @@
 \def\llgaus{\frac{-1}{2}\paren{\logf{2\pi\ss} + \frac{\devn^2}{\ss}}}
 \def\scoreexpf{\frac{\devn}{\Varf{X}}}
 \def\llexpmean{-\logf{\pmean} - \frac{x}{\pmean}}
-\def\signt{\text{sign}}
+\def\signt{\operatorname{sign}}
 \providecommand{\signf}[1]{\signt\cb{#1}}
 \def\reals{\mathbb{R}}

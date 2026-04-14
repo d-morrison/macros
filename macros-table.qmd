@@ -7,13 +7,14 @@ title: "Macro Reference"
 #| echo: false
 #| results: asis
 
-# Embed macro definitions in a hidden display-math block so MathJax defines
-# them globally for the rendered example column below.
+# Embed macro definitions in a hidden Quarto fenced-div so pandoc processes
+# the $$ block into a real MathJax display-math element (not raw HTML).
+# Raw <div>...</div> blocks are passed through by pandoc without math processing.
 lines <- readLines("macros.qmd", warn = FALSE)
 lines <- lines[!grepl("^\\s*<!--", lines) & nzchar(trimws(lines))]
-cat('<div style="display:none">\n$$\n')
+cat('::: {style="display:none"}\n$$\n')
 cat(paste(lines, collapse = "\n"), "\n")
-cat('$$\n</div>\n')
+cat('$$\n:::\n')
 ```
 
 This page provides a searchable table of all macros defined in `macros.qmd`.
@@ -124,7 +125,18 @@ DT::datatable(
     dom        = "lftip",
     # Re-typeset MathJax after each DataTables draw (pagination, search, etc.)
     drawCallback = DT::JS(
-      "function() { if (window.MathJax) { MathJax.typesetPromise(); } }"
+      "function(settings) {
+        var table = this;
+        if (window.MathJax) {
+          if (MathJax.startup && MathJax.startup.promise) {
+            MathJax.startup.promise.then(function() {
+              MathJax.typesetPromise([table.api().table().node()]);
+            });
+          } else {
+            MathJax.typesetPromise([table.api().table().node()]);
+          }
+        }
+      }"
     )
   )
 )

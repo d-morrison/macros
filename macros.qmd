@@ -125,6 +125,10 @@
 \def\devn{\deviation}
 \def\Deviation{E}
 \def\Devn{\Deviation}
+\def\residual{r}
+\def\resid{\residual}
+\def\Residual{R}
+\def\Resid{\Residual}
 \def\score{\ell'}
 \def\scorev{\vec{\ell'}}
 \def\scorei{\vec{\ell_i'}}

@@ -12,6 +12,27 @@ title: "Macro Reference"
 # Raw <div>...</div> blocks are passed through by pandoc without math processing.
 lines <- readLines("macros.qmd", warn = FALSE)
 lines <- lines[!grepl("^\\s*<!--", lines) & nzchar(trimws(lines))]
+
+# MathJax v3 does NOT support \providecommand.
+# Convert \providecommand{\name}[n]{body} to TeX primitive \def\name#1...#n{body},
+# which always works in MathJax regardless of whether the command is already defined.
+lines <- vapply(lines, function(line) {
+  m <- regmatches(
+    line,
+    regexec(
+      "^\\\\providecommand\\{\\\\([^}]+)\\}(?:\\[(\\d+)\\])?\\{(.*)\\}\\s*$",
+      line,
+      perl = TRUE
+    )
+  )[[1]]
+  if (length(m) == 4L && nzchar(m[1L])) {
+    nargs    <- if (nzchar(m[3L])) as.integer(m[3L]) else 0L
+    args_str <- if (nargs > 0L) paste0("#", seq_len(nargs), collapse = "") else ""
+    return(paste0("\\def\\", m[2L], args_str, "{", m[4L], "}"))
+  }
+  line
+}, character(1L), USE.NAMES = FALSE)
+
 cat('::: {style="display:none"}\n$$\n')
 cat(paste(lines, collapse = "\n"), "\n")
 cat('$$\n:::\n')
@@ -126,15 +147,9 @@ DT::datatable(
     # Re-typeset MathJax after each DataTables draw (pagination, search, etc.)
     drawCallback = DT::JS(
       "function(settings) {
-        var table = this;
-        if (window.MathJax) {
-          if (MathJax.startup && MathJax.startup.promise) {
-            MathJax.startup.promise.then(function() {
-              MathJax.typesetPromise([table.api().table().node()]);
-            });
-          } else {
-            MathJax.typesetPromise([table.api().table().node()]);
-          }
+        if (window.MathJax && MathJax.typesetPromise) {
+          (MathJax.startup ? MathJax.startup.promise : Promise.resolve())
+            .then(function() { MathJax.typesetPromise(); });
         }
       }"
     )

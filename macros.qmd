@@ -131,6 +131,10 @@
 \def\resid{\residual}
 \def\Residual{R}
 \def\Resid{\Residual}
+\def\stdresidual{z}
+\def\stdresid{\stdresidual}
+\def\StdResidual{Z}
+\def\StdResid{\StdResidual}
 \def\score{\ell'}
 \def\scorev{\vec{\ell'}}
 \def\scorei{\vec{\ell_i'}}

@@ -124,8 +124,13 @@ example_call <- paste0(
   vapply(macros$args, make_arg_str, character(1L))
 )
 
-# Plain-text source column (searchable, not HTML-escaped in output)
-macros$example_source <- example_call
+# Wrap text columns in <code> tags for monospace font (escape=FALSE lets them render as HTML)
+code <- function(x) paste0("<code>", x, "</code>")
+macros$name        <- code(macros$name)
+macros$definition  <- code(macros$definition)
+
+# Plain-text source column wrapped in <code>; escape=FALSE renders the tags
+macros$example_source <- code(example_call)
 
 # Rendered column: MathJax inline-math delimiters; DT renders with escape=FALSE
 macros$example_rendered <- paste0("\\(", example_call, "\\)")

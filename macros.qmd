@@ -131,9 +131,9 @@
 \def\resid{\residual}
 \def\Residual{R}
 \def\Resid{\Residual}
-\def\stdresidual{r'}
+\def\stdresidual{r^\prime}
 \def\stdresid{\stdresidual}
-\def\StdResidual{R'}
+\def\StdResidual{R^\prime}
 \def\StdResid{\StdResidual}
 \def\modresidual{r^*}
 \def\modresid{\modresidual}

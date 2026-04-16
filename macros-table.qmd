@@ -1,0 +1,163 @@
+---
+title: "Macro Reference"
+---
+
+```{r}
+#| label: embed-macros
+#| echo: false
+#| results: asis
+
+# Embed macro definitions in a hidden Quarto fenced-div so pandoc processes
+# the $$ block into a real MathJax display-math element (not raw HTML).
+# Raw <div>...</div> blocks are passed through by pandoc without math processing.
+lines <- readLines("macros.qmd", warn = FALSE)
+lines <- lines[!grepl("^\\s*<!--", lines) & nzchar(trimws(lines))]
+
+# MathJax v3 does NOT support \providecommand.
+# Convert \providecommand{\name}[n]{body} to TeX primitive \def\name#1...#n{body},
+# which always works in MathJax regardless of whether the command is already defined.
+lines <- vapply(lines, function(line) {
+  m <- regmatches(
+    line,
+    regexec(
+      "^\\\\providecommand\\{\\\\([^}]+)\\}(?:\\[(\\d+)\\])?\\{(.*)\\}\\s*$",
+      line,
+      perl = TRUE
+    )
+  )[[1]]
+  if (length(m) == 4L && nzchar(m[1L])) {
+    nargs    <- if (nzchar(m[3L])) as.integer(m[3L]) else 0L
+    args_str <- if (nargs > 0L) paste0("#", seq_len(nargs), collapse = "") else ""
+    return(paste0("\\def\\", m[2L], args_str, "{", m[4L], "}"))
+  }
+  line
+}, character(1L), USE.NAMES = FALSE)
+
+cat('::: {style="display:none"}\n$$\n')
+cat(paste(lines, collapse = "\n"), "\n")
+cat('$$\n:::\n')
+```
+
+This page provides a searchable table of all macros defined in `macros.qmd`.
+
+```{r}
+#| label: parse-macros
+#| echo: false
+
+parse_macros <- function(file_path = "macros.qmd") {
+  lines <- readLines(file_path, warn = FALSE)
+
+  # Remove HTML comments and blank lines
+  lines <- grep("^\\s*<!--", lines, invert = TRUE, value = TRUE)
+  lines <- grep("^\\s*$", lines, invert = TRUE, value = TRUE)
+
+  # Collect entries, joining multi-line definitions
+  entries <- character(0)
+  current <- ""
+  for (line in lines) {
+    if (grepl("^\\\\(def|providecommand|renewcommand)", line, perl = TRUE)) {
+      if (nzchar(current)) entries <- c(entries, current)
+      current <- line
+    } else {
+      current <- paste(current, trimws(line))
+    }
+  }
+  if (nzchar(current)) entries <- c(entries, current)
+
+  rows <- lapply(entries, function(entry) {
+    # Match \def\name{definition}
+    m <- regmatches(
+      entry,
+      regexec(
+        "^\\\\def\\\\([^{ \t]+)\\{(.*)\\}\\s*$",
+        entry,
+        perl = TRUE
+      )
+    )[[1]]
+    if (length(m) == 3 && nzchar(m[1])) {
+      return(data.frame(
+        name       = paste0("\\", m[2]),
+        args       = 0L,
+        definition = m[3],
+        stringsAsFactors = FALSE
+      ))
+    }
+
+    # Match \providecommand or \renewcommand
+    m <- regmatches(
+      entry,
+      regexec(
+        paste0(
+          "^\\\\(?:providecommand|renewcommand)",
+          "\\{\\\\([^}]+)\\}(?:\\[(\\d+)\\])?\\{(.*)\\}\\s*$"
+        ),
+        entry,
+        perl = TRUE
+      )
+    )[[1]]
+    if (length(m) == 4 && nzchar(m[1])) {
+      return(data.frame(
+        name       = paste0("\\", m[2]),
+        args       = if (nzchar(m[3])) as.integer(m[3]) else 0L,
+        definition = m[4],
+        stringsAsFactors = FALSE
+      ))
+    }
+
+    NULL
+  })
+
+  do.call(rbind, Filter(Negate(is.null), rows))
+}
+
+macros <- parse_macros("macros.qmd")
+
+# Build example usage strings based on argument count.
+# 0-arg macros: \name  |  n-arg macros: \name{x}{y}...
+arg_placeholders <- c("x", "y", "z", "w")
+make_arg_str <- function(n) {
+  if (n == 0L) return("")
+  paste0("{", arg_placeholders[seq_len(min(n, 4L))], "}", collapse = "")
+}
+example_call <- paste0(
+  macros$name,
+  vapply(macros$args, make_arg_str, character(1L))
+)
+
+# Wrap text columns in <code> tags for monospace font (escape=FALSE lets them render as HTML)
+code <- function(x) paste0("<code>", x, "</code>")
+macros$name        <- code(macros$name)
+macros$definition  <- code(macros$definition)
+
+# Plain-text source column wrapped in <code>; escape=FALSE renders the tags
+macros$example_source <- code(example_call)
+
+# Rendered column: MathJax inline-math delimiters; DT renders with escape=FALSE
+macros$example_rendered <- paste0("\\(", example_call, "\\)")
+```
+
+```{r}
+#| label: macros-table
+#| echo: false
+
+DT::datatable(
+  macros[, c("name", "args", "definition", "example_source", "example_rendered")],
+  colnames  = c("Macro", "# Args", "Definition", "Example Source", "Example"),
+  rownames  = FALSE,
+  escape    = FALSE,
+  filter    = "top",
+  options   = list(
+    pageLength = 25,
+    dom        = "lftip",
+    # Re-typeset MathJax after each DataTables draw (pagination, search, etc.)
+    drawCallback = DT::JS(
+      "function(settings) {
+        if (window.MathJax && MathJax.typesetPromise) {
+          (MathJax.startup ? MathJax.startup.promise : Promise.resolve())
+            .then(function() { MathJax.typesetPromise(); });
+        }
+      }"
+    )
+  )
+)
+```

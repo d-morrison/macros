@@ -94,7 +94,9 @@
 \def\ddist{\ \dot{\sim} \ }
 \def\dsim{\ \dot{\sim} \ }
 \def\za{z_{1 - \frac{\alpha}{2}}}
+\def\ciradsym{\xi}
 \def\cirad{\za \cdot \hse{\hb}}
+\providecommand{\ciradf}[1]{\za \cdot \hse{#1}}
 \def\ci{\hb {\color{red}\pm} \cirad}
 \def\th{\theta}
 \def\vth{\vec{\theta}}

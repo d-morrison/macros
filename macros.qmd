@@ -193,7 +193,8 @@
 \providecommand{\hE}[1]{\hat{\text{E}}\sb{#1}}
 \providecommand{\hExp}[1]{\hat{\text{E}}\sb{#1}}
 \providecommand{\hExpf}[1]{\hat{\text{E}}\sb{#1}}
-\providecommand{\hmu}[1]{\hat{\mu}\sb{#1}}
+\def\hmu{\hat{\mu}}
+\providecommand{\hmuf}[1]{\hmu\paren{#1}}
 \def\Expp{\distop{E}}
 \def\Ep{\distop{E}}
 \def\expit{\text{expit}}

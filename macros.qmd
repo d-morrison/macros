@@ -227,6 +227,18 @@
 \providecommand{\covh}[1]{\widehat{\Covt}\paren{#1}}
 \providecommand{\covhf}[1]{\widehat{\Covt}\paren{#1}}
 \providecommand{\hcovf}[1]{\widehat{\Covt}\paren{#1}}
+\def\Cort{\text{Cor}}
+\def\hcort{\widehat{\Cort}}
+\providecommand{\Cor}[1]{\Cort \paren{#1}}
+\providecommand{\Corf}[1]{\Cort \paren{#1}}
+\providecommand{\Cors}[2]{\Cort \paren{#1, #2}}
+\providecommand{\hCor}[1]{\hcort\paren{#1}}
+\providecommand{\hCorf}[1]{\hcort\paren{#1}}
+\providecommand{\hCors}[2]{\hcort\paren{#1, #2}}
+\def\med{\text{med}}
+\providecommand{\medf}[1]{\med\paren{#1}}
+\def\IQR{\text{IQR}}
+\providecommand{\IQRf}[1]{\IQR\paren{#1}}
 \def\varht{\widehat{\text{Var}}}
 \providecommand{\varh}[1]{\varht\paren{#1}}
 \providecommand{\varhf}[1]{\varht\paren{#1}}

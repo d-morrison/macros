@@ -228,7 +228,7 @@
 \providecommand{\covhf}[1]{\widehat{\Covt}\paren{#1}}
 \providecommand{\hcovf}[1]{\widehat{\Covt}\paren{#1}}
 \def\Cort{\text{Cor}}
-\def\hcort{\widehat{\text{Cor}}}
+\def\hcort{\widehat{\Cort}}
 \providecommand{\Cor}[1]{\Cort \paren{#1}}
 \providecommand{\Corf}[1]{\Cort \paren{#1}}
 \providecommand{\Cors}[2]{\Cort \paren{#1, #2}}

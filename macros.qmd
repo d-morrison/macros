@@ -291,6 +291,7 @@
 \providecommand{\indic}[1]{\mathbb{1}_{#1}}
 \providecommand{\indicp}[1]{\mathbb{1}\paren{#1}}
 \providecommand{\indiccb}[1]{\mathbb{1}\cb{#1}}
+\providecommand{\indicf}[1]{\mathbb{1}_{#1}}
 \providecommand{\set}[1]{\cb{#1}}
 \providecommand{\pf}[1]{\p \paren{#1}}
 \providecommand{\Pf}[1]{\P \paren{#1}}

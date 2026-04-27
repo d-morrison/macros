@@ -111,6 +111,7 @@ parse_macros <- function(file_path = "macros.qmd") {
 }
 
 macros <- parse_macros("macros.qmd")
+macro_order <- macros$name  # save original order before merge() reorders
 
 # Join plain-text interpretations from the companion TSV
 interp <- read.delim(
@@ -125,7 +126,7 @@ macros <- merge(macros, interp, by = "name", all.x = TRUE)
 macros$interpretation[is.na(macros$interpretation)] <- ""
 
 # Restore the original row order (merge() sorts by the key column)
-macros <- macros[order(match(macros$name, parse_macros("macros.qmd")$name)), ]
+macros <- macros[order(match(macros$name, macro_order)), ]
 
 # Build example usage strings based on argument count.
 # 0-arg macros: \name  |  n-arg macros: \name{x}{y}...

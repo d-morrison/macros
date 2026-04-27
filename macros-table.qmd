@@ -112,6 +112,21 @@ parse_macros <- function(file_path = "macros.qmd") {
 
 macros <- parse_macros("macros.qmd")
 
+# Join plain-text interpretations from the companion TSV
+interp <- read.delim(
+  "interpretations.tsv",
+  sep          = "\t",
+  header       = TRUE,
+  stringsAsFactors = FALSE,
+  quote        = "",
+  comment.char = ""
+)
+macros <- merge(macros, interp, by = "name", all.x = TRUE)
+macros$interpretation[is.na(macros$interpretation)] <- ""
+
+# Restore the original row order (merge() sorts by the key column)
+macros <- macros[order(match(macros$name, parse_macros("macros.qmd")$name)), ]
+
 # Build example usage strings based on argument count.
 # 0-arg macros: \name  |  n-arg macros: \name{x}{y}...
 arg_placeholders <- c("x", "y", "z", "w")
@@ -141,8 +156,8 @@ macros$example_rendered <- paste0("\\(", example_call, "\\)")
 #| echo: false
 
 DT::datatable(
-  macros[, c("name", "args", "definition", "example_source", "example_rendered")],
-  colnames  = c("Macro", "# Args", "Definition", "Example Source", "Example"),
+  macros[, c("name", "args", "interpretation", "definition", "example_source", "example_rendered")],
+  colnames  = c("Macro", "# Args", "Interpretation", "Definition", "Example Source", "Example"),
   rownames  = FALSE,
   escape    = FALSE,
   filter    = "top",

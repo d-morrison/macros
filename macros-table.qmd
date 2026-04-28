@@ -120,10 +120,21 @@ interp <- read.delim(
   header       = TRUE,
   stringsAsFactors = FALSE,
   quote        = "",
-  comment.char = ""
+  comment.char = "",
+  fileEncoding = "UTF-8"
 )
 macros <- merge(macros, interp, by = "name", all.x = TRUE)
-macros$interpretation[is.na(macros$interpretation)] <- ""
+missing_interpretations <- is.na(macros$interpretation)
+if (any(missing_interpretations)) {
+  missing_names <- sort(unique(macros$name[missing_interpretations]))
+  stop(
+    paste(
+      "Missing interpretation entries in interpretations.tsv for:",
+      paste(missing_names, collapse = ", ")
+    ),
+    call. = FALSE
+  )
+}
 
 # Restore the original row order (merge() sorts by the key column)
 macros <- macros[order(match(macros$name, macro_order)), ]
@@ -160,7 +171,7 @@ DT::datatable(
   macros[, c("name", "args", "interpretation", "definition", "example_source", "example_rendered")],
   colnames  = c("Macro", "# Args", "Interpretation", "Definition", "Example Source", "Example"),
   rownames  = FALSE,
-  escape    = FALSE,
+  escape    = 3,
   filter    = "top",
   options   = list(
     pageLength = 25,

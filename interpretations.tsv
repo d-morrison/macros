@@ -1,0 +1,419 @@
+name	interpretation
+\cbl	left curly brace (open only)
+\cb	auto-sized curly braces around argument
+\cbmat	matrix wrapped in auto-sized curly braces
+\paren	auto-sized parentheses around argument
+\pmat	matrix formatted with parentheses (pmatrix)
+\sparen	fixed-size parentheses around argument
+\sb	auto-sized square brackets around argument
+\distop	text-style distribution/function operator
+\sbmat	matrix formatted with square brackets (bmatrix)
+\Prf	Pr(·) probability expression
+\am	arg max operator
+\argmax	arg max operator (alias for \am)
+\p	probability density/mass function symbol p
+\f	probability density function symbol f
+\F	cumulative distribution function symbol F
+\h	hazard function symbol h
+\H	cumulative hazard function symbol H
+\pr	probability function symbol (alias for \p)
+\dens	probability density symbol (alias for \p)
+\pdens	probability density symbol (alias for \p)
+\fdens	f-style density symbol (alias for \f)
+\mass	probability mass symbol (alias for \P)
+\pmass	probability mass symbol (alias for \P)
+\fmass	F-style mass symbol (alias for \F)
+\S	survival function symbol S
+\Sf	survival function S(·) applied to argument
+\surv	survival function symbol (alias for \S)
+\survf	survival function applied to argument (alias for \Sf)
+\ph	estimated probability p-hat
+\P	probability operator P
+\hp	estimated probability (alias for \ph)
+\ga	Greek letter alpha (α)
+\a	Greek letter alpha (alias for \ga)
+\b	Greek letter beta (β)
+\g	Greek letter gamma (γ)
+\floor	floor function ⌊·⌋
+\ceiling	ceiling function ⌈·⌉
+\ceil	ceiling function (alias for \ceiling)
+\Ber	Bernoulli distribution label
+\Bernoulli	Bernoulli distribution label (long form)
+\Pois	Poisson distribution label
+\Poisson	Poisson distribution label (long form)
+\Gaus	Gaussian distribution label
+\Normal	Normal distribution label N
+\ndist	Normal distribution expression N(·)
+\NB	Negative Binomial distribution label
+\NegBin	Negative Binomial label (long form)
+\vbeta	beta coefficient vector
+\vb	beta vector (alias for \vbeta)
+\v0	zero vector
+\vzero	zero vector (alias for \v0)
+\gb	Greek letter beta (alias for \b)
+\gg	Greek letter gamma (alias for \g)
+\gd	Greek letter delta (δ)
+\eps	varepsilon error term (ε)
+\veps	error vector (ε-vector)
+\epsp	ε(·) error function
+\epsf	ε(·) error function (alias for \epsp)
+\om	Greek letter omega (ω)
+\m	Greek letter mu / population mean (μ)
+\mean	population mean symbol μ
+\pmean	population mean symbol (alias for \mean)
+\popmean	population mean symbol (alias for \mean)
+\vm	mean vector (μ-vector)
+\s	Greek letter sigma (σ)
+\l	Greek letter lambda (λ)
+\gl	Greek letter lambda (alias for \l)
+\lam	Greek letter lambda (alias for \l)
+\gs	Greek letter sigma (alias for \s)
+\gm	Greek letter mu (alias for \m)
+\M	moment / mean operator M
+\gM	M operator (alias for \M)
+\Mu	M operator (alias for \M)
+\cd	centered dot multiplication symbol (·)
+\cds	centered ellipsis (⋯)
+\lds	lower ellipsis (…)
+\eqdef	equals-by-definition symbol (≝)
+\defeq	equals-by-definition (alias for \eqdef)
+\hb	estimated beta coefficient β̂
+\hvb	estimated beta vector (β̂-vector)
+\hl	estimated lambda λ̂
+\hy	fitted / predicted value ŷ
+\yh	fitted value ŷ (alias for \hy)
+\V	variance operator symbol Var
+\hs	estimated sigma σ̂
+\hsig	estimated sigma (alias for \hs)
+\hS	estimated covariance matrix Σ̂
+\hSig	estimated Sigma (alias for \hS)
+\hSigma	estimated Sigma (alias for \hS)
+\hsurv	estimated survival function
+\hSurv	estimated survival function (alias for \hsurv)
+\hSurvf	estimated survival function Ŝ(·) applied to argument
+\dist	distributes as relation (∼)
+\ddist	approximately distributes as (∿)
+\dsim	approximately distributes as (alias for \ddist)
+\za	normal critical value z_{1−α/2}
+\ciradsym	confidence interval radius symbol (ξ)
+\cirad	confidence interval radius expression
+\ciradf	confidence interval radius with argument
+\ci	full confidence interval expression
+\th	Greek letter theta (θ)
+\vth	theta parameter vector
+\Th	uppercase Theta (Θ)
+\xbar	sample mean x̄
+\hth	estimated theta θ̂
+\hthml	maximum likelihood estimate of theta
+\ba	begin aligned math environment
+\ea	end aligned math environment
+\ind	statistical independence symbol (⊥⊥)
+\indpt	independence symbol (alias for \ind)
+\indold	independence symbol (legacy Unicode)
+\all	universal quantifier (∀)
+\iid	i.i.d. label
+\ciid	conditionally i.i.d. label
+\simind	independently distributed relation
+\siid	i.i.d. distributed relation
+\sciid	c.i.i.d. distributed relation
+\simiid	i.i.d. distributed (alias for \siid)
+\distiid	i.i.d. distributed (alias for \siid)
+\tf	therefore symbol (∴)
+\Lik	likelihood script symbol (ℒ)
+\llik	log-likelihood symbol (ℓ)
+\loglik	log-likelihood symbol (alias for \llik)
+\logl	log-likelihood symbol (alias for \llik)
+\llikf	log-likelihood function ℓ(·)
+\deviation	deviation symbol e
+\devn	deviation symbol (alias for \deviation)
+\Deviation	uppercase deviation symbol E
+\Devn	uppercase deviation (alias for \Deviation)
+\residual	residual symbol r
+\resid	residual symbol (alias for \residual)
+\residv	residual vector r̃
+\Residual	uppercase residual symbol R
+\Resid	uppercase residual (alias for \Residual)
+\stdresidual	standardized residual r′
+\stdresid	standardized residual (alias for \stdresidual)
+\StdResidual	uppercase standardized residual R′
+\StdResid	uppercase standardized residual (alias)
+\modresidual	modified residual r*
+\modresid	modified residual (alias for \modresidual)
+\ModResidual	uppercase modified residual R*
+\ModResid	uppercase modified residual (alias)
+\score	score function ℓ′
+\scorev	score vector
+\scorei	per-observation score vector ℓ′_i
+\scorevi	per-observation score vector (alias for \scorei)
+\scoref	score function ℓ′(·)
+\hess	Hessian of log-likelihood ℓ″
+\hessm	Hessian matrix (alias for \hess)
+\hessian	Hessian (alias for \hess)
+\hessij	(i,j) element of the Hessian
+\hessijalt	(i,j) Hessian in bracket notation
+\hessf	Hessian function ℓ″(·)
+\hessianf	Hessian function (alias for \hessf)
+\starf	starred / optimal version of argument
+\lik	log-likelihood (alias for \llik)
+\est	estimated / hat version of argument
+\esttmp	alternative estimate notation (·̂*)
+\esttmpl	alternative estimate of lambda
+\cR	range / codomain symbol ℛ
+\range	range / codomain (alias for \cR)
+\Range	range / codomain (alias for \cR)
+\rangef	range of a function ℛ(·)
+\~	approximately equal (≈)
+\dapp	approximately equal dot notation (≐)
+\deriv	partial derivative operator ∂/∂(·)
+\dderiv	second partial derivative ∂²/∂(·)²
+\derivf	partial derivative ∂f/∂x with numerator
+\derivff	partial derivative ∂f/∂x (reversed argument order)
+\dderivf	second partial derivative ∂²f/∂x²
+\xderiv	cross partial derivative ∂²/∂x∂y
+\xderivf	cross partial ∂²f/∂x∂y with numerator
+\xderivff	cross partial (reversed argument order)
+\red	typeset argument in red
+\green	typeset argument in green
+\blue	typeset argument in blue
+\cyan	typeset argument in cyan
+\magenta	typeset argument in magenta
+\yellow	typeset argument in yellow
+\black	typeset argument in black
+\gray	typeset argument in gray
+\white	typeset argument in white
+\darkgray	typeset argument in dark gray
+\lightgray	typeset argument in light gray
+\brown	typeset argument in brown
+\lime	typeset argument in lime green
+\olive	typeset argument in olive
+\orange	typeset argument in orange
+\pink	typeset argument in pink
+\purple	typeset argument in purple
+\teal	typeset argument in teal
+\violet	typeset argument in violet
+\hE	estimated expected value Ê[·]
+\hExp	estimated expected value (alias for \hE)
+\hExpf	estimated expected value (alias for \hE)
+\hmu	estimated mean μ̂
+\hmuf	estimated mean function μ̂(·)
+\Expp	expectation operator E (no argument)
+\Ep	expectation operator (alias for \Expp)
+\expit	expit / logistic function
+\expitf	expit applied to argument
+\dexpitf	derivative of expit function
+\logit	logit function
+\logitf	logit applied to argument
+\E	expected value E[·]
+\Ef	expected value (alias for \E)
+\Exp	expected value (alias for \E)
+\Expf	expected value (alias for \E)
+\Expfc	conditional expected value E_c[·]
+\evalAt	evaluate expression at a given point
+\Varr	variance operator symbol Var
+\Vart	variance operator symbol (alias for \Varr)
+\hvar	estimated variance operator (hat)
+\hvart	estimated variance operator (alias for \hvar)
+\Covt	covariance operator symbol Cov
+\hcovt	estimated covariance operator
+\hCovt	estimated covariance operator (alias)
+\var	variance function Var(·)
+\varf	variance function (alias for \var)
+\Var	variance function (alias for \var)
+\hVar	estimated variance function V̂ar(·)
+\Varf	variance function (alias for \var)
+\hvarf	estimated variance function (alias for \hVar)
+\Cov	covariance function Cov(·)
+\Covs	bivariate covariance Cov(·,·)
+\Covf	covariance function (alias for \Cov)
+\covh	estimated covariance function Ĉov(·)
+\covhf	estimated covariance function (alias)
+\hcovf	estimated covariance function (alias)
+\Cort	correlation operator symbol Cor
+\hcort	estimated correlation operator
+\Cor	correlation function Cor(·)
+\Corf	correlation function (alias for \Cor)
+\Cors	bivariate correlation Cor(·,·)
+\hCor	estimated correlation function Ĉor(·)
+\hCorf	estimated correlation function (alias)
+\hCors	estimated bivariate correlation
+\med	median operator symbol
+\medf	median function med(·)
+\IQR	interquartile range operator symbol
+\IQRf	interquartile range function IQR(·)
+\varht	estimated variance operator (hat, alias)
+\varh	estimated variance function (alias)
+\varhf	estimated variance function (alias)
+\vc	bold vector notation for argument
+\sd	standard deviation function sd(·)
+\SD	standard deviation function SD(·)
+\hSD	estimated standard deviation SD̂(·)
+\hSDf	estimated standard deviation (alias)
+\se	standard error function se(·)
+\hset	estimated standard error operator ŝe
+\hSE	estimated standard error operator ŜE
+\hSEt	estimated SE operator (alias for \hSE)
+\sef	standard error function (alias for \se)
+\hse	estimated standard error ŝe(·)
+\hsef	estimated standard error (alias for \hse)
+\SE	standard error function SE(·)
+\SEf	standard error function (alias for \SE)
+\SDf	standard deviation function (alias for \SD)
+\HSE	estimated standard error function (alias)
+\hSEf	estimated standard error function (alias)
+\logt	log operator symbol
+\logf	log{·} function applied to argument
+\dlog	derivative of log (log′)
+\dlogf	derivative of log applied to argument
+\exp	exponential function exp{·}
+\expt	exp operator symbol
+\expf	exponential function (alias for \exp)
+\expfn	exponential function (alias for \exp)
+\dexp	derivative of exponential (exp′)
+\dexpf	derivative of exp applied to argument
+\e	e^(·) exponential notation
+\ef	e^(·) exponential notation (alias for \e)
+\inv	multiplicative inverse (·)^{−1} with parentheses
+\invf	multiplicative inverse (alias for \inv)
+\invp	multiplicative inverse (alias for \inv)
+\invcb	inverse with curly braces {·}^{−1}
+\invsb	inverse with square brackets [·]^{−1}
+\oinf	observed information symbol I
+\oinfm	observed information matrix symbol
+\Nat	natural numbers symbol N
+\oinff	observed information function I(·)
+\einf	expected (Fisher) information symbol ℐ
+\EInf	expected information (alias for \einf)
+\FInf	Fisher information (alias for \einf)
+\einfm	expected information matrix symbol
+\einff	expected information function ℐ(·)
+\heinf	estimated Fisher information ℐ̂
+\heinff	estimated Fisher information function ℐ̂(·)
+\1	indicator function 1_{·} (subscript style)
+\indic	indicator function 𝟙_{·} (blackboard bold)
+\indicp	indicator function 𝟙(·) with parentheses
+\indiccb	indicator function 𝟙{·} with curly braces
+\indicf	indicator function (alias for \indic)
+\set	set notation {·}
+\pf	probability density/mass p(·)
+\Pf	probability P(·)
+\Bias	bias function Bias(·)
+\bias	bias function (alias for \Bias)
+\ss	variance σ²
+\ssqf	σ²(·) variance as a function
+\mselr	mean squared error function MSE(·)
+\maelr	mean absolute error function MAE(·)
+\abs	absolute value |·|
+\norm	Euclidean norm ‖·‖
+\normsq	squared norm ‖·‖²
+\sqf	square of argument (·)²
+\sq	square superscript ² (postfix)
+\err	error term (alias for \eps)
+\erf	error term function ε(·)
+\vec	vector notation (tilde style)
+\vecf	vector notation (alias for \vec)
+\v	vector shorthand (alias for \vecf)
+\matr	matrix notation (bold style)
+\mX	design matrix X (bold)
+\mx	design matrix x lowercase (bold)
+\va	vector a (ã)
+\vx	vector x (x̃)
+\vxs	starred/reference vector x* (x̃*)
+\diff	difference operator Δ
+\diffvx	difference in x-vector Δx̃
+\vxi	i-th observation vector x̃_i
+\vX	random vector X (X̃)
+\vy	outcome vector y (ỹ)
+\vY	uppercase outcome vector Y (Ỹ)
+\vD	exposure/treatment vector D (D̃)
+\vd	exposure vector d lowercase (d̃)
+\vT	time vector T (T̃)
+\vt	time vector t lowercase (t̃)
+\v1	vector of ones (1̃)
+\vpi	vector of probabilities π (π̃)
+\mat	matrix notation (alias for \matr)
+\dsn	sequence x₁, …, xₙ
+\X1n	sequence of random variables X₁, …, Xₙ
+\Xin	sequence Xᵢ, i=1…n (alias for \X1n)
+\x1n	sequence of observations x₁, …, xₙ
+\y1n	sequence of outcomes y₁, …, yₙ
+\'	transpose superscript ⊤
+\pt	parenthesized transpose (x)′
+\tp	transpose of argument x′
+\dpr	dot product symbol (·)
+\Xx1n	paired sequence X₁=x₁, …, Xₙ=xₙ
+\dprodf	dot product a·b
+\iprod	inner product x′y
+\oprod	outer product x y′
+\siprod	self inner product x′x
+\soprod	self outer product x x′
+\dsvn	paired sequence X₁=x₁, …, Xₙ=xₙ (alias)
+\sumn	sum over index from 1 to n
+\sumin	sum over i from 1 to n
+\sumiN	sum over i from 1 to N
+\sumip	sum over i from 1 to p
+\sumjn	sum over j from 1 to n
+\sumjp	sum over j from 1 to p
+\sumi1n	sum over i from 1 to n (alias for \sumin)
+\prodin	product over i from 1 to n
+\prodi1n	product over i from 1 to n (alias)
+\lp	linear predictor x′β
+\odds	odds symbol ω
+\OR	odds ratio label OR
+\ror	ratio of odds (odds ratio) θ
+\logodds	log-odds symbol η
+\logoddsf	log-odds function η(·)
+\difflogodds	difference in log-odds Δη
+\hdifflogodds	estimated difference in log-odds ΔΗ̂
+\diffeta	difference in eta Δη (alias for \difflogodds)
+\oddst	"odds" text operator label
+\probst	"probs" text label
+\probt	"prob" text label
+\riskt	"risk" text label
+\prob	probability symbol π
+\probs	probability symbol (alias for \prob)
+\probit	probit link function
+\oddsf	odds function odds{·}
+\doddsf	derivative of odds function odds′{·}
+\oddsinv	inverse odds operator
+\invodds	inverse odds (alternative notation)
+\oddsinvf	inverse odds function
+\invoddsf	inverse odds function (alias)
+\doddsinvf	derivative of inverse odds function
+\dinvoddsf	derivative of inverse odds (alias)
+\rate	rate / hazard symbol λ
+\haz	hazard function symbol λ (alias for \rate)
+\hazratio	hazard ratio symbol θ
+\hr	hazard ratio (alias for \hazratio)
+\hrf	hazard ratio function θ(·)
+\loghaz	log-hazard symbol η
+\diffloghaz	difference in log-hazard Δη
+\cuhaz	cumulative hazard symbol Λ
+\cumhaz	cumulative hazard (alias for \cuhaz)
+\Surv	survival function (alias for \surv)
+\incidence	incidence rate (average hazard)
+\phaz	expected hazard E[λ] (Poisson hazard)
+\idmat	identity matrix 𝕀
+\and	set intersection (∩)
+\reglincomb	regression linear combination x̃·β̃
+\regbetasum	expanded regression sum β₁x₁+⋯+βₚxₚ
+\pdf	probability density function symbol f
+\pmf	probability mass function P(·)
+\cdf	cumulative distribution function symbol F
+\defLik	definitional expression for likelihood ℒ(θ)
+\defLogLik	definitional expression for log-likelihood ℓ
+\defScore	definitional expression for score function ℓ′
+\defHess	definitional expression for Hessian matrix ℓ″
+\thmHessij	formula for (i,j) element of the Hessian
+\defOInf	definitional expression for observed information I
+\defEInf	definitional expression for expected information ℐ
+\thmADistMLE	asymptotic normal distribution of the MLE
+\eqGLMRatio	GLM hazard or odds ratio expression
+\defHR	definitional expression for hazard ratio
+\kerngaus	Gaussian distribution kernel exponent
+\likgaus	Gaussian likelihood expression
+\llgaus	Gaussian log-likelihood expression
+\scoreexpf	score function for exponential family
+\llexpmean	log-likelihood expression for exponential mean model
+\signt	sign operator symbol
+\signf	sign function sign{·}
+\reals	real numbers ℝ

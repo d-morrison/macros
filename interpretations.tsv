@@ -126,6 +126,8 @@ name	interpretation
 \llikf	log-likelihood function ℓ(·)
 \deviation	deviation symbol e
 \devn	deviation symbol (alias for \deviation)
+\deviationv	deviation vector ẽ
+\devnv	deviation vector (alias for \deviationv)
 \Deviation	uppercase deviation symbol E
 \Devn	uppercase deviation (alias for \Deviation)
 \residual	residual symbol r

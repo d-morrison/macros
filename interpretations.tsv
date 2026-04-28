@@ -130,6 +130,7 @@ name	interpretation
 \Devn	uppercase deviation (alias for \Deviation)
 \residual	residual symbol r
 \resid	residual symbol (alias for \residual)
+\residv	residual vector r̃
 \Residual	uppercase residual symbol R
 \Resid	uppercase residual (alias for \Residual)
 \stdresidual	standardized residual r′

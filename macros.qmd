@@ -342,8 +342,10 @@
 \providecommand{\tp}[1]{{#1}\'}
 \def\dpr{\cdot}
 \def\Xx1n{X_1=x_1, \ldots, X_n = x_n}
-\providecommand{\dprodf}[2]{#1 \cdot #2}
+\providecommand{\dprod}[2]{#1 \cdot #2}
+\def\dprodf{\dprod}
 \providecommand{\iprod}[2]{\tp{#1} #2}
+\def\iprodf{\iprod}
 \providecommand{\oprod}[2]{#1 \tp{#2}}
 \providecommand{\siprod}[1]{\tp{#1} #1}
 \providecommand{\soprod}[1]{#1 \tp{#1}}

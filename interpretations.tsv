@@ -343,11 +343,15 @@ name	interpretation
 \tp	transpose of argument x′
 \dpr	dot product symbol (·)
 \Xx1n	paired sequence X₁=x₁, …, Xₙ=xₙ
-\dprodf	dot product a·b
+\dprod	dot product of two arguments a·b
+\dprodf	dot product a·b (alias for \dprod)
 \iprod	inner product x′y
+\iprodf	inner product (alias for \iprod)
 \oprod	outer product x y′
 \siprod	self inner product x′x
 \soprod	self outer product x x′
+\sdprod	self dot product x·x
+\sdprodf	self dot product (alias for \sdprod)
 \dsvn	paired sequence X₁=x₁, …, Xₙ=xₙ (alias)
 \sumn	sum over index from 1 to n
 \sumin	sum over i from 1 to n

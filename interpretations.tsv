@@ -350,6 +350,8 @@ name	interpretation
 \oprod	outer product x y′
 \siprod	self inner product x′x
 \soprod	self outer product x x′
+\sdprod	self dot product x·x
+\sdprodf	self dot product (alias for \sdprod)
 \dsvn	paired sequence X₁=x₁, …, Xₙ=xₙ (alias)
 \sumn	sum over index from 1 to n
 \sumin	sum over i from 1 to n

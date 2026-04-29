@@ -349,6 +349,8 @@
 \providecommand{\oprod}[2]{#1 \tp{#2}}
 \providecommand{\siprod}[1]{\tp{#1} #1}
 \providecommand{\soprod}[1]{#1 \tp{#1}}
+\providecommand{\sdprod}[1]{\dprod{#1}{#1}}
+\def\sdprodf{\sdprod}
 \providecommand{\dsvn}[2]{#1_1=#2_1, \ldots, #1_n = #2_n}
 \providecommand{\sumn}[1]{\sum_{#1=1}^n}
 \def\sumin{\sum_{i=1}^n}

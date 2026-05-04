@@ -26,9 +26,9 @@
 \providecommand{\Sf}[1]{\S\paren{#1}}
 \def\surv{\distop{S}}
 \providecommand{\survf}[1]{\surv\paren{#1}}
-\def\ph{\hat{\p}}
+\def\ph{\mathop{\hat{\p}}}
 \def\P{\distop{P}}
-\def\hp{\hat{\p}}
+\def\hp{\mathop{\hat{\p}}}
 \def\ga{\alpha}
 \def\a{\alpha}
 \def\b{\beta}
@@ -68,9 +68,9 @@
 \def\lam{\lambda}
 \def\gs{\sigma}
 \def\gm{\mu}
-\def\M{\operatorname{M}}
-\def\gM{\operatorname{M}}
-\def\Mu{\operatorname{M}}
+\def\M{M}
+\def\gM{M}
+\def\Mu{M}
 \def\cd{\cdot}
 \def\cds{\cdots}
 \def\lds{\ldots}
@@ -87,8 +87,8 @@
 \def\hS{\hat \Sigma}
 \def\hSig{\hat \Sigma}
 \def\hSigma{\hat \Sigma}
-\def\hsurv{\hat{\surv}}
-\def\hSurv{\hat{\surv}}
+\def\hsurv{\mathop{\hat{\surv}}}
+\def\hSurv{\mathop{\hat{\surv}}}
 \providecommand{\hSurvf}[1]{\hSurv\paren{#1}}
 \def\dist{\ \sim \ }
 \def\ddist{\ \dot{\sim} \ }
@@ -192,9 +192,9 @@
 \providecommand{\purple}[1]{{\color{purple}#1}}
 \providecommand{\teal}[1]{{\color{teal}#1}}
 \providecommand{\violet}[1]{{\color{violet}#1}}
-\providecommand{\hE}[1]{\hat{\operatorname{E}}\sb{#1}}
-\providecommand{\hExp}[1]{\hat{\operatorname{E}}\sb{#1}}
-\providecommand{\hExpf}[1]{\hat{\operatorname{E}}\sb{#1}}
+\providecommand{\hE}[1]{\mathop{\hat{\operatorname{E}}}\sb{#1}}
+\providecommand{\hExp}[1]{\mathop{\hat{\operatorname{E}}}\sb{#1}}
+\providecommand{\hExpf}[1]{\mathop{\hat{\operatorname{E}}}\sb{#1}}
 \def\hmu{\hat{\mu}}
 \providecommand{\hmuf}[1]{\hmu\paren{#1}}
 \def\Expp{\distop{E}}
@@ -212,25 +212,25 @@
 \providecommand{\evalAt}[2]{\left.{#1}\right|_{#2}}
 \def\Varr{\operatorname{Var}}
 \def\Vart{\operatorname{Var}}
-\def\hvar{\widehat{\Vart}}
-\def\hvart{\widehat{\Vart}}
+\def\hvar{\mathop{\widehat{\Vart}}}
+\def\hvart{\mathop{\widehat{\Vart}}}
 \def\Covt{\operatorname{Cov}}
-\def\hcovt{\widehat{\Covt}}
-\def\hCovt{\widehat{\Covt}}
+\def\hcovt{\mathop{\widehat{\Covt}}}
+\def\hCovt{\mathop{\widehat{\Covt}}}
 \providecommand{\var}[1]{\operatorname{Var}\paren{#1}}
 \providecommand{\varf}[1]{\operatorname{Var}\paren{#1}}
 \providecommand{\Var}[1]{\operatorname{Var}\paren{#1}}
-\providecommand{\hVar}[1]{\widehat{\operatorname{Var}}\paren{#1}}
+\providecommand{\hVar}[1]{\mathop{\widehat{\operatorname{Var}}}\paren{#1}}
 \providecommand{\Varf}[1]{\operatorname{Var}\paren{#1}}
 \providecommand{\hvarf}[1]{\hvart\paren{#1}}
 \providecommand{\Cov}[1]{\Covt \paren{#1}}
 \providecommand{\Covs}[2]{\Covt \paren{#1, #2}}
 \providecommand{\Covf}[1]{\Covt \paren{#1}}
-\providecommand{\covh}[1]{\widehat{\Covt}\paren{#1}}
-\providecommand{\covhf}[1]{\widehat{\Covt}\paren{#1}}
-\providecommand{\hcovf}[1]{\widehat{\Covt}\paren{#1}}
+\providecommand{\covh}[1]{\hcovt\paren{#1}}
+\providecommand{\covhf}[1]{\hcovt\paren{#1}}
+\providecommand{\hcovf}[1]{\hcovt\paren{#1}}
 \def\Cort{\operatorname{Cor}}
-\def\hcort{\widehat{\Cort}}
+\def\hcort{\mathop{\widehat{\Cort}}}
 \providecommand{\Cor}[1]{\Cort \paren{#1}}
 \providecommand{\Corf}[1]{\Cort \paren{#1}}
 \providecommand{\Cors}[2]{\Cort \paren{#1, #2}}
@@ -241,26 +241,26 @@
 \providecommand{\medf}[1]{\med\paren{#1}}
 \def\IQR{\operatorname{IQR}}
 \providecommand{\IQRf}[1]{\IQR\paren{#1}}
-\def\varht{\widehat{\operatorname{Var}}}
+\def\varht{\mathop{\widehat{\operatorname{Var}}}}
 \providecommand{\varh}[1]{\varht\paren{#1}}
 \providecommand{\varhf}[1]{\varht\paren{#1}}
 \providecommand{\vc}[1]{\boldsymbol{#1}}
 \providecommand{\sd}[1]{\operatorname{sd}\paren{#1}}
 \providecommand{\SD}[1]{\operatorname{SD}\paren{#1}}
-\providecommand{\hSD}[1]{\widehat{\operatorname{SD}}\paren{#1}}
-\providecommand{\hSDf}[1]{\widehat{\operatorname{SD}}\paren{#1}}
+\providecommand{\hSD}[1]{\mathop{\widehat{\operatorname{SD}}}\paren{#1}}
+\providecommand{\hSDf}[1]{\mathop{\widehat{\operatorname{SD}}}\paren{#1}}
 \providecommand{\se}[1]{\operatorname{se}\paren{#1}}
-\def\hset{\widehat{\operatorname{se}}}
-\def\hSE{\widehat{\operatorname{SE}}}
-\def\hSEt{\widehat{\operatorname{SE}}}
+\def\hset{\mathop{\widehat{\operatorname{se}}}}
+\def\hSE{\mathop{\widehat{\operatorname{SE}}}}
+\def\hSEt{\mathop{\widehat{\operatorname{SE}}}}
 \providecommand{\sef}[1]{\operatorname{se}\paren{#1}}
-\providecommand{\hse}[1]{\widehat{\operatorname{se}}\paren{#1}}
-\providecommand{\hsef}[1]{\widehat{\operatorname{se}}\paren{#1}}
+\providecommand{\hse}[1]{\hset\paren{#1}}
+\providecommand{\hsef}[1]{\hset\paren{#1}}
 \providecommand{\SE}[1]{\operatorname{SE}\paren{#1}}
 \providecommand{\SEf}[1]{\operatorname{SE}\paren{#1}}
 \providecommand{\SDf}[1]{\operatorname{SD}\paren{#1}}
-\providecommand{\HSE}[1]{\widehat{\operatorname{SE}}\paren{#1}}
-\providecommand{\hSEf}[1]{\widehat{\operatorname{SE}}\paren{#1}}
+\providecommand{\HSE}[1]{\hSE\paren{#1}}
+\providecommand{\hSEf}[1]{\hSE\paren{#1}}
 \def\logt{\operatorname{log}}
 \providecommand{\logf}[1]{\logt\cb{#1}}
 \def\dlog{\logt'}
@@ -280,7 +280,7 @@
 \providecommand{\invsb}[1]{\sb{#1}^{-1}}
 \def\oinf{I}
 \def\oinfm{\mat{I}}
-\def\Nat{\distop{N}}
+\def\Nat{\mathbb{N}}
 \providecommand{\oinff}[1]{\oinf\paren{#1}}
 \def\einf{\mathcal{I}}
 \def\EInf{\einf}

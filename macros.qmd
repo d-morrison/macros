@@ -94,7 +94,9 @@
 \def\ddist{\ \dot{\sim} \ }
 \def\dsim{\ \dot{\sim} \ }
 \def\za{z_{1 - \frac{\alpha}{2}}}
+\def\ciradsym{\xi}
 \def\cirad{\za \cdot \hse{\hb}}
+\providecommand{\ciradf}[1]{\za \cdot \hse{#1}}
 \def\ci{\hb {\color{red}\pm} \cirad}
 \def\th{\theta}
 \def\vth{\vec{\theta}}
@@ -123,8 +125,22 @@
 \providecommand{\llikf}[1]{\llik \paren{#1}}
 \def\deviation{e}
 \def\devn{\deviation}
+\providecommand{\deviationv}{\vec{\deviation}}
+\def\devnv{\deviationv}
 \def\Deviation{E}
 \def\Devn{\Deviation}
+\def\residual{r}
+\def\resid{\residual}
+\def\Residual{R}
+\def\Resid{\Residual}
+\def\stdresidual{r^\prime}
+\def\stdresid{\stdresidual}
+\def\StdResidual{R^\prime}
+\def\StdResid{\StdResidual}
+\def\modresidual{r^*}
+\def\modresid{\modresidual}
+\def\ModResidual{R^*}
+\def\ModResid{\ModResidual}
 \def\score{\ell'}
 \def\scorev{\vec{\ell'}}
 \def\scorei{\vec{\ell_i'}}
@@ -179,7 +195,8 @@
 \providecommand{\hE}[1]{\hat{\operatorname{E}}\sb{#1}}
 \providecommand{\hExp}[1]{\hat{\operatorname{E}}\sb{#1}}
 \providecommand{\hExpf}[1]{\hat{\operatorname{E}}\sb{#1}}
-\providecommand{\hmu}[1]{\hat{\mu}\sb{#1}}
+\def\hmu{\hat{\mu}}
+\providecommand{\hmuf}[1]{\hmu\paren{#1}}
 \def\Expp{\distop{E}}
 \def\Ep{\distop{E}}
 \def\expit{\operatorname{expit}}
@@ -212,6 +229,18 @@
 \providecommand{\covh}[1]{\widehat{\Covt}\paren{#1}}
 \providecommand{\covhf}[1]{\widehat{\Covt}\paren{#1}}
 \providecommand{\hcovf}[1]{\widehat{\Covt}\paren{#1}}
+\def\Cort{\operatorname{Cor}}
+\def\hcort{\widehat{\Cort}}
+\providecommand{\Cor}[1]{\Cort \paren{#1}}
+\providecommand{\Corf}[1]{\Cort \paren{#1}}
+\providecommand{\Cors}[2]{\Cort \paren{#1, #2}}
+\providecommand{\hCor}[1]{\hcort\paren{#1}}
+\providecommand{\hCorf}[1]{\hcort\paren{#1}}
+\providecommand{\hCors}[2]{\hcort\paren{#1, #2}}
+\def\med{\operatorname{med}}
+\providecommand{\medf}[1]{\med\paren{#1}}
+\def\IQR{\operatorname{IQR}}
+\providecommand{\IQRf}[1]{\IQR\paren{#1}}
 \def\varht{\widehat{\operatorname{Var}}}
 \providecommand{\varh}[1]{\varht\paren{#1}}
 \providecommand{\varhf}[1]{\varht\paren{#1}}
@@ -264,6 +293,7 @@
 \providecommand{\indic}[1]{\mathbb{1}_{#1}}
 \providecommand{\indicp}[1]{\mathbb{1}\paren{#1}}
 \providecommand{\indiccb}[1]{\mathbb{1}\cb{#1}}
+\providecommand{\indicf}[1]{\mathbb{1}_{#1}}
 \providecommand{\set}[1]{\cb{#1}}
 \providecommand{\pf}[1]{\p \paren{#1}}
 \providecommand{\Pf}[1]{\P \paren{#1}}
@@ -274,6 +304,8 @@
 \providecommand{\mselr}[1]{\operatorname{MSE}\paren{#1}}
 \providecommand{\maelr}[1]{\operatorname{MAE}\paren{#1}}
 \providecommand{\abs}[1]{\left|#1\right|}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\normsq}[1]{\left\lVert#1\right\rVert^2}
 \providecommand{\sqf}[1]{\paren{#1}^2}
 \providecommand{\sq}{^2}
 \def\err{\eps}
@@ -310,11 +342,15 @@
 \providecommand{\tp}[1]{{#1}\'}
 \def\dpr{\cdot}
 \def\Xx1n{X_1=x_1, \ldots, X_n = x_n}
-\providecommand{\dprodf}[2]{#1 \cdot #2}
+\providecommand{\dprod}[2]{#1 \cdot #2}
+\def\dprodf{\dprod}
 \providecommand{\iprod}[2]{\tp{#1} #2}
+\def\iprodf{\iprod}
 \providecommand{\oprod}[2]{#1 \tp{#2}}
 \providecommand{\siprod}[1]{\tp{#1} #1}
 \providecommand{\soprod}[1]{#1 \tp{#1}}
+\providecommand{\sdprod}[1]{\dprod{#1}{#1}}
+\def\sdprodf{\sdprod}
 \providecommand{\dsvn}[2]{#1_1=#2_1, \ldots, #1_n = #2_n}
 \providecommand{\sumn}[1]{\sum_{#1=1}^n}
 \def\sumin{\sum_{i=1}^n}
@@ -389,3 +425,7 @@
 \def\signt{\operatorname{sign}}
 \providecommand{\signf}[1]{\signt\cb{#1}}
 \def\reals{\mathbb{R}}
+\def\resid{r}
+\def\stdresid{r'}
+\def\modresid{r^*}
+\providecommand{\residv}{\vec{r}}

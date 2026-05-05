@@ -281,7 +281,7 @@ name	interpretation
 \invsb	inverse with square brackets [·]^{−1}
 \oinf	observed information symbol I
 \oinfm	observed information matrix symbol
-\Nat	natural numbers symbol N
+\Nat	natural numbers set ℕ (blackboard-bold)
 \oinff	observed information function I(·)
 \einf	expected (Fisher) information symbol ℐ
 \EInf	expected information (alias for \einf)

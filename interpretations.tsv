@@ -6,7 +6,7 @@ name	interpretation
 \pmat	matrix formatted with parentheses (pmatrix)
 \sparen	fixed-size parentheses around argument
 \sb	auto-sized square brackets around argument
-\distop	text-style distribution/function operator
+\distop	operator-name distribution/function dispatcher
 \sbmat	matrix formatted with square brackets (bmatrix)
 \Prf	Pr(·) probability expression
 \am	arg max operator
@@ -69,9 +69,9 @@ name	interpretation
 \lam	Greek letter lambda (alias for \l)
 \gs	Greek letter sigma (alias for \s)
 \gm	Greek letter mu (alias for \m)
-\M	moment / mean operator M
-\gM	M operator (alias for \M)
-\Mu	M operator (alias for \M)
+\M	uppercase M symbol (italic variable, alias for mean/moment)
+\gM	uppercase M symbol (alias for \M)
+\Mu	uppercase M symbol (alias for \M)
 \cd	centered dot multiplication symbol (·)
 \cds	centered ellipsis (⋯)
 \lds	lower ellipsis (…)
@@ -281,7 +281,7 @@ name	interpretation
 \invsb	inverse with square brackets [·]^{−1}
 \oinf	observed information symbol I
 \oinfm	observed information matrix symbol
-\Nat	natural numbers symbol N
+\Nat	natural numbers set ℕ (blackboard-bold)
 \oinff	observed information function I(·)
 \einf	expected (Fisher) information symbol ℐ
 \EInf	expected information (alias for \einf)
@@ -290,7 +290,7 @@ name	interpretation
 \einff	expected information function ℐ(·)
 \heinf	estimated Fisher information ℐ̂
 \heinff	estimated Fisher information function ℐ̂(·)
-\1	indicator function 1_{·} (subscript style)
+\1	indicator function 1_{·} (upright subscript style)
 \indic	indicator function 𝟙_{·} (blackboard bold)
 \indicp	indicator function 𝟙(·) with parentheses
 \indiccb	indicator function 𝟙{·} with curly braces
@@ -371,10 +371,10 @@ name	interpretation
 \difflogodds	difference in log-odds Δη
 \hdifflogodds	estimated difference in log-odds ΔΗ̂
 \diffeta	difference in eta Δη (alias for \difflogodds)
-\oddst	"odds" text operator label
-\probst	"probs" text label
-\probt	"prob" text label
-\riskt	"risk" text label
+\oddst	odds operator label
+\probst	probs operator label
+\probt	prob operator label
+\riskt	risk operator label
 \prob	probability symbol π
 \probs	probability symbol (alias for \prob)
 \probit	probit link function

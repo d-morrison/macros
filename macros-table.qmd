@@ -168,8 +168,8 @@ macros$example_rendered <- paste0("\\(", example_call, "\\)")
 #| echo: false
 
 DT::datatable(
-  macros[, c("name", "args", "interpretation", "definition", "example_source", "example_rendered")],
-  colnames  = c("Macro", "# Args", "Interpretation", "Definition", "Example Source", "Example"),
+  macros[, c("name", "args", "interpretation", "example_source", "example_rendered", "definition")],
+  colnames  = c("Macro", "# Args", "Interpretation", "Example Source", "Example", "Definition"),
   rownames  = FALSE,
   escape    = 3,
   filter    = "top",

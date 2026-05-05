@@ -290,7 +290,7 @@ name	interpretation
 \einff	expected information function ℐ(·)
 \heinf	estimated Fisher information ℐ̂
 \heinff	estimated Fisher information function ℐ̂(·)
-\1	indicator function 𝟙_{·} (blackboard bold, alias for \indic)
+\1	indicator function 1_{·} (upright subscript style)
 \indic	indicator function 𝟙_{·} (blackboard bold)
 \indicp	indicator function 𝟙(·) with parentheses
 \indiccb	indicator function 𝟙{·} with curly braces

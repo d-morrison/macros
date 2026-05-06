@@ -84,7 +84,7 @@ Alternatively, you can load the macros inline using Quarto's [`include` shortcod
 ````qmd
 ::: {.hidden}
 $$
-{{< include macros/macros.qmd >}}
+{{\< include macros/macros.qmd \>}}
 $$
 :::
 ````

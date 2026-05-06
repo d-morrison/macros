@@ -54,6 +54,13 @@ git commit -m "Update macros submodule"
 
 ### Including the macros in a Quarto document
 
+There are two main strategies for loading these macros into Quarto output:
+
+- **`include-in-header`** (recommended for multi-format projects and Quarto books): Inserts the macro file verbatim into the document header across all output formats. Configure once in `_quarto.yml` to apply project-wide.
+- **`include` shortcode** (convenient for single documents): Processes and embeds the macro file inline at the point of insertion. No YAML changes required, but must be added to each `.qmd` file individually.
+
+**Tip:** Using `\providecommand` instead of `\newcommand` in macro definitions avoids "already defined" errors when macros are included in multiple files (e.g., in a Quarto book where each chapter is a separate `.qmd`). The macros in this repository follow this convention.
+
 #### Via `include-in-header`
 
 In your Quarto document's YAML front matter, reference the `macros.qmd` file using the `include-in-header` or via `_quarto.yml`:
@@ -100,3 +107,4 @@ This approach is useful when you prefer to load macros at the document level wit
 - [quarto-dev discussion #2845](https://github.com/orgs/quarto-dev/discussions/2845) — Community discussion on strategies for including LaTeX macros from a file into a Quarto book.
 - [quarto-dev discussion #8376](https://github.com/orgs/quarto-dev/discussions/8376) — Follow-up discussing limitations of the `include` shortcode in RevealJS output and the recommended `include-in-header` workaround using a MathJax configuration script.
 - [Quarto docs: Equations — Custom TeX macros](https://quarto.org/docs/authoring/markdown-basics.html#:~:text=If%20you%20want%20to%20define%20custom%20TeX%20macros) — Official Quarto documentation on defining custom TeX macros for HTML output.
+- [Stack Overflow: How to define LaTeX macros globally for a Quarto book?](https://stackoverflow.com/questions/76398554/how-to-define-latex-macros-globally-for-a-quarto-book) — Detailed community discussion covering both HTML and PDF strategies, including the `\providecommand` trick for avoiding XeTeX redefinition errors in multi-file books.

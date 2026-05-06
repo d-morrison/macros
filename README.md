@@ -50,6 +50,8 @@ git commit -m "Update macros submodule"
 
 ### Including the macros in a Quarto document
 
+#### Via `include-in-header`
+
 In your Quarto document's YAML front matter, reference the `macros.qmd` file using the `include-in-header` or via `_quarto.yml`:
 
 ```yaml
@@ -70,3 +72,19 @@ format:
     include-in-header:
       - macros/macros.qmd
 ```
+
+#### Via the Quarto `include` shortcode
+
+Alternatively, you can load the macros inline using Quarto's [`include` shortcode](https://quarto.org/docs/authoring/includes.html). Place the following block at the top of your `.qmd` file (after the YAML front matter):
+
+````qmd
+::: {.hidden}
+$$
+{{< include macros/macros.qmd >}}
+$$
+:::
+````
+
+The `$$...$$` delimiters cause MathJax to process the macro definitions and make them available throughout the document. The outer `::: {.hidden}` div hides the block from view.
+
+This approach is useful when you prefer to load macros at the document level without modifying YAML front matter or `_quarto.yml`.

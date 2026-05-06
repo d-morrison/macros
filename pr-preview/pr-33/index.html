@@ -222,6 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="including-the-macros-in-a-quarto-document" class="level3">
 <h3 class="anchored" data-anchor-id="including-the-macros-in-a-quarto-document">Including the macros in a Quarto document</h3>
+<section id="via-include-in-header" class="level4">
+<h4 class="anchored" data-anchor-id="via-include-in-header">Via <code>include-in-header</code></h4>
 <p>In your Quarto document’s YAML front matter, reference the <code>macros.qmd</code> file using the <code>include-in-header</code> or via <code>_quarto.yml</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">include-in-header</span><span class="kw">:</span></span>
@@ -235,8 +237,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="via-the-quarto-include-shortcode" class="level4">
+<h4 class="anchored" data-anchor-id="via-the-quarto-include-shortcode">Via the Quarto <code>include</code> shortcode</h4>
+<p>Alternatively, you can load the macros inline using Quarto’s <a href="https://quarto.org/docs/authoring/includes.html"><code>include</code> shortcode</a>. Place the following block at the top of your <code>.qmd</code> file (after the YAML front matter):</p>
+<pre class="qmd"><code>::: {.hidden}
+$$
+{{\&lt; include macros/macros.qmd \&gt;}}
+$$
+:::</code></pre>
+<p>The <code>$$...$$</code> delimiters cause MathJax to process the macro definitions and make them available throughout the document. The outer <code>::: {.hidden}</code> div hides the block from view.</p>
+<p>This approach is useful when you prefer to load macros at the document level without modifying YAML front matter or <code>_quarto.yml</code>.</p>
+<p><strong>Note for RevealJS:</strong> placing the <code>{{\&lt; include \&gt;}}</code> block before the first heading creates a blank slide. In that case, prefer the <code>include-in-header</code> approach above. See <a href="https://github.com/orgs/quarto-dev/discussions/8376">quarto-dev discussion #8376</a> for details.</p>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://github.com/orgs/quarto-dev/discussions/2845">quarto-dev discussion #2845</a> — Community discussion on strategies for including LaTeX macros from a file into a Quarto book.</li>
+<li><a href="https://github.com/orgs/quarto-dev/discussions/8376">quarto-dev discussion #8376</a> — Follow-up discussing limitations of the <code>include</code> shortcode in RevealJS output and the recommended <code>include-in-header</code> workaround using a MathJax configuration script.</li>
+<li><a href="https://quarto.org/docs/authoring/markdown-basics.html#:~:text=If%20you%20want%20to%20define%20custom%20TeX%20macros">Quarto docs: Equations — Custom TeX macros</a> — Official Quarto documentation on defining custom TeX macros for HTML output.</li>
+</ul>
 
 
+</section>
 </section>
 </section>
 

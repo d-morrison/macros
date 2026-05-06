@@ -1,0 +1,89 @@
+---
+title: "Demo: Loading Macros via `include-in-header`"
+---
+
+```{r}
+#| label: embed-macros
+#| echo: false
+#| results: asis
+
+# Embed macro definitions in a hidden div so MathJax processes them.
+# This mirrors what include-in-header does for LaTeX/PDF output,
+# but uses the document-body approach required for HTML/MathJax
+# (which converts \providecommand to \def for MathJax v3 compatibility).
+lines <- readLines("macros.qmd", warn = FALSE)
+lines <- lines[!grepl("^\\s*<!--", lines) & nzchar(trimws(lines))]
+
+# MathJax v3 does not support \providecommand; convert to \def.
+lines <- vapply(lines, function(line) {
+  m <- regmatches(
+    line,
+    regexec(
+      "^\\\\providecommand\\{\\\\([^}]+)\\}(?:\\[(\\d+)\\])?\\{(.*)\\}\\s*$",
+      line,
+      perl = TRUE
+    )
+  )[[1]]
+  if (length(m) == 4L && nzchar(m[1L])) {
+    nargs    <- if (nzchar(m[3L])) as.integer(m[3L]) else 0L
+    args_str <- if (nargs > 0L) paste0("#", seq_len(nargs), collapse = "") else ""
+    return(paste0("\\def\\", m[2L], args_str, "{", m[4L], "}"))
+  }
+  line
+}, character(1L), USE.NAMES = FALSE)
+
+cat('::: {style="display:none"}\n$$\n')
+cat(paste(lines, collapse = "\n"), "\n")
+cat('$$\n:::\n')
+```
+
+This page demonstrates macros loaded via the `include-in-header` strategy. To use this strategy in your own Quarto project, add the following to `_quarto.yml`:
+
+```yaml
+format:
+  html:
+    include-in-header:
+      - macros/macros.qmd
+  pdf:
+    include-in-header:
+      - macros/macros.qmd
+```
+
+For a single document, you can instead specify `include-in-header` in the YAML front matter:
+
+```yaml
+---
+format:
+  html:
+    include-in-header:
+      - macros/macros.qmd
+  pdf:
+    include-in-header:
+      - macros/macros.qmd
+---
+```
+
+This inserts `macros.qmd` verbatim into the document header. For LaTeX/PDF output, the macro definitions go into the preamble and are available throughout the document. For HTML output using MathJax, see the note on [`\providecommand` compatibility](index.qmd#via-the-quarto-include-shortcode).
+
+## Example math
+
+The table below shows examples of macros from `macros.qmd` rendered in this document.
+
+| Description | Code | Output |
+|---|---|---|
+| Greek: alpha | `$\a$` | $\a$ |
+| Greek: beta | `$\b$` | $\b$ |
+| Greek: gamma | `$\g$` | $\g$ |
+| Greek: lambda | `$\l$` | $\l$ |
+| Greek: sigma | `$\s$` | $\s$ |
+| Expected value | `$\E{X}$` | $\E{X}$ |
+| Variance | `$\Var{X}$` | $\Var{X}$ |
+| Standard deviation | `$\SD{X}$` | $\SD{X}$ |
+| Standard error | `$\se{\hat\beta}$` | $\se{\hat\beta}$ |
+| Normal distribution | `$\ndist{\mu, \sigma^2}$` | $\ndist{\mu, \sigma^2}$ |
+| Log-likelihood | `$\llik$` | $\llik$ |
+| Derivative | `$\deriv{\theta} \llik$` | $\deriv{\theta} \llik$ |
+| Estimate | `$\est{\theta}$` | $\est{\theta}$ |
+| Vector | `$\vc{x}$` | $\vc{x}$ |
+| Absolute value | `$\abs{x}$` | $\abs{x}$ |
+| Independent | `$X \ind Y$` | $X \ind Y$ |

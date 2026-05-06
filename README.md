@@ -92,7 +92,9 @@ $$
 :::
 ````
 
-The `$$...$$` delimiters cause MathJax to process the macro definitions and make them available throughout the document. The outer `::: {.hidden}` div hides the block from view.
+The `$$...$$` delimiters cause MathJax to process the macro definitions and make them available throughout the document. The outer `::: {.hidden}` div hides the block from view ([Quarto's recommended approach](https://quarto.org/docs/authoring/markdown-basics.html#equations) for defining custom TeX macros).
+
+> **Note for HTML output:** [Quarto's MathJax integration](https://quarto.org/docs/authoring/markdown-basics.html#equations) supports `\def`, `\newcommand`, `\renewcommand`, `\newenvironment`, `\renewenvironment`, and `\let` for custom macro definitions, but **not** `\providecommand`. Since `macros.qmd` uses `\providecommand`, this approach may not work correctly for HTML output without first converting the macros to `\def` form. For HTML output, the `include-in-header` strategy above is more reliable.
 
 This approach is useful when you prefer to load macros at the document level without modifying YAML front matter or `_quarto.yml`.
 

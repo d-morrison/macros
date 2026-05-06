@@ -88,3 +88,11 @@ $$
 The `$$...$$` delimiters cause MathJax to process the macro definitions and make them available throughout the document. The outer `::: {.hidden}` div hides the block from view.
 
 This approach is useful when you prefer to load macros at the document level without modifying YAML front matter or `_quarto.yml`.
+
+**Note for RevealJS:** placing the `{{< include >}}` block before the first heading creates a blank slide. In that case, prefer the `include-in-header` approach above. See [quarto-dev discussion #8376](https://github.com/orgs/quarto-dev/discussions/8376) for details.
+
+**See also:**
+
+- [quarto-dev discussion #2845](https://github.com/orgs/quarto-dev/discussions/2845) — Community discussion on strategies for including LaTeX macros from a file into a Quarto book.
+- [quarto-dev discussion #8376](https://github.com/orgs/quarto-dev/discussions/8376) — Follow-up discussing limitations of the `include` shortcode in RevealJS output and the recommended `include-in-header` workaround using a MathJax configuration script.
+- [Quarto docs: Equations — Custom TeX macros](https://quarto.org/docs/authoring/markdown-basics.html#:~:text=If%20you%20want%20to%20define%20custom%20TeX%20macros) — Official Quarto documentation on defining custom TeX macros for HTML output.

@@ -345,10 +345,12 @@ name	interpretation
 \Xx1n	paired sequence X₁=x₁, …, Xₙ=xₙ
 \dprod	dot product of two arguments a·b
 \dprodf	dot product a·b (alias for \dprod)
-\iprod	inner product x′y
+\tprod	transpose-based product x′y
+\tprodf	transpose-based product (alias for \tprod)
+\iprod	inner product ⟨x, y⟩
 \iprodf	inner product (alias for \iprod)
 \oprod	outer product x y′
-\siprod	self inner product x′x
+\siprod	self inner product ⟨x, x⟩
 \soprod	self outer product x x′
 \sdprod	self dot product x·x
 \sdprodf	self dot product (alias for \sdprod)

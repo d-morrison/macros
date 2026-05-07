@@ -350,6 +350,7 @@ name	interpretation
 \iprod	inner product ⟨x, y⟩
 \iprodf	inner product (alias for \iprod)
 \oprod	outer product x y′
+\stprod	self transpose-based product x′x
 \siprod	self inner product ⟨x, x⟩
 \soprod	self outer product x x′
 \sdprod	self dot product x·x

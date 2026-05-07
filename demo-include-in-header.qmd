@@ -46,13 +46,15 @@ format:
       - macros/macros.qmd
 ```
 
-This inserts `macros.qmd` verbatim into the document header for each output format. For LaTeX/PDF output, the macro definitions go into the LaTeX preamble. For HTML and RevealJS, MathJax processes the macro definitions.
+This inserts `macros.qmd` verbatim into the document header for each output format:
 
-> **Note for HTML/RevealJS output:** [MathJax v3](https://quarto.org/docs/authoring/markdown-basics.html#equations) supports `\def`, `\newcommand`, `\renewcommand`, `\newenvironment`, `\renewenvironment`, and `\let`, but **not** `\providecommand`. Macros defined with `\providecommand` in `macros.qmd` will work correctly in PDF output but may not render in HTML/RevealJS when loaded via `include-in-header`. The example table below uses only `\def`-based macros, which work in all formats. The [Macro Reference](macros-table.qmd) page handles this automatically by converting `\providecommand` to `\def` in its embedded macro block.
+- **PDF**: definitions go into the LaTeX preamble — all macros work, including `\providecommand`.
+- **HTML/RevealJS**: MathJax processes the header — only `\def`/`\newcommand` macros are recognized; `\providecommand` macros are silently ignored. The example table below uses only `\def`-based macros.
+- **docx**: Word documents do not use a LaTeX preamble or MathJax header, so `include-in-header` has no effect on math rendering for docx. The `docx: default` entry above produces docx output without macro support.
 
 ## Example math
 
-The table below uses macros defined with `\def` in `macros.qmd`, which work in all output formats including HTML/MathJax:
+The table below uses macros defined with `\def` in `macros.qmd`, which work in all output formats that support MathJax or LaTeX:
 
 | Description | Code | Output |
 |---|---|---|

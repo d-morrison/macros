@@ -64,5 +64,5 @@ The table below uses macros defined with `\def` in `macros.qmd`, which work in a
 | Log-likelihood | `$\llik$` | $\llik$ |
 | Independent | `$X \ind Y$` | $X \ind Y$ |
 | IID distributed | `$X_i \siid \Normal(\m, \ss)$` | $X_i \siid \Normal(\m, \ss)$ |
-| Design matrix | `$\mX \vb$` | $\mX \vb$ |
+| Vector: mu | `$\vm$` | $\vm$ |
 | Hat beta | `$\hb$` | $\hb$ |

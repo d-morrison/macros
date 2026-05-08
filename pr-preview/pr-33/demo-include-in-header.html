@@ -107,6 +107,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script>
 (function () {
+  (function forceRevealMathJax3() {
+    const prior = Object.prototype.hasOwnProperty.call(window, "RevealMath")
+      ? window.RevealMath
+      : undefined;
+
+    let revealMathValue;
+    Object.defineProperty(window, "RevealMath", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        return revealMathValue;
+      },
+      set(value) {
+        if (value && typeof value.MathJax3 === "function") {
+          revealMathValue = value.MathJax3();
+        } else {
+          revealMathValue = value;
+        }
+      },
+    });
+
+    if (prior !== undefined) {
+      window.RevealMath = prior;
+    }
+  })();
+
   const macroSources = ["macros.qmd", "macros/macros.qmd"];
 
   function extractBraceContent(text, startIndex) {
@@ -392,7 +418,7 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # loader that reads macros.qmd</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Note (HTML/RevealJS):</strong> <code>macros-header.html</code> is a small loader script (not a second macro-definition file). It reads <code>macros.qmd</code>, converts macro definitions to a MathJax config object, and sets <code>MathJax.tex.macros</code> before typesetting. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
+<p><strong>Note (HTML/RevealJS):</strong> <code>macros-header.html</code> is a small loader script (not a second macro-definition file). It reads <code>macros.qmd</code>, converts macro definitions to a MathJax config object, and sets <code>MathJax.tex.macros</code> before typesetting. For RevealJS, it also forces the built-in Reveal math plugin to use MathJax 3. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Note (PDF):</strong> For PDF, <code>macros.qmd</code> can be included directly since its raw LaTeX goes into the document preamble.</p>
@@ -415,7 +441,7 @@ window.Quarto = {
 <ul>
 <li><strong>PDF</strong>: <code>macros.qmd</code> goes into the LaTeX preamble via <code>include-in-header</code> — all macros work, including <code>\providecommand</code>.</li>
 <li><strong>HTML</strong>: <code>macros-header.html</code> is inserted via <code>include-in-header</code> and loads macros from <code>macros.qmd</code> into <code>MathJax.tex.macros</code>.</li>
-<li><strong>RevealJS</strong>: <code>macros-header.html</code> does the same loader step (including MathJax v2 compatibility), so slide math uses the same <code>macros.qmd</code> source.</li>
+<li><strong>RevealJS</strong>: <code>macros-header.html</code> does the same loader step and switches the Reveal math plugin to MathJax 3, so slide math uses the same <code>macros.qmd</code> source.</li>
 <li><strong>docx</strong>: Word documents do not use a LaTeX preamble or MathJax header, so <code>include-in-header</code> has no effect on math rendering for docx. The <code>docx: default</code> entry above produces docx output without macro support.</li>
 </ul>
 <section id="example-math" class="level2">

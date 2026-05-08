@@ -1,8 +1,0 @@
-.reveal .slides > section#title-slide {
-  overflow-y: auto;
-  top: 0 !important;
-}
-
-.reveal .slides > section#title-slide.center {
-  display: block;
-}

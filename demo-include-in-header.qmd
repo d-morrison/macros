@@ -11,7 +11,9 @@ format:
     output-file: demo-include-in-header-slides.html
     include-in-header:
       - macros-header.html
-  docx: default
+  docx: 
+    include-in-header:
+      - macros-header.html
 ---
 
 This page demonstrates the `include-in-header` strategy for loading macros. The YAML front matter of this file includes:

@@ -10,7 +10,9 @@ website:
       - href: macros-table.qmd
         text: Macro Reference
       - href: demo-include-in-header.qmd
-        text: Demo
+        text: Demo (include in header strategy)
+      - href: demo-shortcode.qmd
+        text: Demo (include shortcode strategy)
 
 format:
   html:

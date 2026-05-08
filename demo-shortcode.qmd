@@ -1,0 +1,40 @@
+---
+title: "Demo: Loading Macros via include shortcode"
+format:
+  html: default
+  pdf: default
+  revealjs:
+    output-file: demo-shortcode-slides.html
+  docx: default
+---
+
+{{< include macros.qmd >}}
+
+This page demonstrates the include-shortcode strategy for loading macros. 
+The YAML front matter of this file includes:
+
+```yaml
+format:
+  html: default
+  pdf: default
+  revealjs:
+    output-file: demo-shortcode-slides.html
+  docx: default
+```
+
+## Example math
+
+The table below uses macros defined with `\def` in `macros.qmd`, which work in all output formats that support MathJax or LaTeX:
+
+| Description | Code | Output |
+|---|---|---|
+| Greek: alpha | `$\a$` | $\a$ |
+| Greek: beta | `$\b$` | $\b$ |
+| Greek: gamma | `$\g$` | $\g$ |
+| Greek: lambda | `$\l$` | $\l$ |
+| Greek: sigma | `$\s$` | $\s$ |
+| Log-likelihood | `$\llik$` | $\llik$ |
+| Independent | `$X \ind Y$` | $X \ind Y$ |
+| IID distributed | `$X_i \siid \Normal(\m, \ss)$` | $X_i \siid \Normal(\m, \ss)$ |
+| Vector: mu | `$\vm$` | $\vm$ |
+| Hat beta | `$\hb$` | $\hb$ |

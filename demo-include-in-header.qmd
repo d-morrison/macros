@@ -3,10 +3,14 @@ title: "Demo: Loading Macros via `include-in-header`"
 format:
   html:
     include-in-header:
-      - macros.qmd
+      - macros-header.html
   pdf:
     include-in-header:
       - macros.qmd
+  revealjs:
+    output-file: demo-include-in-header-slides.html
+    include-in-header:
+      - macros-header.html
   docx: default
 ---
 
@@ -16,16 +20,22 @@ This page demonstrates the `include-in-header` strategy for loading macros. The 
 format:
   html:
     include-in-header:
-      - macros.qmd
+      - macros-header.html   # HTML file wrapping macros in $$...$$ for MathJax
   pdf:
     include-in-header:
-      - macros.qmd
+      - macros.qmd           # raw LaTeX goes directly into preamble
+  revealjs:
+    output-file: demo-include-in-header-slides.html
+    include-in-header:
+      - macros-header.html   # same as HTML
   docx: default
 ```
 
-> **Note:** `revealjs` is omitted from this demo page because a Quarto website page cannot simultaneously be a RevealJS presentation. To use `include-in-header` with RevealJS, add a `revealjs:` entry in a standalone `.qmd` file or in `_quarto.yml` (see the project-wide config below).
+> **Note (HTML/RevealJS):** For HTML and RevealJS output, `include-in-header` inserts content verbatim into the page. To load macros, the included file must wrap the definitions in `$$...$$` inside a hidden element so MathJax processes them. The file `macros-header.html` in this repository does exactly that — it wraps the content of `macros.qmd` in `<div style="display:none">$$...$$</div>`. For PDF, `macros.qmd` can be included directly since its raw LaTeX goes into the document preamble.
 
-> **Note:** This demo uses `macros.qmd` because `macros.qmd` is at the root of this repository. When using this repository as a Git submodule (cloned into a `macros/` subdirectory), replace `macros.qmd` with `macros/macros.qmd`.
+> **Note (revealjs `output-file`):** RevealJS and HTML formats both produce `.html` output by default. When both are listed in a Quarto website document, `output-file` gives the RevealJS output a distinct filename so there is no conflict. [View the RevealJS slides output](demo-include-in-header-slides.html).
+
+> **Note:** This demo uses `macros-header.html` / `macros.qmd` because both files are at the root of this repository. When using this repository as a Git submodule (cloned into a `macros/` subdirectory), replace with `macros/macros-header.html` and `macros/macros.qmd`.
 
 The same configuration can be placed in a shared `_quarto.yml` to apply project-wide:
 
@@ -33,19 +43,19 @@ The same configuration can be placed in a shared `_quarto.yml` to apply project-
 format:
   html:
     include-in-header:
-      - macros/macros.qmd
+      - macros/macros-header.html
   pdf:
     include-in-header:
       - macros/macros.qmd
   revealjs:
     include-in-header:
-      - macros/macros.qmd
+      - macros/macros-header.html
 ```
 
-This inserts `macros.qmd` verbatim into the document header for each output format:
+This inserts the macro definitions into the document header for each output format:
 
-- **PDF**: definitions go into the LaTeX preamble — all macros work, including `\providecommand`.
-- **HTML/RevealJS**: MathJax processes the header — MathJax-supported commands (`\def`, `\newcommand`, `\renewcommand`, `\let`, environments) are recognized; `\providecommand` is silently ignored. The example table below uses only `\def`-based macros.
+- **PDF**: `macros.qmd` goes into the LaTeX preamble — all macros work, including `\providecommand`.
+- **HTML/RevealJS**: `macros-header.html` wraps the definitions in `$$...$$` so MathJax processes them — MathJax-supported commands (`\def`, `\newcommand`, `\renewcommand`, `\let`, environments) are recognized; `\providecommand` is silently ignored. The example table below uses only `\def`-based macros.
 - **docx**: Word documents do not use a LaTeX preamble or MathJax header, so `include-in-header` has no effect on math rendering for docx. The `docx: default` entry above produces docx output without macro support.
 
 ## Example math

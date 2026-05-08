@@ -2,6 +2,76 @@
 (function () {
   const macroSources = ["macros.qmd", "macros/macros.qmd"];
 
+  function extractBraceContent(text, startIndex) {
+    if (text[startIndex] !== "{") return null;
+    let depth = 0;
+
+    for (let i = startIndex; i < text.length; i += 1) {
+      const ch = text[i];
+      if (ch === "{" && text[i - 1] !== "\\") depth += 1;
+      if (ch === "}" && text[i - 1] !== "\\") {
+        depth -= 1;
+        if (depth === 0) {
+          return { content: text.slice(startIndex + 1, i), nextIndex: i + 1 };
+        }
+      }
+    }
+
+    return null;
+  }
+
+  function parseDef(line, macros) {
+    if (!line.startsWith("\\def\\")) return false;
+
+    let index = "\\def\\".length;
+    let name = "";
+
+    while (index < line.length && !/\s|\{/.test(line[index])) {
+      name += line[index];
+      index += 1;
+    }
+
+    while (index < line.length && /\s/.test(line[index])) index += 1;
+    const body = extractBraceContent(line, index);
+    if (!name || !body) return false;
+
+    const argMatches = [...body.content.matchAll(/#(\d+)/g)].map((m) => Number(m[1]));
+    const argc = argMatches.length ? Math.max(...argMatches) : 0;
+    macros[name] = argc > 0 ? [body.content, argc] : body.content;
+    return true;
+  }
+
+  function parseCommand(line, macros) {
+    const commandMatch = line.match(/^\\(providecommand|newcommand|renewcommand)/);
+    if (!commandMatch) return false;
+
+    let index = commandMatch[0].length;
+    while (index < line.length && /\s/.test(line[index])) index += 1;
+
+    const nameBlock = extractBraceContent(line, index);
+    if (!nameBlock || !nameBlock.content.startsWith("\\")) return false;
+    const name = nameBlock.content.slice(1);
+    index = nameBlock.nextIndex;
+
+    while (index < line.length && /\s/.test(line[index])) index += 1;
+
+    let argc = 0;
+    if (line[index] === "[") {
+      const close = line.indexOf("]", index + 1);
+      if (close === -1) return false;
+      argc = Number(line.slice(index + 1, close)) || 0;
+      index = close + 1;
+    }
+
+    while (index < line.length && /\s/.test(line[index])) index += 1;
+
+    const body = extractBraceContent(line, index);
+    if (!body) return false;
+
+    macros[name] = argc > 0 ? [body.content, argc] : body.content;
+    return true;
+  }
+
   function parseMacros(sourceText) {
     const macros = {};
 
@@ -9,58 +79,75 @@
       const line = rawLine.trim();
       if (!line || line.startsWith("%") || line.startsWith("<!--")) continue;
 
-      let match = line.match(/^\\def\\([^\s{]+)\{(.+)\}\s*$/);
-      if (match) {
-        const name = match[1];
-        const body = match[2];
-        const argMatches = [...body.matchAll(/#(\d+)/g)].map((m) => Number(m[1]));
-        const argc = argMatches.length ? Math.max(...argMatches) : 0;
-        macros[name] = argc > 0 ? [body, argc] : body;
-        continue;
-      }
-
-      match = line.match(/^\\(?:providecommand|newcommand|renewcommand)\{\\([^}]+)\}(?:\[(\d+)\])?\{(.+)\}\s*$/);
-      if (match) {
-        const name = match[1];
-        const argc = match[2] ? Number(match[2]) : 0;
-        const body = match[3];
-        macros[name] = argc > 0 ? [body, argc] : body;
-      }
+      if (parseDef(line, macros)) continue;
+      parseCommand(line, macros);
     }
 
     return macros;
   }
 
-  function loadMacroSourceSync() {
+  async function loadMacroSource() {
     for (const path of macroSources) {
       try {
-        const request = new XMLHttpRequest();
-        request.open("GET", path, false);
-        request.send(null);
-
-        if ((request.status >= 200 && request.status < 300) || request.status === 0) {
-          return request.responseText;
-        }
+        const response = await fetch(path, { cache: "no-cache" });
+        if (response.ok) return await response.text();
       } catch (_) {
         // try next path
       }
     }
 
-    return "";
+    throw new Error("Unable to load macros.qmd from known paths");
   }
 
-  const sourceText = loadMacroSourceSync();
-  const parsed = parseMacros(sourceText);
+  function applyMacros(parsed) {
+    window.MathJax = window.MathJax || {};
+
+    window.MathJax.tex = window.MathJax.tex || {};
+    window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros || {}, parsed);
+
+    window.MathJax.TeX = window.MathJax.TeX || {};
+    window.MathJax.TeX.Macros = Object.assign({}, window.MathJax.TeX.Macros || {}, parsed);
+
+    if (window.MathJax.Hub && window.MathJax.Hub.Config) {
+      window.MathJax.Hub.Config({ TeX: { Macros: window.MathJax.TeX.Macros } });
+    }
+  }
 
   window.MathJax = window.MathJax || {};
-  window.MathJax.tex = window.MathJax.tex || {};
-  window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros || {}, parsed);
+  window.MathJax.delayStartupUntil = window.MathJax.delayStartupUntil || "configured";
+  window.MathJax.startup = window.MathJax.startup || {};
 
-  window.MathJax.TeX = window.MathJax.TeX || {};
-  window.MathJax.TeX.Macros = Object.assign({}, window.MathJax.TeX.Macros || {}, parsed);
+  const sourcePromise = loadMacroSource();
+  const priorReady = window.MathJax.startup.ready;
 
-  if (window.MathJax.Hub && window.MathJax.Hub.Config) {
-    window.MathJax.Hub.Config({ TeX: { Macros: window.MathJax.TeX.Macros } });
-  }
+  window.MathJax.startup.ready = async () => {
+    try {
+      applyMacros(parseMacros(await sourcePromise));
+    } catch (error) {
+      console.warn("[macros-header] Failed to load macros.qmd for MathJax:", error);
+    }
+
+    if (typeof priorReady === "function") {
+      return priorReady();
+    }
+
+    if (window.MathJax.startup.defaultReady) {
+      return window.MathJax.startup.defaultReady();
+    }
+  };
+
+  sourcePromise
+    .then((sourceText) => {
+      applyMacros(parseMacros(sourceText));
+      if (window.MathJax.Hub && window.MathJax.Hub.Configured) {
+        window.MathJax.Hub.Configured();
+      }
+    })
+    .catch((error) => {
+      console.warn("[macros-header] Failed to load macros.qmd for MathJax:", error);
+      if (window.MathJax.Hub && window.MathJax.Hub.Configured) {
+        window.MathJax.Hub.Configured();
+      }
+    });
 })();
 </script>

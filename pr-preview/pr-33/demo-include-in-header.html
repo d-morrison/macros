@@ -1034,6 +1034,11 @@ window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros || {}, {
   "za": "z_{1 - \\frac{\\alpha}{2}}",
   "~": "\\approx"
 });
+window.MathJax.TeX = window.MathJax.TeX || {};
+window.MathJax.TeX.Macros = Object.assign({}, window.MathJax.TeX.Macros || {}, (window.MathJax.tex && window.MathJax.tex.macros) || {});
+if (window.MathJax.Hub && window.MathJax.Hub.Config) {
+  window.MathJax.Hub.Config({ TeX: { Macros: window.MathJax.TeX.Macros } });
+}
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -1164,7 +1169,7 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # MathJax config script</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Note (HTML/RevealJS):</strong> <code>macros-header.html</code> is a MathJax configuration script (not raw <code>$$...$$</code> text). It defines macros through <code>MathJax.tex.macros</code>, so macros are available before page/slide math is typeset. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
+<p><strong>Note (HTML/RevealJS):</strong> <code>macros-header.html</code> is a MathJax configuration script (not raw <code>$$...$$</code> text). It defines macros for both MathJax v3 (<code>MathJax.tex.macros</code>) and MathJax v2 (<code>MathJax.TeX.Macros</code>), so macros are available before page/slide math is typeset. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Note (PDF):</strong> For PDF, <code>macros.qmd</code> can be included directly since its raw LaTeX goes into the document preamble.</p>
@@ -1186,8 +1191,8 @@ window.Quarto = {
 <p>This inserts the macro definitions for each output format:</p>
 <ul>
 <li><strong>PDF</strong>: <code>macros.qmd</code> goes into the LaTeX preamble via <code>include-in-header</code> — all macros work, including <code>\providecommand</code>.</li>
-<li><strong>HTML</strong>: <code>macros-header.html</code> is inserted via <code>include-in-header</code> as a MathJax config script. Macro names are set in <code>MathJax.tex.macros</code> before typesetting.</li>
-<li><strong>RevealJS</strong>: <code>macros-header.html</code> is inserted via <code>include-in-header</code> as the same MathJax config script, so slide math can use the macros globally.</li>
+<li><strong>HTML</strong>: <code>macros-header.html</code> is inserted via <code>include-in-header</code> as a MathJax config script. Macro names are set before typesetting.</li>
+<li><strong>RevealJS</strong>: <code>macros-header.html</code> is inserted via <code>include-in-header</code> as the same config script (including MathJax v2 support), so slide math can use the macros globally.</li>
 <li><strong>docx</strong>: Word documents do not use a LaTeX preamble or MathJax header, so <code>include-in-header</code> has no effect on math rendering for docx. The <code>docx: default</code> entry above produces docx output without macro support.</li>
 </ul>
 <section id="example-math" class="level2">

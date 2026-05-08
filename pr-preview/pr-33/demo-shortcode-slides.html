@@ -138,7 +138,7 @@
 <section class="slide level2">
 
 <p>This page demonstrates the <a href="https://quarto.org/docs/authoring/includes.html"><code>include</code> shortcode</a> strategy for loading macros into a Quarto document.</p>
-<p>The <code>{{&lt; include macros.qmd &gt;}}</code> shortcode at the top of this file embeds the entire contents of <code>macros.qmd</code> inline at that point. Since <code>macros.qmd</code> contains only raw LaTeX macro definitions (<code>\def</code>, <code>\providecommand</code>, etc.), Quarto passes them through as raw LaTeX for PDF output (where they are processed inline in the document body as LaTeX commands) and as math for HTML/RevealJS output (where they are processed by MathJax).</p>
+<p>The <code>{{&lt; include macros.qmd &gt;}}</code> shortcode at the top of this file embeds the entire contents of <code>macros.qmd</code> inline at that point. Since <code>macros.qmd</code> contains only raw LaTeX macro definitions (<code>\def</code>, <code>\providecommand</code>, etc.), Quarto passes them through as raw LaTeX for PDF output (where they become preamble-style definitions in the document body) and as math for HTML/RevealJS output (where they are processed by MathJax).</p>
 <blockquote>
 <p><strong>Note:</strong> This demo uses <code>macros.qmd</code> directly (same directory). When using this repository as a submodule, use <code>macros/macros.qmd</code> instead.</p>
 </blockquote>
@@ -151,7 +151,7 @@
 </section>
 <section id="example-math" class="slide level2">
 <h2>Example math</h2>
-<p>The table below uses macros defined with <code>\def</code> in <code>macros.qmd</code>. These <code>\def</code>-based macros work across all output formats — note that <code>\providecommand</code>-based macros from <code>macros.qmd</code> are silently ignored for HTML/RevealJS as noted above:</p>
+<p>The table below uses macros defined with <code>\def</code> in <code>macros.qmd</code>, which work in all output formats:</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">

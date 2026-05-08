@@ -4,21 +4,21 @@
     "href": "demo-shortcode.html",
     "title": "Demo: Loading Macros via include shortcode",
     "section": "",
-    "text": "This page demonstrates the include shortcode strategy for loading macros into a Quarto document.\nThe {{&lt; include macros.qmd &gt;}} shortcode at the top of this file embeds the entire contents of macros.qmd inline at that point. Since macros.qmd contains only raw LaTeX macro definitions (\\def, \\providecommand, etc.), Quarto passes them through as raw LaTeX for PDF output (where they are processed inline in the document body as LaTeX commands) and as math for HTML/RevealJS output (where they are processed by MathJax)."
+    "text": "This page demonstrates the include shortcode strategy for loading macros into a Quarto document.\nThe {{&lt; include macros.qmd &gt;}} shortcode at the top of this file embeds the entire contents of macros.qmd inline at that point. Since macros.qmd contains only raw LaTeX macro definitions (\\def, \\providecommand, etc.), Quarto passes them through as raw LaTeX for PDF output (where they become preamble-style definitions in the document body) and as math for HTML/RevealJS output (where they are processed by MathJax)."
   },
   {
     "objectID": "demo-shortcode.html#example-math",
     "href": "demo-shortcode.html#example-math",
     "title": "Demo: Loading Macros via include shortcode",
     "section": "Example math",
-    "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd. These \\def-based macros work across all output formats — note that \\providecommand-based macros from macros.qmd are silently ignored for HTML/RevealJS as noted above:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n$\\a$\n\\(\\alpha\\)\n\n\nGreek: beta\n$\\b$\n\\(\\beta\\)\n\n\nGreek: gamma\n$\\g$\n\\(\\gamma\\)\n\n\nGreek: lambda\n$\\l$\n\\(\\lambda\\)\n\n\nGreek: sigma\n$\\s$\n\\(\\sigma\\)\n\n\nLog-likelihood\n$\\llik$\n\\(\\ell\\)\n\n\nIndependent\n$X \\ind Y$\n\\(X \\perp\\!\\!\\!\\perp Y\\)\n\n\nIID distributed\n$X_i \\siid \\Normal(\\m, \\ss)$\n\\(X_i \\ \\sim_{\\operatorname{iid}}\\ \\operatorname{N}(\\mu, \\sigma^2)\\)\n\n\nVector: mu\n$\\vm$\n\\(\\tilde{\\mu}\\)\n\n\nHat beta\n$\\hb$\n\\(\\hat \\beta\\)"
+    "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd, which work in all output formats:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n$\\a$\n\\(\\alpha\\)\n\n\nGreek: beta\n$\\b$\n\\(\\beta\\)\n\n\nGreek: gamma\n$\\g$\n\\(\\gamma\\)\n\n\nGreek: lambda\n$\\l$\n\\(\\lambda\\)\n\n\nGreek: sigma\n$\\s$\n\\(\\sigma\\)\n\n\nLog-likelihood\n$\\llik$\n\\(\\ell\\)\n\n\nIndependent\n$X \\ind Y$\n\\(X \\perp\\!\\!\\!\\perp Y\\)\n\n\nIID distributed\n$X_i \\siid \\Normal(\\m, \\ss)$\n\\(X_i \\ \\sim_{\\operatorname{iid}}\\ \\operatorname{N}(\\mu, \\sigma^2)\\)\n\n\nVector: mu\n$\\vm$\n\\(\\tilde{\\mu}\\)\n\n\nHat beta\n$\\hb$\n\\(\\hat \\beta\\)"
   },
   {
     "objectID": "demo-shortcode-slides.html#example-math",
     "href": "demo-shortcode-slides.html#example-math",
     "title": "Demo: Loading Macros via include shortcode",
     "section": "Example math",
-    "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd. These \\def-based macros work across all output formats — note that \\providecommand-based macros from macros.qmd are silently ignored for HTML/RevealJS as noted above:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n$\\a$\n\\(\\alpha\\)\n\n\nGreek: beta\n$\\b$\n\\(\\beta\\)\n\n\nGreek: gamma\n$\\g$\n\\(\\gamma\\)\n\n\nGreek: lambda\n$\\l$\n\\(\\lambda\\)\n\n\nGreek: sigma\n$\\s$\n\\(\\sigma\\)\n\n\nLog-likelihood\n$\\llik$\n\\(\\ell\\)\n\n\nIndependent\n$X \\ind Y$\n\\(X \\perp\\!\\!\\!\\perp Y\\)\n\n\nIID distributed\n$X_i \\siid \\Normal(\\m, \\ss)$\n\\(X_i \\ \\sim_{\\operatorname{iid}}\\ \\operatorname{N}(\\mu, \\sigma^2)\\)\n\n\nVector: mu\n$\\vm$\n\\(\\tilde{\\mu}\\)\n\n\nHat beta\n$\\hb$\n\\(\\hat \\beta\\)"
+    "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd, which work in all output formats:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n$\\a$\n\\(\\alpha\\)\n\n\nGreek: beta\n$\\b$\n\\(\\beta\\)\n\n\nGreek: gamma\n$\\g$\n\\(\\gamma\\)\n\n\nGreek: lambda\n$\\l$\n\\(\\lambda\\)\n\n\nGreek: sigma\n$\\s$\n\\(\\sigma\\)\n\n\nLog-likelihood\n$\\llik$\n\\(\\ell\\)\n\n\nIndependent\n$X \\ind Y$\n\\(X \\perp\\!\\!\\!\\perp Y\\)\n\n\nIID distributed\n$X_i \\siid \\Normal(\\m, \\ss)$\n\\(X_i \\ \\sim_{\\operatorname{iid}}\\ \\operatorname{N}(\\mu, \\sigma^2)\\)\n\n\nVector: mu\n$\\vm$\n\\(\\tilde{\\mu}\\)\n\n\nHat beta\n$\\hb$\n\\(\\hat \\beta\\)"
   },
   {
     "objectID": "macros-table.html",

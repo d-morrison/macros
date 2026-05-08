@@ -12,7 +12,7 @@ format:
 
 This page demonstrates the [`include` shortcode](https://quarto.org/docs/authoring/includes.html) strategy for loading macros into a Quarto document.
 
-The `{{< include macros.qmd >}}` shortcode at the top of this file embeds the entire contents of `macros.qmd` inline at that point. Since `macros.qmd` contains only raw LaTeX macro definitions (`\def`, `\providecommand`, etc.), Quarto passes them through as raw LaTeX for PDF output (where they become preamble-style definitions in the document body) and as math for HTML/RevealJS output (where they are processed by MathJax).
+The `{{< include macros.qmd >}}` shortcode at the top of this file embeds the entire contents of `macros.qmd` inline at that point. Since `macros.qmd` contains only raw LaTeX macro definitions (`\def`, `\providecommand`, etc.), Quarto passes them through as raw LaTeX for PDF output (where they are processed inline in the document body as LaTeX commands) and as math for HTML/RevealJS output (where they are processed by MathJax).
 
 > **Note:** This demo uses `macros.qmd` directly (same directory). When using this repository as a submodule, use `macros/macros.qmd` instead.
 
@@ -22,7 +22,7 @@ The `{{< include macros.qmd >}}` shortcode at the top of this file embeds the en
 
 ## Example math
 
-The table below uses macros defined with `\def` in `macros.qmd`, which work in all output formats:
+The table below uses macros defined with `\def` in `macros.qmd`. These `\def`-based macros work across all output formats — note that `\providecommand`-based macros from `macros.qmd` are silently ignored for HTML/RevealJS as noted above:
 
 | Description | Code | Output |
 |---|---|---|

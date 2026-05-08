@@ -105,7 +105,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-</head><body class="nav-fixed quarto-light">\providecommand{\cbl}[1]{\mathopen{}\left\{#1\right.}
+</head><body class="nav-fixed quarto-light"><div style="display:none">
+$$
+\providecommand{\cbl}[1]{\mathopen{}\left\{#1\right.}
 \providecommand{\cb}[1]{\mathopen{}\left\{#1\right\}\mathclose{}}
 \providecommand{\cbmat}[1]{\mathopen{}\left\{\begin{matrix}#1\end{matrix}\right\}\mathclose{}}
 \providecommand{\paren}[1]{\mathopen{}\left(#1\right)\mathclose{}}
@@ -537,6 +539,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 \def\modresid{r^*}
 \providecommand{\residv}{\vec{r}}
 
+$$
+</div>
+
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -616,7 +621,7 @@ window.Quarto = {
   <ul>
   <li><a href="#example-math" id="toc-example-math" class="nav-link active" data-scroll-target="#example-math">Example math</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="demo-include-in-header.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="demo-include-in-header.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="demo-include-in-header.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="demo-include-in-header-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="demo-include-in-header.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -644,32 +649,39 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros.qmd</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # HTML file wrapping macros in $$...$$ for MathJax</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros.qmd</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros.qmd</span><span class="co">           # raw LaTeX goes directly into preamble</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> demo-include-in-header-slides.html</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # same as HTML</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> <code>revealjs</code> is omitted from this demo page because a Quarto website page cannot simultaneously be a RevealJS presentation. To use <code>include-in-header</code> with RevealJS, add a <code>revealjs:</code> entry in a standalone <code>.qmd</code> file or in <code>_quarto.yml</code> (see the project-wide config below).</p>
+<p><strong>Note (HTML/RevealJS):</strong> For HTML and RevealJS output, <code>include-in-header</code> inserts content verbatim into the page. To load macros, the included file must wrap the definitions in <code>$$...$$</code> inside a hidden element so MathJax processes them. The file <code>macros-header.html</code> in this repository does exactly that — it wraps the content of <code>macros.qmd</code> in <code>&lt;div style="display:none"&gt;$$...$$&lt;/div&gt;</code>. For PDF, <code>macros.qmd</code> can be included directly since its raw LaTeX goes into the document preamble.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> This demo uses <code>macros.qmd</code> because <code>macros.qmd</code> is at the root of this repository. When using this repository as a Git submodule (cloned into a <code>macros/</code> subdirectory), replace <code>macros.qmd</code> with <code>macros/macros.qmd</code>.</p>
+<p><strong>Note (revealjs <code>output-file</code>):</strong> RevealJS and HTML formats both produce <code>.html</code> output by default. When both are listed in a Quarto website document, <code>output-file</code> gives the RevealJS output a distinct filename so there is no conflict. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> This demo uses <code>macros-header.html</code> / <code>macros.qmd</code> because both files are at the root of this repository. When using this repository as a Git submodule (cloned into a <code>macros/</code> subdirectory), replace with <code>macros/macros-header.html</code> and <code>macros/macros.qmd</code>.</p>
 </blockquote>
 <p>The same configuration can be placed in a shared <code>_quarto.yml</code> to apply project-wide:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This inserts <code>macros.qmd</code> verbatim into the document header for each output format:</p>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This inserts the macro definitions into the document header for each output format:</p>
 <ul>
-<li><strong>PDF</strong>: definitions go into the LaTeX preamble — all macros work, including <code>\providecommand</code>.</li>
-<li><strong>HTML/RevealJS</strong>: MathJax processes the header — MathJax-supported commands (<code>\def</code>, <code>\newcommand</code>, <code>\renewcommand</code>, <code>\let</code>, environments) are recognized; <code>\providecommand</code> is silently ignored. The example table below uses only <code>\def</code>-based macros.</li>
+<li><strong>PDF</strong>: <code>macros.qmd</code> goes into the LaTeX preamble — all macros work, including <code>\providecommand</code>.</li>
+<li><strong>HTML/RevealJS</strong>: <code>macros-header.html</code> wraps the definitions in <code>$$...$$</code> so MathJax processes them — MathJax-supported commands (<code>\def</code>, <code>\newcommand</code>, <code>\renewcommand</code>, <code>\let</code>, environments) are recognized; <code>\providecommand</code> is silently ignored. The example table below uses only <code>\def</code>-based macros.</li>
 <li><strong>docx</strong>: Word documents do not use a LaTeX preamble or MathJax header, so <code>include-in-header</code> has no effect on math rendering for docx. The <code>docx: default</code> entry above produces docx output without macro support.</li>
 </ul>
 <section id="example-math" class="level2">

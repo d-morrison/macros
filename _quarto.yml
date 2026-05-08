@@ -3,6 +3,8 @@ project:
 
 website:
   title: "macros"
+  repo-url: https://github.com/d-morrison/macros
+  repo-actions: [source]
   navbar:
     left:
       - href: index.qmd
@@ -13,6 +15,9 @@ website:
         text: Demo (include in header strategy)
       - href: demo-shortcode.qmd
         text: Demo (include shortcode strategy)
+    right:
+      - icon: github
+        href: https://github.com/d-morrison/macros
 
 format:
   html:

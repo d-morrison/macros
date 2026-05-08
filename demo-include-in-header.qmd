@@ -9,14 +9,12 @@ format:
       - macros.qmd
   revealjs:
     output-file: demo-include-in-header-slides.html
-    include-in-header:
+    include-before-body:
       - macros-header.html
-  docx: 
-    include-in-header:
-      - macros-header.html
+  docx: default
 ---
 
-This page demonstrates the `include-in-header` strategy for loading macros. The YAML front matter of this file includes:
+This page demonstrates the `include-in-header` (and `include-before-body`) strategy for loading macros. The YAML front matter of this file includes:
 
 ```yaml
 format:
@@ -28,14 +26,16 @@ format:
       - macros.qmd           # raw LaTeX goes directly into preamble
   revealjs:
     output-file: demo-include-in-header-slides.html
-    include-in-header:
-      - macros-header.html   # same as HTML
+    include-before-body:
+      - macros-header.html   # placed in <body> so MathJax processes it
   docx: default
 ```
 
-> **Note (HTML/RevealJS):** For HTML and RevealJS output, `include-in-header` inserts content verbatim into the page. To load macros, the included file must wrap the definitions in `$$...$$` inside a hidden element so MathJax processes them. The file `macros-header.html` in this repository does exactly that — it wraps the content of `macros.qmd` in `<div style="display:none">$$...$$</div>`. For PDF, `macros.qmd` can be included directly since its raw LaTeX goes into the document preamble.
+> **Note (HTML):** For HTML output, `include-in-header` inserts content into the page `<head>`. The file `macros-header.html` wraps the macro definitions in `<div style="display:none">$$...$$</div>`, which the browser moves into the `<body>` and MathJax then processes.
 
-> **Note (revealjs `output-file`):** RevealJS and HTML formats both produce `.html` output by default. When both are listed in a Quarto website document, `output-file` gives the RevealJS output a distinct filename so there is no conflict. [View the RevealJS slides output](demo-include-in-header-slides.html).
+> **Note (RevealJS):** For RevealJS, `include-before-body` is used instead of `include-in-header`. RevealJS processes MathJax per-slide, and macro definitions must be in the `<body>` — before the RevealJS presentation container — to be registered globally before any slide math is rendered. `include-before-body` places the hidden div at the very start of `<body>`. [View the RevealJS slides output](demo-include-in-header-slides.html).
+
+> **Note (PDF):** For PDF, `macros.qmd` can be included directly since its raw LaTeX goes into the document preamble.
 
 > **Note:** This demo uses `macros-header.html` / `macros.qmd` because both files are at the root of this repository. When using this repository as a Git submodule (cloned into a `macros/` subdirectory), replace with `macros/macros-header.html` and `macros/macros.qmd`.
 
@@ -50,14 +50,15 @@ format:
     include-in-header:
       - macros/macros.qmd
   revealjs:
-    include-in-header:
+    include-before-body:
       - macros/macros-header.html
 ```
 
-This inserts the macro definitions into the document header for each output format:
+This inserts the macro definitions for each output format:
 
-- **PDF**: `macros.qmd` goes into the LaTeX preamble — all macros work, including `\providecommand`.
-- **HTML/RevealJS**: `macros-header.html` wraps the definitions in `$$...$$` so MathJax processes them — MathJax-supported commands (`\def`, `\newcommand`, `\renewcommand`, `\let`, environments) are recognized; `\providecommand` is silently ignored. The example table below uses only `\def`-based macros.
+- **PDF**: `macros.qmd` goes into the LaTeX preamble via `include-in-header` — all macros work, including `\providecommand`.
+- **HTML**: `macros-header.html` is inserted via `include-in-header` — the browser moves the `<div>` to the body and MathJax processes the `$$...$$` block. MathJax-supported commands (`\def`, `\newcommand`, `\renewcommand`, `\let`, environments) are recognized; `\providecommand` is silently ignored.
+- **RevealJS**: `macros-header.html` is inserted via `include-before-body` (not `include-in-header`) — this places the hidden div at the start of `<body>` where RevealJS's MathJax will pick it up before rendering slides. The same MathJax limitations apply.
 - **docx**: Word documents do not use a LaTeX preamble or MathJax header, so `include-in-header` has no effect on math rendering for docx. The `docx: default` entry above produces docx output without macro support.
 
 ## Example math

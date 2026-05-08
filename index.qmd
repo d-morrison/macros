@@ -88,9 +88,11 @@ format:
     include-in-header:
       - macros/macros.qmd
   revealjs:
-    include-in-header:
+    include-before-body:
       - macros/macros-header.html
 ```
+
+> **Why `include-before-body` for RevealJS?** RevealJS processes MathJax per-slide. Macro definitions must be in the `<body>` — before the RevealJS presentation container — to be registered globally before any slide math renders. `include-before-body` places the hidden div at the start of `<body>`, whereas `include-in-header` inserts into `<head>` where RevealJS's MathJax may not pick up definitions reliably.
 
 > **Why two files?** For PDF, `macros.qmd` is inserted verbatim into the LaTeX preamble — the raw `\def`/`\providecommand` syntax is valid there. For HTML/RevealJS, the included file's content appears in the page; MathJax only processes content inside `$$...$$` delimiters, so `macros-header.html` wraps the definitions in `<div style="display:none">$$...$$</div>`. See the [Demo](demo-include-in-header.qmd) for a working example.
 

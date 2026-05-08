@@ -14,11 +14,25 @@
     "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd. These macros work across all output formats:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n$\\a$\n\\(\\alpha\\)\n\n\nGreek: beta\n$\\b$\n\\(\\beta\\)\n\n\nGreek: gamma\n$\\g$\n\\(\\gamma\\)\n\n\nGreek: lambda\n$\\l$\n\\(\\lambda\\)\n\n\nGreek: sigma\n$\\s$\n\\(\\sigma\\)\n\n\nLog-likelihood\n$\\llik$\n\\(\\ell\\)\n\n\nIndependent\n$X \\ind Y$\n\\(X \\perp\\!\\!\\!\\perp Y\\)\n\n\nIID distributed\n$X_i \\siid \\Normal(\\m, \\ss)$\n\\(X_i \\ \\sim_{\\operatorname{iid}}\\ \\operatorname{N}(\\mu, \\sigma^2)\\)\n\n\nVector: mu\n$\\vm$\n\\(\\tilde{\\mu}\\)\n\n\nHat beta\n$\\hb$\n\\(\\hat \\beta\\)"
   },
   {
+    "objectID": "demo-shortcode.html#providecommand-behavior-in-this-shortcode-demo",
+    "href": "demo-shortcode.html#providecommand-behavior-in-this-shortcode-demo",
+    "title": "Demo: Loading Macros via include shortcode",
+    "section": "\\providecommand behavior in this shortcode demo",
+    "text": "\\providecommand behavior in this shortcode demo\nThe macro \\floor in macros.qmd is defined with \\providecommand. Compare this with a \\def macro:\n\n\n\nMacro type\nCode\nOutput\n\n\n\n\n\\providecommand macro (\\floor)\n$\\floor{1.2}$\n\\(\\mathopen{}\\left\\lfloor 1.2\\right\\rfloor\\mathclose{}\\)\n\n\n\\def macro (\\a)\n$\\a$\n\\(\\alpha\\)\n\n\n\nIn this shortcode demo, both macros render in HTML/RevealJS. So in this setup, \\providecommand from the included source is being handled correctly.\n\nNote (RevealJS blank slide): Content placed before the first ## heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a known limitation of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the include-in-header strategy instead."
+  },
+  {
     "objectID": "demo-shortcode-slides.html#example-math",
     "href": "demo-shortcode-slides.html#example-math",
     "title": "Demo: Loading Macros via include shortcode",
     "section": "Example math",
     "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd. These macros work across all output formats:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n$\\a$\n\\(\\alpha\\)\n\n\nGreek: beta\n$\\b$\n\\(\\beta\\)\n\n\nGreek: gamma\n$\\g$\n\\(\\gamma\\)\n\n\nGreek: lambda\n$\\l$\n\\(\\lambda\\)\n\n\nGreek: sigma\n$\\s$\n\\(\\sigma\\)\n\n\nLog-likelihood\n$\\llik$\n\\(\\ell\\)\n\n\nIndependent\n$X \\ind Y$\n\\(X \\perp\\!\\!\\!\\perp Y\\)\n\n\nIID distributed\n$X_i \\siid \\Normal(\\m, \\ss)$\n\\(X_i \\ \\sim_{\\operatorname{iid}}\\ \\operatorname{N}(\\mu, \\sigma^2)\\)\n\n\nVector: mu\n$\\vm$\n\\(\\tilde{\\mu}\\)\n\n\nHat beta\n$\\hb$\n\\(\\hat \\beta\\)"
+  },
+  {
+    "objectID": "demo-shortcode-slides.html#providecommand-behavior-in-this-shortcode-demo",
+    "href": "demo-shortcode-slides.html#providecommand-behavior-in-this-shortcode-demo",
+    "title": "Demo: Loading Macros via include shortcode",
+    "section": "\\providecommand behavior in this shortcode demo",
+    "text": "\\providecommand behavior in this shortcode demo\nThe macro \\floor in macros.qmd is defined with \\providecommand. Compare this with a \\def macro:\n\n\n\nMacro type\nCode\nOutput\n\n\n\n\n\\providecommand macro (\\floor)\n$\\floor{1.2}$\n\\(\\mathopen{}\\left\\lfloor 1.2\\right\\rfloor\\mathclose{}\\)\n\n\n\\def macro (\\a)\n$\\a$\n\\(\\alpha\\)\n\n\n\nIn this shortcode demo, both macros render in HTML/RevealJS. So in this setup, \\providecommand from the included source is being handled correctly.\n\nNote (RevealJS blank slide): Content placed before the first ## heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a known limitation of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the include-in-header strategy instead."
   },
   {
     "objectID": "macros-table.html",

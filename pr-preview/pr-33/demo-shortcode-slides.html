@@ -143,33 +143,6 @@
 <blockquote>
 <p><strong>Note:</strong> This demo uses <code>macros.qmd</code> directly (same directory). When using this repository as a submodule, use <code>macros/macros.qmd</code> instead.</p>
 </blockquote>
-<h3 id="providecommand-behavior-in-this-shortcode-demo"><code>\providecommand</code> behavior in this shortcode demo</h3>
-<p>The macro <code>\floor</code> in <code>macros.qmd</code> is defined with <code>\providecommand</code>. Compare this with a <code>\def</code> macro:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Macro type</th>
-<th>Code</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>\providecommand</code> macro (<code>\floor</code>)</td>
-<td><code>$\floor{1.2}$</code></td>
-<td><span class="math inline">\(\mathopen{}\left\lfloor 1.2\right\rfloor\mathclose{}\)</span></td>
-</tr>
-<tr class="even">
-<td><code>\def</code> macro (<code>\a</code>)</td>
-<td><code>$\a$</code></td>
-<td><span class="math inline">\(\alpha\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>In this shortcode demo, both macros render in HTML/RevealJS. So in this setup, <code>\providecommand</code> from the included source is being handled correctly.</p>
-<blockquote>
-<p><strong>Note (RevealJS blank slide):</strong> Content placed before the first <code>##</code> heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a <a href="https://github.com/orgs/quarto-dev/discussions/8376">known limitation</a> of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the <a href="./demo-include-in-header.html"><code>include-in-header</code> strategy</a> instead.</p>
-</blockquote>
 </section>
 <section id="example-math" class="slide level2">
 <h2>Example math</h2>
@@ -240,6 +213,35 @@
 </tr>
 </tbody>
 </table>
+</section>
+<section id="providecommand-behavior-in-this-shortcode-demo" class="slide level2">
+<h2><code>\providecommand</code> behavior in this shortcode demo</h2>
+<p>The macro <code>\floor</code> in <code>macros.qmd</code> is defined with <code>\providecommand</code>. Compare this with a <code>\def</code> macro:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Macro type</th>
+<th>Code</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\providecommand</code> macro (<code>\floor</code>)</td>
+<td><code>$\floor{1.2}$</code></td>
+<td><span class="math inline">\(\mathopen{}\left\lfloor 1.2\right\rfloor\mathclose{}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\def</code> macro (<code>\a</code>)</td>
+<td><code>$\a$</code></td>
+<td><span class="math inline">\(\alpha\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In this shortcode demo, both macros render in HTML/RevealJS. So in this setup, <code>\providecommand</code> from the included source is being handled correctly.</p>
+<blockquote>
+<p><strong>Note (RevealJS blank slide):</strong> Content placed before the first <code>##</code> heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a <a href="https://github.com/orgs/quarto-dev/discussions/8376">known limitation</a> of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the <a href="./demo-include-in-header.html"><code>include-in-header</code> strategy</a> instead.</p>
+</blockquote>
 
 
 </section>

@@ -18,19 +18,6 @@ The `{{< include macros.qmd >}}` shortcode at the top of this file embeds the en
 
 > **Note:** This demo uses `macros.qmd` directly (same directory). When using this repository as a submodule, use `macros/macros.qmd` instead.
 
-### `\providecommand` behavior in this shortcode demo
-
-The macro `\floor` in `macros.qmd` is defined with `\providecommand`. Compare this with a `\def` macro:
-
-| Macro type | Code | Output |
-|---|---|---|
-| `\providecommand` macro (`\floor`) | `$\floor{1.2}$` | $\floor{1.2}$ |
-| `\def` macro (`\a`) | `$\a$` | $\a$ |
-
-In this shortcode demo, both macros render in HTML/RevealJS. So in this setup, `\providecommand` from the included source is being handled correctly.
-
-> **Note (RevealJS blank slide):** Content placed before the first `##` heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a [known limitation](https://github.com/orgs/quarto-dev/discussions/8376) of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the [`include-in-header` strategy](demo-include-in-header.qmd) instead.
-
 ## Example math
 
 The table below uses macros defined with `\def` in `macros.qmd`. These macros work across all output formats:
@@ -47,3 +34,16 @@ The table below uses macros defined with `\def` in `macros.qmd`. These macros wo
 | IID distributed | `$X_i \siid \Normal(\m, \ss)$` | $X_i \siid \Normal(\m, \ss)$ |
 | Vector: mu | `$\vm$` | $\vm$ |
 | Hat beta | `$\hb$` | $\hb$ |
+
+## `\providecommand` behavior in this shortcode demo
+
+The macro `\floor` in `macros.qmd` is defined with `\providecommand`. Compare this with a `\def` macro:
+
+| Macro type | Code | Output |
+|---|---|---|
+| `\providecommand` macro (`\floor`) | `$\floor{1.2}$` | $\floor{1.2}$ |
+| `\def` macro (`\a`) | `$\a$` | $\a$ |
+
+In this shortcode demo, both macros render in HTML/RevealJS. So in this setup, `\providecommand` from the included source is being handled correctly.
+
+> **Note (RevealJS blank slide):** Content placed before the first `##` heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a [known limitation](https://github.com/orgs/quarto-dev/discussions/8376) of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the [`include-in-header` strategy](demo-include-in-header.qmd) instead.

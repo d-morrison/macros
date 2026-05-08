@@ -5,6 +5,8 @@ format:
   pdf: default
   revealjs:
     output-file: demo-shortcode-slides.html
+    scrollable: true
+    center: false
   docx: default
 ---
 

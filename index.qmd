@@ -56,7 +56,7 @@ git commit -m "Update macros submodule"
 
 There are two main strategies for loading these macros into Quarto output:
 
-- **`include-in-header`** (recommended for PDF and Quarto books): Inserts the macro file into the document header. For LaTeX/PDF, use `macros.qmd` — definitions go into the preamble and all macros work. For HTML/RevealJS, use `macros-header.html` (provided in this repo), which is a MathJax config script that defines macros for both MathJax v3 (`MathJax.tex.macros`) and MathJax v2 (`MathJax.TeX.Macros`). Configure once in `_quarto.yml` to apply project-wide.
+- **`include-in-header`** (recommended for PDF and Quarto books): Inserts the macro file into the document header. For LaTeX/PDF, use `macros.qmd` — definitions go into the preamble and all macros work. For HTML/RevealJS, use `macros-header.html` (provided in this repo), which is a loader script that reads `macros.qmd` and sets `MathJax.tex.macros`. Configure once in `_quarto.yml` to apply project-wide.
 - **`include` shortcode** (convenient for single documents): Processes and embeds the macro file inline at the point of insertion. No YAML changes required, but must be added to each `.qmd` file individually.
 
 **Tip:** Using `\providecommand` instead of `\newcommand` in macro definitions avoids "already defined" errors when macros are included in multiple files (e.g., in a Quarto book where each chapter is a separate `.qmd`). The macros in this repository follow this convention.
@@ -92,7 +92,7 @@ format:
       - macros/macros-header.html
 ```
 
-> **Why two files?** For PDF, `macros.qmd` is inserted verbatim into the LaTeX preamble — the raw `\def`/`\providecommand` syntax is valid there. For HTML/RevealJS, `macros-header.html` sets macro config for both MathJax v3 and v2 before typesetting.
+> **Why two files?** `macros.qmd` remains the single source of macro definitions. For PDF, it is inserted verbatim into the LaTeX preamble. For HTML/RevealJS, `macros-header.html` is just a loader that reads `macros.qmd` and registers those same macros with MathJax.
 
 #### Via the Quarto `include` shortcode
 

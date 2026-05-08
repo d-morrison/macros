@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>macros</title>
+<title>Demo: Loading Macros via include shortcode – macros</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -106,6 +106,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -127,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -139,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Demo (include in header strategy)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./demo-shortcode.html"> 
+    <a class="nav-link active" href="./demo-shortcode.html" aria-current="page"> 
 <span class="menu-text">Demo (include shortcode strategy)</span></a>
   </li>  
 </ul>
@@ -158,23 +187,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contents" id="toc-contents" class="nav-link active" data-scroll-target="#contents">Contents</a></li>
-  <li><a href="#using-as-a-git-submodule" id="toc-using-as-a-git-submodule" class="nav-link" data-scroll-target="#using-as-a-git-submodule">Using as a Git Submodule</a>
-  <ul class="collapse">
-  <li><a href="#adding-the-submodule-to-your-project" id="toc-adding-the-submodule-to-your-project" class="nav-link" data-scroll-target="#adding-the-submodule-to-your-project">Adding the submodule to your project</a></li>
-  <li><a href="#cloning-a-project-that-already-uses-this-submodule" id="toc-cloning-a-project-that-already-uses-this-submodule" class="nav-link" data-scroll-target="#cloning-a-project-that-already-uses-this-submodule">Cloning a project that already uses this submodule</a></li>
-  <li><a href="#updating-the-submodule" id="toc-updating-the-submodule" class="nav-link" data-scroll-target="#updating-the-submodule">Updating the submodule</a></li>
-  <li><a href="#including-the-macros-in-a-quarto-document" id="toc-including-the-macros-in-a-quarto-document" class="nav-link" data-scroll-target="#including-the-macros-in-a-quarto-document">Including the macros in a Quarto document</a></li>
-  </ul></li>
+  <li><a href="#example-math" id="toc-example-math" class="nav-link active" data-scroll-target="#example-math">Example math</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="demo-shortcode.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="demo-shortcode-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="demo-shortcode.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">macros</h1>
+<h1 class="title">Demo: Loading Macros via include shortcode</h1>
 </div>
 
 
@@ -191,106 +213,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This repository contains LaTeX macros for mathematical notation used in statistical and regression modeling, originally from the <a href="https://github.com/d-morrison/rme">rme repository</a>.</p>
-<section id="contents" class="level2">
-<h2 class="anchored" data-anchor-id="contents">Contents</h2>
-<ul>
-<li><code>macros.qmd</code>: LaTeX macro definitions for use in Quarto documents</li>
-<li><a href="./macros-table.html">Macro Reference</a>: Searchable table of all macros</li>
-</ul>
-<p>These macros provide convenient shorthand for common mathematical expressions used in:</p>
-<ul>
-<li>Probability and statistics</li>
-<li>Regression models (linear, logistic, Poisson, survival analysis)</li>
-<li>Maximum likelihood estimation</li>
-<li>Mathematical notation (vectors, matrices, derivatives, etc.)</li>
-</ul>
-</section>
-<section id="using-as-a-git-submodule" class="level2">
-<h2 class="anchored" data-anchor-id="using-as-a-git-submodule">Using as a Git Submodule</h2>
-<section id="adding-the-submodule-to-your-project" class="level3">
-<h3 class="anchored" data-anchor-id="adding-the-submodule-to-your-project">Adding the submodule to your project</h3>
-<p>From the root of your project repository, run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule add https://github.com/d-morrison/macros.git macros</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add macros submodule"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This will clone the <code>macros</code> repository into a <code>macros/</code> subdirectory and record it as a submodule.</p>
-</section>
-<section id="cloning-a-project-that-already-uses-this-submodule" class="level3">
-<h3 class="anchored" data-anchor-id="cloning-a-project-that-already-uses-this-submodule">Cloning a project that already uses this submodule</h3>
-<p>When cloning a repository that includes this submodule, initialize and fetch the submodule content with:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recurse-submodules</span> <span class="op">&lt;</span>your-repo-url<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Or, if you have already cloned the repository without <code>--recurse-submodules</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule update <span class="at">--init</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="updating-the-submodule" class="level3">
-<h3 class="anchored" data-anchor-id="updating-the-submodule">Updating the submodule</h3>
-<p>To pull the latest changes from this repository into your project:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule update <span class="at">--remote</span> macros</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Update macros submodule"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="including-the-macros-in-a-quarto-document" class="level3">
-<h3 class="anchored" data-anchor-id="including-the-macros-in-a-quarto-document">Including the macros in a Quarto document</h3>
-<p>There are two main strategies for loading these macros into Quarto output:</p>
-<ul>
-<li><strong><code>include-in-header</code></strong> (recommended for PDF and Quarto books): Inserts the macro file verbatim into the document header. For LaTeX/PDF, use <code>macros.qmd</code> — definitions go into the preamble and all macros work. For HTML/RevealJS, use <code>macros-header.html</code> (provided in this repo), which wraps the definitions in <code>$$...$$</code> inside a hidden element so MathJax processes them; only MathJax-supported commands (<code>\def</code>, <code>\newcommand</code>, <code>\renewcommand</code>, <code>\let</code>, environments) are recognized — <code>\providecommand</code> is not. Configure once in <code>_quarto.yml</code> to apply project-wide.</li>
-<li><strong><code>include</code> shortcode</strong> (convenient for single documents): Processes and embeds the macro file inline at the point of insertion. No YAML changes required, but must be added to each <code>.qmd</code> file individually.</li>
-</ul>
-<p><strong>Tip:</strong> Using <code>\providecommand</code> instead of <code>\newcommand</code> in macro definitions avoids “already defined” errors when macros are included in multiple files (e.g., in a Quarto book where each chapter is a separate <code>.qmd</code>). The macros in this repository follow this convention.</p>
-<section id="via-include-in-header" class="level4">
-<h4 class="anchored" data-anchor-id="via-include-in-header">Via <code>include-in-header</code></h4>
-<p>In your Quarto document’s YAML front matter, reference the appropriate header file using <code>include-in-header</code> or via <code>_quarto.yml</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span><span class="co">   # wraps macros in $$...$$ for MathJax</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span><span class="co">           # raw LaTeX goes into preamble</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Or, in a shared <code>_quarto.yml</code> configuration file:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<blockquote class="blockquote">
-<p><strong>Why two files?</strong> For PDF, <code>macros.qmd</code> is inserted verbatim into the LaTeX preamble — the raw <code>\def</code>/<code>\providecommand</code> syntax is valid there. For HTML/RevealJS, the included file’s content appears in the page; MathJax only processes content inside <code>$$...$$</code> delimiters, so <code>macros-header.html</code> wraps the definitions in <code>&lt;div style="display:none"&gt;$$...$$&lt;/div&gt;</code>. See the <a href="./demo-include-in-header.html">Demo</a> for a working example.</p>
-</blockquote>
-</section>
-<section id="via-the-quarto-include-shortcode" class="level4">
-<h4 class="anchored" data-anchor-id="via-the-quarto-include-shortcode">Via the Quarto <code>include</code> shortcode</h4>
-<p>Alternatively, you can load the macros inline using Quarto’s <a href="https://quarto.org/docs/authoring/includes.html"><code>include</code> shortcode</a>. Place the following block at the top of your <code>.qmd</code> file (after the YAML front matter):</p>
-<pre class="qmd"><code>::: {.hidden}
-$$
-{{\&lt; include macros/macros.qmd \&gt;}}
-$$
-:::</code></pre>
-<p>The <code>$$...$$</code> delimiters cause MathJax to process the macro definitions and make them available throughout the document. The outer <code>::: {.hidden}</code> div hides the block from view (<a href="https://quarto.org/docs/authoring/markdown-basics.html#equations">Quarto’s recommended approach</a> for defining custom TeX macros).</p>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> The <code>\&lt;</code> and <code>\&gt;</code> in the example above are Quarto escape sequences used on this page to prevent the shortcode from being processed. In your own <code>.qmd</code> file, write the shortcode without backslashes: <code>{{&lt; include macros/macros.qmd &gt;}}</code>.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><strong>Note for HTML output:</strong> <a href="https://quarto.org/docs/authoring/markdown-basics.html#equations">Quarto’s MathJax integration</a> supports <code>\def</code>, <code>\newcommand</code>, <code>\renewcommand</code>, <code>\newenvironment</code>, <code>\renewenvironment</code>, and <code>\let</code> for custom macro definitions, but <strong>not</strong> <code>\providecommand</code>. Since <code>macros.qmd</code> uses <code>\providecommand</code>, this <code>include</code> shortcode approach may not work correctly for HTML output. The <code>include-in-header</code> strategy with <code>macros-header.html</code> handles this correctly for HTML (wrapping definitions in <code>$$...$$</code>), though <code>\providecommand</code> macros are still silently ignored there too. To reliably use all macros in HTML/RevealJS output, convert <code>\providecommand</code> definitions to <code>\def</code> form first (as done automatically on the <a href="./macros-table.html">Macro Reference</a> page).</p>
-</blockquote>
-<p>This approach is useful when you prefer to load macros at the document level without modifying YAML front matter or <code>_quarto.yml</code>.</p>
-<p><strong>Note for RevealJS:</strong> placing the <code>{{\&lt; include \&gt;}}</code> block before the first heading creates a blank slide. In that case, prefer the <code>include-in-header</code> approach above. See <a href="https://github.com/orgs/quarto-dev/discussions/8376">quarto-dev discussion #8376</a> for details.</p>
-<p><strong>See also:</strong></p>
-<ul>
-<li><a href="https://github.com/orgs/quarto-dev/discussions/2845">quarto-dev discussion #2845</a> — Community discussion on strategies for including LaTeX macros from a file into a Quarto book.</li>
-<li><a href="https://github.com/orgs/quarto-dev/discussions/8376">quarto-dev discussion #8376</a> — Follow-up discussing limitations of the <code>include</code> shortcode in RevealJS output and the recommended <code>include-in-header</code> workaround using a MathJax configuration script.</li>
-<li><a href="https://quarto.org/docs/authoring/markdown-basics.html#:~:text=If%20you%20want%20to%20define%20custom%20TeX%20macros">Quarto docs: Equations — Custom TeX macros</a> — Official Quarto documentation on defining custom TeX macros for HTML output.</li>
-<li><a href="https://stackoverflow.com/questions/76398554/how-to-define-latex-macros-globally-for-a-quarto-book">Stack Overflow: How to define LaTeX macros globally for a Quarto book?</a> — Detailed community discussion covering both HTML and PDF strategies, including the <code>\providecommand</code> trick for avoiding XeTeX redefinition errors in multi-file books.</li>
-</ul>
+<p>This page demonstrates the include-shortcode strategy for loading macros. The YAML front matter of this file includes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> demo-shortcode-slides.html</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="example-math" class="level2">
+<h2 class="anchored" data-anchor-id="example-math">Example math</h2>
+<p>The table below uses macros defined with <code>\def</code> in <code>macros.qmd</code>, which work in all output formats that support MathJax or LaTeX:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Code</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Greek: alpha</td>
+<td><code>$\a$</code></td>
+<td><span class="math inline">\(\alpha\)</span></td>
+</tr>
+<tr class="even">
+<td>Greek: beta</td>
+<td><code>$\b$</code></td>
+<td><span class="math inline">\(\beta\)</span></td>
+</tr>
+<tr class="odd">
+<td>Greek: gamma</td>
+<td><code>$\g$</code></td>
+<td><span class="math inline">\(\gamma\)</span></td>
+</tr>
+<tr class="even">
+<td>Greek: lambda</td>
+<td><code>$\l$</code></td>
+<td><span class="math inline">\(\lambda\)</span></td>
+</tr>
+<tr class="odd">
+<td>Greek: sigma</td>
+<td><code>$\s$</code></td>
+<td><span class="math inline">\(\sigma\)</span></td>
+</tr>
+<tr class="even">
+<td>Log-likelihood</td>
+<td><code>$\llik$</code></td>
+<td><span class="math inline">\(\ell\)</span></td>
+</tr>
+<tr class="odd">
+<td>Independent</td>
+<td><code>$X \ind Y$</code></td>
+<td><span class="math inline">\(X \perp\!\!\!\perp Y\)</span></td>
+</tr>
+<tr class="even">
+<td>IID distributed</td>
+<td><code>$X_i \siid \Normal(\m, \ss)$</code></td>
+<td><span class="math inline">\(X_i \ \sim_{\operatorname{iid}}\ \operatorname{N}(\mu, \sigma^2)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Vector: mu</td>
+<td><code>$\vm$</code></td>
+<td><span class="math inline">\(\tilde{\mu}\)</span></td>
+</tr>
+<tr class="even">
+<td>Hat beta</td>
+<td><code>$\hb$</code></td>
+<td><span class="math inline">\(\hat \beta\)</span></td>
+</tr>
+</tbody>
+</table>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

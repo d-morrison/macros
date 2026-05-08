@@ -98,6 +98,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="revealjs-scrollable-title.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -113,6 +114,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -397,9 +399,12 @@
 <span id="cb1-7"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros.qmd</span><span class="co">           # raw LaTeX goes directly into preamble</span></span>
 <span id="cb1-8"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
 <span id="cb1-9"><a></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> demo-include-in-header-slides.html</span></span>
-<span id="cb1-10"><a></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb1-11"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # loader that reads macros.qmd</span></span>
-<span id="cb1-12"><a></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-10"><a></a><span class="at">    </span><span class="fu">scrollable</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-11"><a></a><span class="at">    </span><span class="fu">center</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-12"><a></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> revealjs-scrollable-title.css</span></span>
+<span id="cb1-13"><a></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb1-14"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # loader that reads macros.qmd</span></span>
+<span id="cb1-15"><a></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote>
 <p><strong>Note (HTML/RevealJS):</strong> <code>macros-header.html</code> is a small loader script (not a second macro-definition file). It reads <code>macros.qmd</code>, converts macro definitions to a MathJax config object, and sets <code>MathJax.tex.macros</code> before typesetting. For RevealJS, it also forces the built-in Reveal math plugin to use MathJax 3. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
 </blockquote>

@@ -31,7 +31,7 @@ format:
   docx: default
 ```
 
-> **Note (HTML/RevealJS):** `macros-header.html` is a small loader script (not a second macro-definition file). It reads `macros.qmd`, converts macro definitions to a MathJax config object, and sets `MathJax.tex.macros` before typesetting. [View the RevealJS slides output](demo-include-in-header-slides.html).
+> **Note (HTML/RevealJS):** `macros-header.html` is a small loader script (not a second macro-definition file). It reads `macros.qmd`, converts macro definitions to a MathJax config object, and sets `MathJax.tex.macros` before typesetting. For RevealJS, it also forces the built-in Reveal math plugin to use MathJax 3. [View the RevealJS slides output](demo-include-in-header-slides.html).
 
 > **Note (PDF):** For PDF, `macros.qmd` can be included directly since its raw LaTeX goes into the document preamble.
 
@@ -56,7 +56,7 @@ This inserts the macro definitions for each output format:
 
 - **PDF**: `macros.qmd` goes into the LaTeX preamble via `include-in-header` — all macros work, including `\providecommand`.
 - **HTML**: `macros-header.html` is inserted via `include-in-header` and loads macros from `macros.qmd` into `MathJax.tex.macros`.
-- **RevealJS**: `macros-header.html` does the same loader step (including MathJax v2 compatibility), so slide math uses the same `macros.qmd` source.
+- **RevealJS**: `macros-header.html` does the same loader step and switches the Reveal math plugin to MathJax 3, so slide math uses the same `macros.qmd` source.
 - **docx**: Word documents do not use a LaTeX preamble or MathJax header, so `include-in-header` has no effect on math rendering for docx. The `docx: default` entry above produces docx output without macro support.
 
 ## Example math

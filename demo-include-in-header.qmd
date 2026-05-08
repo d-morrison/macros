@@ -9,6 +9,9 @@ format:
       - macros.qmd
   revealjs:
     output-file: demo-include-in-header-slides.html
+    scrollable: true
+    center: false
+    css: revealjs-scrollable-title.css
     include-in-header:
       - macros-header.html
   docx: default
@@ -26,6 +29,9 @@ format:
       - macros.qmd           # raw LaTeX goes directly into preamble
   revealjs:
     output-file: demo-include-in-header-slides.html
+    scrollable: true
+    center: false
+    css: revealjs-scrollable-title.css
     include-in-header:
       - macros-header.html   # loader that reads macros.qmd
   docx: default

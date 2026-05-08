@@ -18,9 +18,7 @@ The `{{< include macros.qmd >}}` shortcode at the top of this file embeds the en
 
 > **Note:** This demo uses `macros.qmd` directly (same directory). When using this repository as a submodule, use `macros/macros.qmd` instead.
 
-> **Note (MathJax limitations):** [Quarto's MathJax integration](https://quarto.org/docs/authoring/markdown-basics.html#equations) supports `\def`, `\newcommand`, `\renewcommand`, `\newenvironment`, `\renewenvironment`, and `\let` — but **not** `\providecommand`. Since `macros.qmd` uses `\providecommand` for many definitions, those macros are silently ignored for HTML/RevealJS output. The example table below uses only `\def`-based macros, which render correctly in all formats.
-
-### Proof that `\providecommand` is ignored in HTML/RevealJS
+### `\providecommand` behavior in this shortcode demo
 
 The macro `\floor` in `macros.qmd` is defined with `\providecommand`. Compare this with a `\def` macro:
 
@@ -29,13 +27,13 @@ The macro `\floor` in `macros.qmd` is defined with `\providecommand`. Compare th
 | `\providecommand` macro (`\floor`) | `$\floor{1.2}$` | $\floor{1.2}$ |
 | `\def` macro (`\a`) | `$\a$` | $\a$ |
 
-In HTML/RevealJS, `\floor` remains unresolved while `\a` renders correctly, showing that `\providecommand` definitions are ignored by MathJax.
+In this shortcode demo, both macros render in HTML/RevealJS. So in this setup, `\providecommand` from the included source is being handled correctly.
 
 > **Note (RevealJS blank slide):** Content placed before the first `##` heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a [known limitation](https://github.com/orgs/quarto-dev/discussions/8376) of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the [`include-in-header` strategy](demo-include-in-header.qmd) instead.
 
 ## Example math
 
-The table below uses macros defined with `\def` in `macros.qmd`. These `\def`-based macros work across all output formats — note that `\providecommand`-based macros from `macros.qmd` are silently ignored for HTML/RevealJS as noted above:
+The table below uses macros defined with `\def` in `macros.qmd`. These macros work across all output formats:
 
 | Description | Code | Output |
 |---|---|---|

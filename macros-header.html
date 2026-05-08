@@ -135,6 +135,13 @@
 
     window.MathJax.tex = window.MathJax.tex || {};
     window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros || {}, parsed);
+    window.MathJax.config = window.MathJax.config || {};
+    window.MathJax.config.tex = window.MathJax.config.tex || {};
+    window.MathJax.config.tex.macros = Object.assign(
+      {},
+      window.MathJax.config.tex.macros || {},
+      parsed
+    );
 
     window.MathJax.TeX = window.MathJax.TeX || {};
     window.MathJax.TeX.Macros = Object.assign({}, window.MathJax.TeX.Macros || {}, parsed);

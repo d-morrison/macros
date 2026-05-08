@@ -36,7 +36,7 @@ format:
   docx: default
 ```
 
-> **Note (HTML/RevealJS):** `macros-header.html` is a small loader script (not a second macro-definition file). It reads `macros.qmd`, converts macro definitions to a MathJax config object, and sets `MathJax.tex.macros` before typesetting. For RevealJS, it also forces the built-in Reveal math plugin to use MathJax 3. [View the RevealJS slides output](demo-include-in-header-slides.html).
+> **Note (HTML/RevealJS):** `macros-header.html` is a small loader script (not a second macro-definition file). It reads `macros.qmd`, converts macro definitions to a MathJax config object, and sets `MathJax.tex.macros` before typesetting. For RevealJS, it also forces the built-in Reveal math plugin to use MathJax 3. This requires `macros.qmd` to be published as a static resource in the site output. [View the RevealJS slides output](demo-include-in-header-slides.html).
 
 > **Note (PDF):** For PDF, `macros.qmd` can be included directly since its raw LaTeX goes into the document preamble.
 

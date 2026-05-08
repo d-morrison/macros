@@ -18,6 +18,17 @@ The `{{< include macros.qmd >}}` shortcode at the top of this file embeds the en
 
 > **Note (MathJax limitations):** [Quarto's MathJax integration](https://quarto.org/docs/authoring/markdown-basics.html#equations) supports `\def`, `\newcommand`, `\renewcommand`, `\newenvironment`, `\renewenvironment`, and `\let` — but **not** `\providecommand`. Since `macros.qmd` uses `\providecommand` for many definitions, those macros are silently ignored for HTML/RevealJS output. The example table below uses only `\def`-based macros, which render correctly in all formats.
 
+### Proof that `\providecommand` is ignored in HTML/RevealJS
+
+The macro `\floor` in `macros.qmd` is defined with `\providecommand`. Compare this with a `\def` macro:
+
+| Macro type | Code | Output |
+|---|---|---|
+| `\providecommand` macro (`\floor`) | `$\floor{1.2}$` | $\floor{1.2}$ |
+| `\def` macro (`\a`) | `$\a$` | $\a$ |
+
+In HTML/RevealJS, `\floor` remains unresolved while `\a` renders correctly, showing that `\providecommand` definitions are ignored by MathJax.
+
 > **Note (RevealJS blank slide):** Content placed before the first `##` heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a [known limitation](https://github.com/orgs/quarto-dev/discussions/8376) of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the [`include-in-header` strategy](demo-include-in-header.qmd) instead.
 
 ## Example math

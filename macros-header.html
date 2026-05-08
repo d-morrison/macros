@@ -928,7 +928,7 @@ window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros || {}, {
   "~": "\\approx"
 });
 window.MathJax.TeX = window.MathJax.TeX || {};
-window.MathJax.TeX.Macros = Object.assign({}, window.MathJax.TeX.Macros || {}, window.MathJax.tex.macros);
+window.MathJax.TeX.Macros = Object.assign({}, window.MathJax.TeX.Macros || {}, (window.MathJax.tex && window.MathJax.tex.macros) || {});
 if (window.MathJax.Hub && window.MathJax.Hub.Config) {
   window.MathJax.Hub.Config({ TeX: { Macros: window.MathJax.TeX.Macros } });
 }

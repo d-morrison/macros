@@ -52,7 +52,7 @@ git commit -m "Update macros submodule"
 
 There are two main strategies for loading these macros into Quarto output:
 
-- **`include-in-header`** (recommended for PDF and Quarto books): Inserts the macro file into the document header. For LaTeX/PDF, use `macros.qmd` — definitions go into the preamble and all macros work. For HTML/RevealJS, use `macros-header.html` (provided in this repo), which is a MathJax config script that defines macros via `MathJax.tex.macros`. Configure once in `_quarto.yml` to apply project-wide.
+- **`include-in-header`** (recommended for PDF and Quarto books): Inserts the macro file into the document header. For LaTeX/PDF, use `macros.qmd` — definitions go into the preamble and all macros work. For HTML/RevealJS, use `macros-header.html` (provided in this repo), which is a MathJax config script that defines macros for both MathJax v3 (`MathJax.tex.macros`) and MathJax v2 (`MathJax.TeX.Macros`). Configure once in `_quarto.yml` to apply project-wide.
 - **`include` shortcode** (convenient for single documents): Processes and embeds the macro file inline at the point of insertion. No YAML changes required, but must be added to each `.qmd` file individually.
 
 **Tip:** Using `\providecommand` instead of `\newcommand` in macro definitions avoids "already defined" errors when macros are included in multiple files (e.g., in a Quarto book where each chapter is a separate `.qmd`). The macros in this repository follow this convention.
@@ -88,7 +88,7 @@ format:
       - macros/macros-header.html
 ```
 
-> **Why two files?** For PDF, `macros.qmd` is inserted verbatim into the LaTeX preamble — the raw `\def`/`\providecommand` syntax is valid there. For HTML/RevealJS, `macros-header.html` sets `MathJax.tex.macros`, which MathJax reads before typesetting.
+> **Why two files?** For PDF, `macros.qmd` is inserted verbatim into the LaTeX preamble — the raw `\def`/`\providecommand` syntax is valid there. For HTML/RevealJS, `macros-header.html` sets macro config for both MathJax v3 and v2 before typesetting.
 
 #### Via the Quarto `include` shortcode
 
@@ -104,7 +104,7 @@ $$
 
 The `$$...$$` delimiters cause MathJax to process the macro definitions and make them available throughout the document. The outer `::: {.hidden}` div hides the block from view ([Quarto's recommended approach](https://quarto.org/docs/authoring/markdown-basics.html#equations) for defining custom TeX macros).
 
-> **Note for HTML output:** [Quarto's MathJax integration](https://quarto.org/docs/authoring/markdown-basics.html#equations) supports `\def`, `\newcommand`, `\renewcommand`, `\newenvironment`, `\renewenvironment`, and `\let` for custom macro definitions, but **not** `\providecommand`. Since `macros.qmd` uses `\providecommand`, this `include` shortcode approach may not work correctly for HTML output. The `include-in-header` strategy with `macros-header.html` avoids this by setting `MathJax.tex.macros` directly.
+> **Note for HTML output:** [Quarto's MathJax integration](https://quarto.org/docs/authoring/markdown-basics.html#equations) supports `\def`, `\newcommand`, `\renewcommand`, `\newenvironment`, `\renewenvironment`, and `\let` for custom macro definitions, but **not** `\providecommand`. Since `macros.qmd` uses `\providecommand`, this `include` shortcode approach may not work correctly for HTML output. The `include-in-header` strategy with `macros-header.html` avoids this by setting MathJax macro config directly.
 
 This approach is useful when you prefer to load macros at the document level without modifying YAML front matter or `_quarto.yml`.
 

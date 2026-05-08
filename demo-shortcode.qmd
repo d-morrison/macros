@@ -2,41 +2,27 @@
 title: "Demo: Loading Macros via include shortcode"
 format:
   html: default
+  pdf: default
   revealjs:
     output-file: demo-shortcode-slides.html
+  docx: default
 ---
+
+{{< include macros.qmd >}}
 
 This page demonstrates the [`include` shortcode](https://quarto.org/docs/authoring/includes.html) strategy for loading macros into a Quarto document.
 
-The include shortcode embeds the contents of another file inline at the point of insertion. To load LaTeX macro definitions, the shortcode is wrapped in a `$$...$$` math block inside a hidden div:
+The `{{< include macros.qmd >}}` shortcode at the top of this file embeds the entire contents of `macros.qmd` inline at that point. Since `macros.qmd` contains only raw LaTeX macro definitions (`\def`, `\providecommand`, etc.), Quarto passes them through as raw LaTeX for PDF output (where they become preamble-style definitions in the document body) and as math for HTML/RevealJS output (where they are processed by MathJax).
 
-````qmd
-::: {.hidden}
-$$
-{{< include macros/macros.qmd >}}
-$$
-:::
-````
+> **Note:** This demo uses `macros.qmd` directly (same directory). When using this repository as a submodule, use `macros/macros.qmd` instead.
 
-The `::: {.hidden}` div ([Quarto's recommended pattern](https://quarto.org/docs/authoring/markdown-basics.html#equations) for custom TeX macros) hides the block from the rendered page. The `$$...$$` delimiters cause Quarto's MathJax renderer to process the included content as LaTeX, registering all `\def`-based macro definitions globally for use throughout the document.
+> **Note (MathJax limitations):** [Quarto's MathJax integration](https://quarto.org/docs/authoring/markdown-basics.html#equations) supports `\def`, `\newcommand`, `\renewcommand`, `\newenvironment`, `\renewenvironment`, and `\let` — but **not** `\providecommand`. Since `macros.qmd` uses `\providecommand` for many definitions, those macros are silently ignored for HTML/RevealJS output. The example table below uses only `\def`-based macros, which render correctly in all formats.
 
-> **Note:** This demo places the include shortcode directly in the document (since `macros.qmd` is in the same directory). When using this repository as a submodule, the path would be `macros/macros.qmd`.
-
-> **Note (MathJax limitations):** [Quarto's MathJax integration](https://quarto.org/docs/authoring/markdown-basics.html#equations) supports `\def`, `\newcommand`, `\renewcommand`, `\newenvironment`, `\renewenvironment`, and `\let` — but **not** `\providecommand`. Since `macros.qmd` uses `\providecommand` for many definitions, those macros are silently ignored for HTML/RevealJS output. The example table below uses only `\def`-based macros, which render correctly.
-
-> **Note (PDF/docx):** This demo does not include PDF or docx output. The `$$...$$` wrapping causes LaTeX to interpret the included content as a display math equation rather than preamble definitions, so the shortcode approach does not work for PDF macro loading. Word documents do not support LaTeX/MathJax macros at all. Use the [`include-in-header` strategy](demo-include-in-header.qmd) for PDF output.
-
-> **Note (RevealJS blank slide):** The hidden include block below appears before the first section heading. In RevealJS output, content before the first `##` heading becomes a blank title slide. This is a [known limitation](https://github.com/orgs/quarto-dev/discussions/8376) of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the [`include-in-header` strategy](demo-include-in-header.qmd) instead.
-
-::: {.hidden}
-$$
-{{< include macros.qmd >}}
-$$
-:::
+> **Note (RevealJS blank slide):** Content placed before the first `##` heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a [known limitation](https://github.com/orgs/quarto-dev/discussions/8376) of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the [`include-in-header` strategy](demo-include-in-header.qmd) instead.
 
 ## Example math
 
-The table below uses macros defined with `\def` in `macros.qmd`, which work in HTML and RevealJS output:
+The table below uses macros defined with `\def` in `macros.qmd`, which work in all output formats:
 
 | Description | Code | Output |
 |---|---|---|

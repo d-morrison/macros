@@ -112,11 +112,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   function extractBraceContent(text, startIndex) {
     if (text[startIndex] !== "{") return null;
     let depth = 0;
+    const isEscaped = (index) => {
+      let backslashes = 0;
+      for (let j = index - 1; j >= 0 && text[j] === "\\"; j -= 1) backslashes += 1;
+      return backslashes % 2 === 1;
+    };
 
     for (let i = startIndex; i < text.length; i += 1) {
       const ch = text[i];
-      if (ch === "{" && text[i - 1] !== "\\") depth += 1;
-      if (ch === "}" && text[i - 1] !== "\\") {
+      if (ch === "{" && !isEscaped(i)) depth += 1;
+      if (ch === "}" && !isEscaped(i)) {
         depth -= 1;
         if (depth === 0) {
           return { content: text.slice(startIndex + 1, i), nextIndex: i + 1 };
@@ -133,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     let index = "\\def\\".length;
     let name = "";
 
-    while (index < line.length && !/\s|\{/.test(line[index])) {
+    while (index < line.length && !/[\s{]/.test(line[index])) {
       name += line[index];
       index += 1;
     }
@@ -196,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   async function loadMacroSource() {
     for (const path of macroSources) {
       try {
-        const response = await fetch(path, { cache: "no-cache" });
+        const response = await fetch(path, { cache: "default" });
         if (response.ok) return await response.text();
       } catch (_) {
         // try next path

@@ -159,7 +159,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example-math" id="toc-example-math" class="nav-link active" data-scroll-target="#example-math">Example math</a></li>
+  <li><a href="#proof-that-providecommand-is-ignored-in-htmlrevealjs" id="toc-proof-that-providecommand-is-ignored-in-htmlrevealjs" class="nav-link active" data-scroll-target="#proof-that-providecommand-is-ignored-in-htmlrevealjs">Proof that <code>\providecommand</code> is ignored in HTML/RevealJS</a></li>
+  <li><a href="#example-math" id="toc-example-math" class="nav-link" data-scroll-target="#example-math">Example math</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/macros/blob/main/demo-shortcode.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="demo-shortcode.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="demo-shortcode-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="demo-shortcode.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
@@ -186,19 +187,45 @@ window.Quarto = {
 
 
 <p>This page demonstrates the <a href="https://quarto.org/docs/authoring/includes.html"><code>include</code> shortcode</a> strategy for loading macros into a Quarto document.</p>
-<p>The <code>{{&lt; include macros.qmd &gt;}}</code> shortcode at the top of this file embeds the entire contents of <code>macros.qmd</code> inline at that point. Since <code>macros.qmd</code> contains only raw LaTeX macro definitions (<code>\def</code>, <code>\providecommand</code>, etc.), Quarto passes them through as raw LaTeX for PDF output (where they become preamble-style definitions in the document body) and as math for HTML/RevealJS output (where they are processed by MathJax).</p>
+<p>The <code>{{&lt; include macros.qmd &gt;}}</code> shortcode at the top of this file embeds the entire contents of <code>macros.qmd</code> inline at that point. Since <code>macros.qmd</code> contains only raw LaTeX macro definitions (<code>\def</code>, <code>\providecommand</code>, etc.), Quarto passes them through as raw LaTeX for PDF output (where they are processed inline in the document body as LaTeX commands) and as math for HTML/RevealJS output (where they are processed by MathJax).</p>
 <blockquote class="blockquote">
 <p><strong>Note:</strong> This demo uses <code>macros.qmd</code> directly (same directory). When using this repository as a submodule, use <code>macros/macros.qmd</code> instead.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Note (MathJax limitations):</strong> <a href="https://quarto.org/docs/authoring/markdown-basics.html#equations">Quarto’s MathJax integration</a> supports <code>\def</code>, <code>\newcommand</code>, <code>\renewcommand</code>, <code>\newenvironment</code>, <code>\renewenvironment</code>, and <code>\let</code> — but <strong>not</strong> <code>\providecommand</code>. Since <code>macros.qmd</code> uses <code>\providecommand</code> for many definitions, those macros are silently ignored for HTML/RevealJS output. The example table below uses only <code>\def</code>-based macros, which render correctly in all formats.</p>
 </blockquote>
+<section id="proof-that-providecommand-is-ignored-in-htmlrevealjs" class="level3">
+<h3 class="anchored" data-anchor-id="proof-that-providecommand-is-ignored-in-htmlrevealjs">Proof that <code>\providecommand</code> is ignored in HTML/RevealJS</h3>
+<p>The macro <code>\floor</code> in <code>macros.qmd</code> is defined with <code>\providecommand</code>. Compare this with a <code>\def</code> macro:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Macro type</th>
+<th>Code</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\providecommand</code> macro (<code>\floor</code>)</td>
+<td><code>$\floor{1.2}$</code></td>
+<td><span class="math inline">\(\mathopen{}\left\lfloor 1.2\right\rfloor\mathclose{}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\def</code> macro (<code>\a</code>)</td>
+<td><code>$\a$</code></td>
+<td><span class="math inline">\(\alpha\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In HTML/RevealJS, <code>\floor</code> remains unresolved while <code>\a</code> renders correctly, showing that <code>\providecommand</code> definitions are ignored by MathJax.</p>
 <blockquote class="blockquote">
 <p><strong>Note (RevealJS blank slide):</strong> Content placed before the first <code>##</code> heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a <a href="https://github.com/orgs/quarto-dev/discussions/8376">known limitation</a> of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the <a href="./demo-include-in-header.html"><code>include-in-header</code> strategy</a> instead.</p>
 </blockquote>
+</section>
 <section id="example-math" class="level2">
 <h2 class="anchored" data-anchor-id="example-math">Example math</h2>
-<p>The table below uses macros defined with <code>\def</code> in <code>macros.qmd</code>, which work in all output formats:</p>
+<p>The table below uses macros defined with <code>\def</code> in <code>macros.qmd</code>. These <code>\def</code>-based macros work across all output formats — note that <code>\providecommand</code>-based macros from <code>macros.qmd</code> are silently ignored for HTML/RevealJS as noted above:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">

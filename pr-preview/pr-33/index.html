@@ -143,6 +143,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Demo (include shortcode strategy)</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/d-morrison/macros"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
@@ -167,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#including-the-macros-in-a-quarto-document" id="toc-including-the-macros-in-a-quarto-document" class="nav-link" data-scroll-target="#including-the-macros-in-a-quarto-document">Including the macros in a Quarto document</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/macros/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -257,8 +264,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-before-body</span><span class="kw">:</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why <code>include-before-body</code> for RevealJS?</strong> RevealJS processes MathJax per-slide. Macro definitions must be in the <code>&lt;body&gt;</code> — before the RevealJS presentation container — to be registered globally before any slide math renders. <code>include-before-body</code> places the hidden div at the start of <code>&lt;body&gt;</code>, whereas <code>include-in-header</code> inserts into <code>&lt;head&gt;</code> where RevealJS’s MathJax may not pick up definitions reliably.</p>
+</blockquote>
 <blockquote class="blockquote">
 <p><strong>Why two files?</strong> For PDF, <code>macros.qmd</code> is inserted verbatim into the LaTeX preamble — the raw <code>\def</code>/<code>\providecommand</code> syntax is valid there. For HTML/RevealJS, the included file’s content appears in the page; MathJax only processes content inside <code>$$...$$</code> delimiters, so <code>macros-header.html</code> wraps the definitions in <code>&lt;div style="display:none"&gt;$$...$$&lt;/div&gt;</code>. See the <a href="./demo-include-in-header.html">Demo</a> for a working example.</p>
 </blockquote>
@@ -699,4 +709,4 @@ $$
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/d-morrison/macros/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

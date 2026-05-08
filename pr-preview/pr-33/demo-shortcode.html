@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -172,6 +137,13 @@ window.Quarto = {
 <span class="menu-text">Demo (include shortcode strategy)</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/d-morrison/macros"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
@@ -189,7 +161,7 @@ window.Quarto = {
   <ul>
   <li><a href="#example-math" id="toc-example-math" class="nav-link active" data-scroll-target="#example-math">Example math</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="demo-shortcode.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="demo-shortcode-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="demo-shortcode.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/macros/blob/main/demo-shortcode.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="demo-shortcode.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="demo-shortcode-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="demo-shortcode.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -213,16 +185,20 @@ window.Quarto = {
 </header>
 
 
-<p>This page demonstrates the include-shortcode strategy for loading macros. The YAML front matter of this file includes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> demo-shortcode-slides.html</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This page demonstrates the <a href="https://quarto.org/docs/authoring/includes.html"><code>include</code> shortcode</a> strategy for loading macros into a Quarto document.</p>
+<p>The <code>{{&lt; include macros.qmd &gt;}}</code> shortcode at the top of this file embeds the entire contents of <code>macros.qmd</code> inline at that point. Since <code>macros.qmd</code> contains only raw LaTeX macro definitions (<code>\def</code>, <code>\providecommand</code>, etc.), Quarto passes them through as raw LaTeX for PDF output (where they are processed inline in the document body as LaTeX commands) and as math for HTML/RevealJS output (where they are processed by MathJax).</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> This demo uses <code>macros.qmd</code> directly (same directory). When using this repository as a submodule, use <code>macros/macros.qmd</code> instead.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note (MathJax limitations):</strong> <a href="https://quarto.org/docs/authoring/markdown-basics.html#equations">Quarto’s MathJax integration</a> supports <code>\def</code>, <code>\newcommand</code>, <code>\renewcommand</code>, <code>\newenvironment</code>, <code>\renewenvironment</code>, and <code>\let</code> — but <strong>not</strong> <code>\providecommand</code>. Since <code>macros.qmd</code> uses <code>\providecommand</code> for many definitions, those macros are silently ignored for HTML/RevealJS output. The example table below uses only <code>\def</code>-based macros, which render correctly in all formats.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note (RevealJS blank slide):</strong> Content placed before the first <code>##</code> heading in RevealJS output becomes a blank title slide. Since the include shortcode is at the top of this file, RevealJS may show a blank slide before the first section. This is a <a href="https://github.com/orgs/quarto-dev/discussions/8376">known limitation</a> of the shortcode approach for RevealJS. For RevealJS without a blank slide, use the <a href="./demo-include-in-header.html"><code>include-in-header</code> strategy</a> instead.</p>
+</blockquote>
 <section id="example-math" class="level2">
 <h2 class="anchored" data-anchor-id="example-math">Example math</h2>
-<p>The table below uses macros defined with <code>\def</code> in <code>macros.qmd</code>, which work in all output formats that support MathJax or LaTeX:</p>
+<p>The table below uses macros defined with <code>\def</code> in <code>macros.qmd</code>. These <code>\def</code>-based macros work across all output formats — note that <code>\providecommand</code>-based macros from <code>macros.qmd</code> are silently ignored for HTML/RevealJS as noted above:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -699,4 +675,4 @@ window.Quarto = {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/d-morrison/macros/blob/main/demo-shortcode.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

@@ -608,6 +608,13 @@ window.Quarto = {
 <span class="menu-text">Demo (include shortcode strategy)</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/d-morrison/macros"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
@@ -625,7 +632,7 @@ window.Quarto = {
   <ul>
   <li><a href="#example-math" id="toc-example-math" class="nav-link active" data-scroll-target="#example-math">Example math</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="demo-include-in-header.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="demo-include-in-header-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="demo-include-in-header.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/macros/blob/main/demo-include-in-header.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="demo-include-in-header.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="demo-include-in-header-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="demo-include-in-header.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -649,7 +656,7 @@ window.Quarto = {
 </header>
 
 
-<p>This page demonstrates the <code>include-in-header</code> strategy for loading macros. The YAML front matter of this file includes:</p>
+<p>This page demonstrates the <code>include-in-header</code> (and <code>include-before-body</code>) strategy for loading macros. The YAML front matter of this file includes:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
@@ -659,14 +666,17 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros.qmd</span><span class="co">           # raw LaTeX goes directly into preamble</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> demo-include-in-header-slides.html</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # same as HTML</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-before-body</span><span class="kw">:</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # placed in &lt;body&gt; so MathJax processes it</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Note (HTML/RevealJS):</strong> For HTML and RevealJS output, <code>include-in-header</code> inserts content verbatim into the page. To load macros, the included file must wrap the definitions in <code>$$...$$</code> inside a hidden element so MathJax processes them. The file <code>macros-header.html</code> in this repository does exactly that — it wraps the content of <code>macros.qmd</code> in <code>&lt;div style="display:none"&gt;$$...$$&lt;/div&gt;</code>. For PDF, <code>macros.qmd</code> can be included directly since its raw LaTeX goes into the document preamble.</p>
+<p><strong>Note (HTML):</strong> For HTML output, <code>include-in-header</code> inserts content into the page <code>&lt;head&gt;</code>. The file <code>macros-header.html</code> wraps the macro definitions in <code>&lt;div style="display:none"&gt;$$...$$&lt;/div&gt;</code>, which the browser moves into the <code>&lt;body&gt;</code> and MathJax then processes.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p><strong>Note (revealjs <code>output-file</code>):</strong> RevealJS and HTML formats both produce <code>.html</code> output by default. When both are listed in a Quarto website document, <code>output-file</code> gives the RevealJS output a distinct filename so there is no conflict. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
+<p><strong>Note (RevealJS):</strong> For RevealJS, <code>include-before-body</code> is used instead of <code>include-in-header</code>. RevealJS processes MathJax per-slide, and macro definitions must be in the <code>&lt;body&gt;</code> — before the RevealJS presentation container — to be registered globally before any slide math is rendered. <code>include-before-body</code> places the hidden div at the very start of <code>&lt;body&gt;</code>. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note (PDF):</strong> For PDF, <code>macros.qmd</code> can be included directly since its raw LaTeX goes into the document preamble.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Note:</strong> This demo uses <code>macros-header.html</code> / <code>macros.qmd</code> because both files are at the root of this repository. When using this repository as a Git submodule (cloned into a <code>macros/</code> subdirectory), replace with <code>macros/macros-header.html</code> and <code>macros/macros.qmd</code>.</p>
@@ -680,12 +690,13 @@ window.Quarto = {
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-before-body</span><span class="kw">:</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This inserts the macro definitions into the document header for each output format:</p>
+<p>This inserts the macro definitions for each output format:</p>
 <ul>
-<li><strong>PDF</strong>: <code>macros.qmd</code> goes into the LaTeX preamble — all macros work, including <code>\providecommand</code>.</li>
-<li><strong>HTML/RevealJS</strong>: <code>macros-header.html</code> wraps the definitions in <code>$$...$$</code> so MathJax processes them — MathJax-supported commands (<code>\def</code>, <code>\newcommand</code>, <code>\renewcommand</code>, <code>\let</code>, environments) are recognized; <code>\providecommand</code> is silently ignored. The example table below uses only <code>\def</code>-based macros.</li>
+<li><strong>PDF</strong>: <code>macros.qmd</code> goes into the LaTeX preamble via <code>include-in-header</code> — all macros work, including <code>\providecommand</code>.</li>
+<li><strong>HTML</strong>: <code>macros-header.html</code> is inserted via <code>include-in-header</code> — the browser moves the <code>&lt;div&gt;</code> to the body and MathJax processes the <code>$$...$$</code> block. MathJax-supported commands (<code>\def</code>, <code>\newcommand</code>, <code>\renewcommand</code>, <code>\let</code>, environments) are recognized; <code>\providecommand</code> is silently ignored.</li>
+<li><strong>RevealJS</strong>: <code>macros-header.html</code> is inserted via <code>include-before-body</code> (not <code>include-in-header</code>) — this places the hidden div at the start of <code>&lt;body&gt;</code> where RevealJS’s MathJax will pick it up before rendering slides. The same MathJax limitations apply.</li>
 <li><strong>docx</strong>: Word documents do not use a LaTeX preamble or MathJax header, so <code>include-in-header</code> has no effect on math rendering for docx. The <code>docx: default</code> entry above produces docx output without macro support.</li>
 </ul>
 <section id="example-math" class="level2">
@@ -1167,4 +1178,4 @@ window.Quarto = {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/d-morrison/macros/blob/main/demo-include-in-header.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

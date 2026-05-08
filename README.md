@@ -52,7 +52,7 @@ git commit -m "Update macros submodule"
 
 There are two main strategies for loading these macros into Quarto output:
 
-- **`include-in-header`** (recommended for PDF and Quarto books): Inserts the macro file verbatim into the document header. For LaTeX/PDF output, definitions go into the preamble and all macros work. For HTML/RevealJS, MathJax processes the header, but only `\def`/`\newcommand` macros are recognized (not `\providecommand`). Configure once in `_quarto.yml` to apply project-wide.
+- **`include-in-header`** (recommended for PDF and Quarto books): Inserts the macro file verbatim into the document header. For LaTeX/PDF output, definitions go into the preamble and all macros work. For HTML/RevealJS, MathJax processes the header, but only MathJax-supported commands (`\def`, `\newcommand`, `\renewcommand`, `\let`, environments) are recognized — `\providecommand` is not. Configure once in `_quarto.yml` to apply project-wide.
 - **`include` shortcode** (convenient for single documents): Processes and embeds the macro file inline at the point of insertion. No YAML changes required, but must be added to each `.qmd` file individually.
 
 **Tip:** Using `\providecommand` instead of `\newcommand` in macro definitions avoids "already defined" errors when macros are included in multiple files (e.g., in a Quarto book where each chapter is a separate `.qmd`). The macros in this repository follow this convention.

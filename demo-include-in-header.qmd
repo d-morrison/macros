@@ -7,9 +7,6 @@ format:
   pdf:
     include-in-header:
       - macros.qmd
-  revealjs:
-    include-in-header:
-      - macros.qmd
   docx: default
 ---
 
@@ -23,11 +20,10 @@ format:
   pdf:
     include-in-header:
       - macros.qmd
-  revealjs:
-    include-in-header:
-      - macros.qmd
   docx: default
 ```
+
+> **Note:** `revealjs` is omitted from this demo page because a Quarto website page cannot simultaneously be a RevealJS presentation. To use `include-in-header` with RevealJS, add a `revealjs:` entry in a standalone `.qmd` file or in `_quarto.yml` (see the project-wide config below).
 
 > **Note:** This demo uses `macros.qmd` because `macros.qmd` is at the root of this repository. When using this repository as a Git submodule (cloned into a `macros/` subdirectory), replace `macros.qmd` with `macros/macros.qmd`.
 
@@ -49,7 +45,7 @@ format:
 This inserts `macros.qmd` verbatim into the document header for each output format:
 
 - **PDF**: definitions go into the LaTeX preamble — all macros work, including `\providecommand`.
-- **HTML/RevealJS**: MathJax processes the header — only `\def`/`\newcommand` macros are recognized; `\providecommand` macros are silently ignored. The example table below uses only `\def`-based macros.
+- **HTML/RevealJS**: MathJax processes the header — MathJax-supported commands (`\def`, `\newcommand`, `\renewcommand`, `\let`, environments) are recognized; `\providecommand` is silently ignored. The example table below uses only `\def`-based macros.
 - **docx**: Word documents do not use a LaTeX preamble or MathJax header, so `include-in-header` has no effect on math rendering for docx. The `docx: default` entry above produces docx output without macro support.
 
 ## Example math

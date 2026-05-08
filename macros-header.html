@@ -132,9 +132,15 @@
 
   function applyMacros(parsed) {
     window.MathJax = window.MathJax || {};
+    const skipTags = ["script", "noscript", "style", "textarea", "pre", "code"];
 
     window.MathJax.tex = window.MathJax.tex || {};
     window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros || {}, parsed);
+    window.MathJax.options = window.MathJax.options || {};
+    const existingSkipTags = Array.isArray(window.MathJax.options.skipHtmlTags)
+      ? window.MathJax.options.skipHtmlTags
+      : [];
+    window.MathJax.options.skipHtmlTags = Array.from(new Set([...existingSkipTags, ...skipTags]));
     window.MathJax.config = window.MathJax.config || {};
     window.MathJax.config.tex = window.MathJax.config.tex || {};
     window.MathJax.config.tex.macros = Object.assign(
@@ -147,7 +153,10 @@
     window.MathJax.TeX.Macros = Object.assign({}, window.MathJax.TeX.Macros || {}, parsed);
 
     if (window.MathJax.Hub && window.MathJax.Hub.Config) {
-      window.MathJax.Hub.Config({ TeX: { Macros: window.MathJax.TeX.Macros } });
+      window.MathJax.Hub.Config({
+        TeX: { Macros: window.MathJax.TeX.Macros },
+        tex2jax: { skipTags: skipTags },
+      });
     }
   }
 

@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         if (!commandStart.test(line)) continue;
         current = line;
       } else {
-        current += `\n${line}`;
+        current = `${current} ${line}`;
       }
 
       if (braceBalance(current) !== 0) continue;

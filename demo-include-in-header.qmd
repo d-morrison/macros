@@ -70,13 +70,13 @@ The table below uses macros defined with `\def` in `macros.qmd`, which work in a
 
 | Description | Code | Output |
 |---|---|---|
-| Greek: alpha | <code>&#36;&#92;a&#36;</code> | $\a$ |
-| Greek: beta | <code>&#36;&#92;b&#36;</code> | $\b$ |
-| Greek: gamma | <code>&#36;&#92;g&#36;</code> | $\g$ |
-| Greek: lambda | <code>&#36;&#92;l&#36;</code> | $\l$ |
-| Greek: sigma | <code>&#36;&#92;s&#36;</code> | $\s$ |
-| Log-likelihood | <code>&#36;&#92;llik&#36;</code> | $\llik$ |
-| Independent | <code>&#36;X &#92;ind Y&#36;</code> | $X \ind Y$ |
-| IID distributed | <code>&#36;X_i &#92;siid &#92;Normal(&#92;m, &#92;ss)&#36;</code> | $X_i \siid \Normal(\m, \ss)$ |
-| Vector: mu | <code>&#36;&#92;vm&#36;</code> | $\vm$ |
-| Hat beta | <code>&#36;&#92;hb&#36;</code> | $\hb$ |
+| Greek: alpha | `\a` | $\a$ |
+| Greek: beta | `\b` | $\b$ |
+| Greek: gamma | `\g` | $\g$ |
+| Greek: lambda | `\l` | $\l$ |
+| Greek: sigma | `\s` | $\s$ |
+| Log-likelihood | `\llik` | $\llik$ |
+| Independent | `X \ind Y` | $X \ind Y$ |
+| IID distributed | `X_i \siid \Normal(\m, \ss)` | $X_i \siid \Normal(\m, \ss)$ |
+| Vector: mu | `\vm` | $\vm$ |
+| Hat beta | `\hb` | $\hb$ |

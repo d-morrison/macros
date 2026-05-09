@@ -138,7 +138,7 @@
         if (!commandStart.test(line)) continue;
         current = line;
       } else {
-        current = `${current} ${line}`;
+        current += `\n${line}`;
       }
 
       if (braceBalance(current) !== 0) continue;

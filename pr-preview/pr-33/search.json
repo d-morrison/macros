@@ -46,7 +46,7 @@
     "href": "demo-include-in-header-slides.html#example-math",
     "title": "Demo: Loading Macros via include-in-header",
     "section": "Example math",
-    "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd, which work in all output formats that support MathJax or LaTeX:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n$\\a$\n\\(\\a\\)\n\n\nGreek: beta\n$\\b$\n\\(\\b\\)\n\n\nGreek: gamma\n$\\g$\n\\(\\g\\)\n\n\nGreek: lambda\n$\\l$\n\\(\\l\\)\n\n\nGreek: sigma\n$\\s$\n\\(\\s\\)\n\n\nLog-likelihood\n$\\llik$\n\\(\\llik\\)\n\n\nIndependent\n$X \\ind Y$\n\\(X \\ind Y\\)\n\n\nIID distributed\n$X_i \\siid \\Normal(\\m, \\ss)$\n\\(X_i \\siid \\Normal(\\m, \\ss)\\)\n\n\nVector: mu\n$\\vm$\n\\(\\vm\\)\n\n\nHat beta\n$\\hb$\n\\(\\hb\\)"
+    "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd, which work in all output formats that support MathJax or LaTeX:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n\\a\n\\(\\a\\)\n\n\nGreek: beta\n\\b\n\\(\\b\\)\n\n\nGreek: gamma\n\\g\n\\(\\g\\)\n\n\nGreek: lambda\n\\l\n\\(\\l\\)\n\n\nGreek: sigma\n\\s\n\\(\\s\\)\n\n\nLog-likelihood\n\\llik\n\\(\\llik\\)\n\n\nIndependent\nX \\ind Y\n\\(X \\ind Y\\)\n\n\nIID distributed\nX_i \\siid \\Normal(\\m, \\ss)\n\\(X_i \\siid \\Normal(\\m, \\ss)\\)\n\n\nVector: mu\n\\vm\n\\(\\vm\\)\n\n\nHat beta\n\\hb\n\\(\\hb\\)"
   },
   {
     "objectID": "demo-include-in-header.html",
@@ -60,7 +60,7 @@
     "href": "demo-include-in-header.html#example-math",
     "title": "Demo: Loading Macros via include-in-header",
     "section": "Example math",
-    "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd, which work in all output formats that support MathJax or LaTeX:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n$\\a$\n\\(\\a\\)\n\n\nGreek: beta\n$\\b$\n\\(\\b\\)\n\n\nGreek: gamma\n$\\g$\n\\(\\g\\)\n\n\nGreek: lambda\n$\\l$\n\\(\\l\\)\n\n\nGreek: sigma\n$\\s$\n\\(\\s\\)\n\n\nLog-likelihood\n$\\llik$\n\\(\\llik\\)\n\n\nIndependent\n$X \\ind Y$\n\\(X \\ind Y\\)\n\n\nIID distributed\n$X_i \\siid \\Normal(\\m, \\ss)$\n\\(X_i \\siid \\Normal(\\m, \\ss)\\)\n\n\nVector: mu\n$\\vm$\n\\(\\vm\\)\n\n\nHat beta\n$\\hb$\n\\(\\hb\\)"
+    "text": "Example math\nThe table below uses macros defined with \\def in macros.qmd, which work in all output formats that support MathJax or LaTeX:\n\n\n\n\n\n\n\n\nDescription\nCode\nOutput\n\n\n\n\nGreek: alpha\n\\a\n\\(\\a\\)\n\n\nGreek: beta\n\\b\n\\(\\b\\)\n\n\nGreek: gamma\n\\g\n\\(\\g\\)\n\n\nGreek: lambda\n\\l\n\\(\\l\\)\n\n\nGreek: sigma\n\\s\n\\(\\s\\)\n\n\nLog-likelihood\n\\llik\n\\(\\llik\\)\n\n\nIndependent\nX \\ind Y\n\\(X \\ind Y\\)\n\n\nIID distributed\nX_i \\siid \\Normal(\\m, \\ss)\n\\(X_i \\siid \\Normal(\\m, \\ss)\\)\n\n\nVector: mu\n\\vm\n\\(\\vm\\)\n\n\nHat beta\n\\hb\n\\(\\hb\\)"
   },
   {
     "objectID": "index.html",

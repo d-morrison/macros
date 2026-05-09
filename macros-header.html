@@ -109,16 +109,20 @@
 
     function braceBalance(text) {
       let balance = 0;
-      const isEscaped = (index) => {
-        let backslashes = 0;
-        for (let j = index - 1; j >= 0 && text[j] === "\\"; j -= 1) backslashes += 1;
-        return backslashes % 2 === 1;
-      };
+      let backslashes = 0;
 
       for (let i = 0; i < text.length; i += 1) {
         const ch = text[i];
-        if (ch === "{" && !isEscaped(i)) balance += 1;
-        if (ch === "}" && !isEscaped(i)) balance -= 1;
+        if (ch === "\\") {
+          backslashes += 1;
+          continue;
+        }
+
+        const escaped = backslashes % 2 === 1;
+        backslashes = 0;
+
+        if (ch === "{" && !escaped) balance += 1;
+        if (ch === "}" && !escaped) balance -= 1;
       }
 
       return balance;

@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       let balance = 0;
       let backslashes = 0;
 
-      for (let i = 0; i < text.length; i += 1) {
+      for (let i = 0; i < text.length; i++) {
         const ch = text[i];
         if (ch === "\\") {
           backslashes += 1;
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         if (!commandStart.test(line)) continue;
         current = line;
       } else {
-        current = `${current} ${line}`;
+        current += `\n${line}`;
       }
 
       if (braceBalance(current) !== 0) continue;

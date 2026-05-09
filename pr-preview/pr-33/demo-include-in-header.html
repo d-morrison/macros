@@ -241,14 +241,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       const line = rawLine.trim();
       if (!line || line.startsWith("%") || line.startsWith("<!--")) continue;
 
-      if (!current) {
-        if (!commandStart.test(line)) continue;
-        current = line;
+      if (current || commandStart.test(line)) {
+        current = current ? `${current}\n${line}` : line;
       } else {
-        current = `${current} ${line}`;
+        continue;
       }
 
-      if (braceBalance(current) !== 0) continue;
+      const balance = braceBalance(current);
+      if (balance < 0) {
+        current = "";
+        continue;
+      }
+      if (balance !== 0) continue;
 
       if (parseDef(current, macros)) {
         current = "";

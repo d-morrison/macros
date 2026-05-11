@@ -366,6 +366,8 @@ name	interpretation
 \prodin	product over i from 1 to n
 \prodi1n	product over i from 1 to n (alias)
 \lp	linear predictor x′β
+\lpdp	linear predictor at x (dot product x⃗·β⃗)
+\lincomp	linear combination symbol η
 \odds	odds symbol ω
 \OR	odds ratio label OR
 \ror	ratio of odds (odds ratio) θ

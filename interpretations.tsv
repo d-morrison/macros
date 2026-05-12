@@ -392,6 +392,7 @@ name	interpretation
 \doddsinvf	derivative of inverse odds function
 \dinvoddsf	derivative of inverse odds (alias)
 \rate	rate / hazard symbol λ
+\lograte	log-rate symbol η
 \haz	hazard function symbol λ (alias for \rate)
 \hazratio	hazard ratio symbol θ
 \hr	hazard ratio (alias for \hazratio)

@@ -67,6 +67,9 @@ name	interpretation
 \l	Greek letter lambda (λ)
 \gl	Greek letter lambda (alias for \l)
 \lam	Greek letter lambda (alias for \l)
+\k	Greek letter kappa (κ)
+\cs	conditional survival probability Pr(T>t|T≥t)
+\condsurv	conditional survival probability (alias for \cs)
 \gs	Greek letter sigma (alias for \s)
 \gm	Greek letter mu (alias for \m)
 \M	uppercase M symbol (italic variable, alias for mean/moment)
@@ -79,6 +82,8 @@ name	interpretation
 \defeq	equals-by-definition (alias for \eqdef)
 \hb	estimated beta coefficient β̂
 \hvb	estimated beta vector (β̂-vector)
+\hk	estimated kappa κ̂
+\hkappa	estimated kappa (alias for \hk)
 \hl	estimated lambda λ̂
 \hy	fitted / predicted value ŷ
 \yh	fitted value ŷ (alias for \hy)
@@ -392,6 +397,7 @@ name	interpretation
 \doddsinvf	derivative of inverse odds function
 \dinvoddsf	derivative of inverse odds (alias)
 \rate	rate / hazard symbol λ
+\lograte	log-rate symbol η
 \haz	hazard function symbol λ (alias for \rate)
 \hazratio	hazard ratio symbol θ
 \hr	hazard ratio (alias for \hazratio)

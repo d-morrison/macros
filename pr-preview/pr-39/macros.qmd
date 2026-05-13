@@ -67,6 +67,8 @@
 \def\gl{\lambda}
 \def\lam{\lambda}
 \def\k{\kappa}
+\def\cs{\kappa}
+\def\condsurv{\kappa}
 \def\gs{\sigma}
 \def\gm{\mu}
 \def\M{M}

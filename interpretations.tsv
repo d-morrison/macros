@@ -68,6 +68,8 @@ name	interpretation
 \gl	Greek letter lambda (alias for \l)
 \lam	Greek letter lambda (alias for \l)
 \k	Greek letter kappa (κ)
+\cs	conditional survival probability Pr(T>t|T≥t)
+\condsurv	conditional survival probability (alias for \cs)
 \gs	Greek letter sigma (alias for \s)
 \gm	Greek letter mu (alias for \m)
 \M	uppercase M symbol (italic variable, alias for mean/moment)

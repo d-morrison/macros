@@ -66,6 +66,9 @@
 \def\l{\lambda}
 \def\gl{\lambda}
 \def\lam{\lambda}
+\def\k{\kappa}
+\def\cs{\kappa}
+\def\condsurv{\kappa}
 \def\gs{\sigma}
 \def\gm{\mu}
 \def\M{M}
@@ -78,6 +81,8 @@
 \def\defeq{\stackrel{\text{def}}{=}}
 \def\hb{\hat \beta}
 \def\hvb{\hat{\vb}}
+\def\hk{\hat \kappa}
+\def\hkappa{\hat \kappa}
 \def\hl{\hat \lambda}
 \def\hy{\hat y}
 \def\yh{\hat y}
@@ -390,6 +395,7 @@
 \providecommand{\doddsinvf}[1]{{\oddsinv}'\cb{#1}}
 \providecommand{\dinvoddsf}[1]{{\invodds}'\cb{#1}}
 \def\rate{{\lambda}}
+\def\lograte{\lincomp}
 \def\haz{{\lambda}}
 \def\hazratio{\theta}
 \def\hr{\theta}

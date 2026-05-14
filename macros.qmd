@@ -391,6 +391,7 @@
 \providecommand{\dinvoddsf}[1]{{\invodds}'\cb{#1}}
 \def\rate{{\lambda}}
 \def\haz{{\lambda}}
+\def\cs{{\kappa}}
 \def\hazratio{\theta}
 \def\hr{\theta}
 \providecommand{\hrf}[1]{\theta\paren{#1}}

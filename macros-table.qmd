@@ -111,6 +111,33 @@ parse_macros <- function(file_path = "macros.qmd") {
 }
 
 macros <- parse_macros("macros.qmd")
+macro_order <- macros$name  # save original order before merge() reorders
+
+# Join plain-text interpretations from the companion TSV
+interp <- read.delim(
+  "interpretations.tsv",
+  sep          = "\t",
+  header       = TRUE,
+  stringsAsFactors = FALSE,
+  quote        = "",
+  comment.char = "",
+  fileEncoding = "UTF-8"
+)
+macros <- merge(macros, interp, by = "name", all.x = TRUE)
+missing_interpretations <- is.na(macros$interpretation)
+if (any(missing_interpretations)) {
+  missing_names <- sort(unique(macros$name[missing_interpretations]))
+  stop(
+    paste(
+      "Missing interpretation entries in interpretations.tsv for:",
+      paste(missing_names, collapse = ", ")
+    ),
+    call. = FALSE
+  )
+}
+
+# Restore the original row order (merge() sorts by the key column)
+macros <- macros[order(match(macros$name, macro_order)), ]
 
 # Build example usage strings based on argument count.
 # 0-arg macros: \name  |  n-arg macros: \name{x}{y}...
@@ -141,10 +168,10 @@ macros$example_rendered <- paste0("\\(", example_call, "\\)")
 #| echo: false
 
 DT::datatable(
-  macros[, c("name", "args", "definition", "example_source", "example_rendered")],
-  colnames  = c("Macro", "# Args", "Definition", "Example Source", "Example"),
+  macros[, c("name", "args", "interpretation", "example_source", "example_rendered", "definition")],
+  colnames  = c("Macro", "# Args", "Interpretation", "Example Source", "Example", "Definition"),
   rownames  = FALSE,
-  escape    = FALSE,
+  escape    = 3,
   filter    = "top",
   options   = list(
     pageLength = 25,

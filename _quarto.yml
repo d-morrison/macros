@@ -1,14 +1,25 @@
 project:
   type: website
+  resources:
+    - macros.qmd
 
 website:
   title: "macros"
+  repo-url: https://github.com/d-morrison/macros
+  repo-actions: [source]
   navbar:
     left:
       - href: index.qmd
         text: Home
       - href: macros-table.qmd
         text: Macro Reference
+      - href: demo-include-in-header.qmd
+        text: Demo (include in header strategy)
+      - href: demo-shortcode.qmd
+        text: Demo (include shortcode strategy)
+    right:
+      - icon: github
+        href: https://github.com/d-morrison/macros
 
 format:
   html:

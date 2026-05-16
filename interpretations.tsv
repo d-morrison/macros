@@ -385,6 +385,7 @@ name	interpretation
 \probst	probs operator label
 \probt	prob operator label
 \riskt	risk operator label
+\logoddst	log-odds text label
 \prob	probability symbol π
 \probs	probability symbol (alias for \prob)
 \probit	probit link function

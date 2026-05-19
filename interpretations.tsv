@@ -175,10 +175,13 @@ name	interpretation
 \dderiv	second partial derivative ∂²/∂(·)²
 \derivf	partial derivative ∂f/∂x with numerator
 \derivff	partial derivative ∂f/∂x (reversed argument order)
+\derivfnd	alias for \derivf (numerator first, denominator second)
+\derivfdn	alias for \derivff (denominator first, numerator second)
 \dderivf	second partial derivative ∂²f/∂x²
 \xderiv	cross partial derivative ∂²/∂x∂y
 \xderivf	cross partial ∂²f/∂x∂y with numerator
 \xderivff	cross partial (reversed argument order)
+\dif	total derivative fraction dF/dt (numerator first, denominator second)
 \red	typeset argument in red
 \green	typeset argument in green
 \blue	typeset argument in blue

@@ -173,6 +173,8 @@
 \providecommand{\dderiv}[1]{\frac{\partial^2}{\partial #1^2}}
 \providecommand{\derivf}[2]{\frac{\partial #1}{\partial #2}}
 \providecommand{\derivff}[2]{\frac{\partial #2}{\partial #1}}
+\providecommand{\derivfnd}[2]{\frac{\partial #1}{\partial #2}}
+\providecommand{\derivfdn}[2]{\frac{\partial #2}{\partial #1}}
 \providecommand{\dderivf}[2]{\frac{\partial^2 #1}{\partial #2^2}}
 \providecommand{\xderiv}[2]{\frac{\partial^2}{\partial #1 \partial #2}}
 \providecommand{\xderivf}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}

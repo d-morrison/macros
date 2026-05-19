@@ -383,6 +383,7 @@
 \def\probst{\operatorname{probs}}
 \def\probt{\operatorname{prob}}
 \def\riskt{\operatorname{risk}}
+\def\logoddst{\text{log-odds}}
 \def\prob{\pi}
 \def\probs{\pi}
 \def\probit{\operatorname{probit}}

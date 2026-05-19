@@ -175,8 +175,8 @@ name	interpretation
 \dderiv	second partial derivative ∂²/∂(·)²
 \derivf	partial derivative ∂f/∂x with numerator
 \derivff	partial derivative ∂f/∂x (reversed argument order)
-\derivfnd	partial derivative ∂f/∂x (numerator first, denominator second)
-\derivfdn	partial derivative ∂f/∂x (denominator first, numerator second)
+\derivfnd	alias for \derivf (numerator first, denominator second)
+\derivfdn	alias for \derivff (denominator first, numerator second)
 \dderivf	second partial derivative ∂²f/∂x²
 \xderiv	cross partial derivative ∂²/∂x∂y
 \xderivf	cross partial ∂²f/∂x∂y with numerator

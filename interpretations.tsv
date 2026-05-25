@@ -29,6 +29,14 @@ name	interpretation
 \survf	survival function applied to argument (alias for \Sf)
 \riskset	risk set symbol ℛ (survival analysis)
 \risksetf	risk set at time t: ℛ(t)
+\Q	quantile function symbol Q
+\quantile	quantile function symbol (alias for \Q)
+\Qf	quantile function Q(·) applied to argument
+\quantilef	quantile function applied to argument (alias for \Qf)
+\hQ	estimated quantile function Q̂
+\hquantile	estimated quantile function (alias for \hQ)
+\hQf	estimated quantile function Q̂(·) applied to argument
+\hquantilef	estimated quantile function applied to argument (alias for \hQf)
 \ph	estimated probability p-hat
 \P	probability operator P
 \hp	estimated probability (alias for \ph)

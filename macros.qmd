@@ -26,6 +26,8 @@
 \providecommand{\Sf}[1]{\S\paren{#1}}
 \def\surv{\distop{S}}
 \providecommand{\survf}[1]{\surv\paren{#1}}
+\def\riskset{\mathcal{R}}
+\providecommand{\risksetf}[1]{\riskset\paren{#1}}
 \def\ph{\mathop{\hat{\p}}\nolimits}
 \def\P{\distop{P}}
 \def\hp{\mathop{\hat{\p}}\nolimits}

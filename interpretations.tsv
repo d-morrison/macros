@@ -27,6 +27,8 @@ name	interpretation
 \Sf	survival function S(·) applied to argument
 \surv	survival function symbol (alias for \S)
 \survf	survival function applied to argument (alias for \Sf)
+\riskset	risk set symbol ℛ (survival analysis)
+\risksetf	risk set at time t: ℛ(t)
 \ph	estimated probability p-hat
 \P	probability operator P
 \hp	estimated probability (alias for \ph)

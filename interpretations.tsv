@@ -438,3 +438,5 @@ name	interpretation
 \signt	sign operator symbol
 \signf	sign function sign{·}
 \reals	real numbers ℝ
+\riskset	risk set symbol ℛ (survival analysis)
+\risksetf	risk set function ℛ(·) applied to time argument

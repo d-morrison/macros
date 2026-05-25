@@ -441,3 +441,5 @@
 \def\stdresid{r'}
 \def\modresid{r^*}
 \providecommand{\residv}{\vec{r}}
+\def\riskset{\mathcal{R}}
+\providecommand{\risksetf}[1]{\riskset\paren{#1}}

@@ -28,6 +28,14 @@
 \providecommand{\survf}[1]{\surv\paren{#1}}
 \def\riskset{\mathcal{R}}
 \providecommand{\risksetf}[1]{\riskset\paren{#1}}
+\def\Q{\distop{Q}}
+\def\quantile{\distop{Q}}
+\providecommand{\Qf}[1]{\Q\paren{#1}}
+\providecommand{\quantilef}[1]{\quantile\paren{#1}}
+\def\hQ{\mathop{\hat{\Q}}\nolimits}
+\def\hquantile{\mathop{\hat{\quantile}}\nolimits}
+\providecommand{\hQf}[1]{\hQ\paren{#1}}
+\providecommand{\hquantilef}[1]{\hquantile\paren{#1}}
 \def\ph{\mathop{\hat{\p}}\nolimits}
 \def\P{\distop{P}}
 \def\hp{\mathop{\hat{\p}}\nolimits}

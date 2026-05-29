@@ -388,6 +388,7 @@ name	interpretation
 \lincomp	linear combination symbol η
 \odds	odds symbol ω
 \OR	odds ratio label OR
+\ratio	generic ratio symbol θ (base for \ror, \hr, and similar ratio macros)
 \ror	ratio of odds (odds ratio) θ
 \logodds	log-odds symbol η
 \logoddsf	log-odds function η(·)

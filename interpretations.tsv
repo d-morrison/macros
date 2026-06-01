@@ -421,6 +421,8 @@ name	interpretation
 \hazratio	hazard ratio symbol θ
 \hr	hazard ratio (alias for \hazratio)
 \hrf	hazard ratio function θ(·)
+\rr	rate/risk ratio θ
+\rrf	rate/risk ratio function θ(·)
 \loghaz	log-hazard symbol η
 \diffloghaz	difference in log-hazard Δη
 \cuhaz	cumulative hazard symbol Λ

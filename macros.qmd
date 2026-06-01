@@ -458,42 +458,36 @@
 \providecommand{\cuhazratiof}[1]{\cuhazratio\paren{#1}}
 \def\rcuhazf{\cuhazratiof}
 \def\cuhazrf{\cuhazratiof}
-<!-- Multiplicative "factors": one covariate pattern vs. the baseline pattern. -->
-<!-- Distinct from ratios (\ror, \hazratio, ...), which compare two explicit patterns. -->
-<!-- Factors currently share the base symbol \theta with ratios and render identically; -->
-<!-- per d-morrison/macros#56 the ratio base will move to koppa while factors keep \theta, -->
-<!-- so tracking them as separate macros now lets that switch happen in one place. -->
 \def\factor{\theta}
 \providecommand{\factorf}[1]{\factor\paren{#1}}
 \def\oddsfactor{\factor_{\odds}}
 \providecommand{\oddsfactorf}[1]{\oddsfactor\paren{#1}}
 \def\fodds{\oddsfactor}
-\providecommand{\foddsf}[1]{\oddsfactor\paren{#1}}
+\def\foddsf{\oddsfactorf}
 \def\hazfactor{\factor_{\haz}}
 \providecommand{\hazfactorf}[1]{\hazfactor\paren{#1}}
 \def\fhaz{\hazfactor}
-\providecommand{\fhazf}[1]{\hazfactor\paren{#1}}
+\def\fhazf{\hazfactorf}
 \def\ratefactor{\factor_{\rate}}
 \providecommand{\ratefactorf}[1]{\ratefactor\paren{#1}}
 \def\frate{\ratefactor}
-\providecommand{\fratef}[1]{\ratefactor\paren{#1}}
+\def\fratef{\ratefactorf}
 \def\riskfactor{\factor_{\risk}}
 \providecommand{\riskfactorf}[1]{\riskfactor\paren{#1}}
 \def\frisk{\riskfactor}
-\providecommand{\friskf}[1]{\riskfactor\paren{#1}}
+\def\friskf{\riskfactorf}
 \def\prevfactor{\factor_{\prev}}
 \providecommand{\prevfactorf}[1]{\prevfactor\paren{#1}}
 \def\fprev{\prevfactor}
-\providecommand{\fprevf}[1]{\prevfactor\paren{#1}}
+\def\fprevf{\prevfactorf}
 \def\cuhazfactor{\factor_{\cuhaz}}
 \providecommand{\cuhazfactorf}[1]{\cuhazfactor\paren{#1}}
 \def\fcuhaz{\cuhazfactor}
-\providecommand{\fcuhazf}[1]{\cuhazfactor\paren{#1}}
+\def\fcuhazf{\cuhazfactorf}
 \def\survfactor{\factor_{\surv}}
 \providecommand{\survfactorf}[1]{\survfactor\paren{#1}}
 \def\fsurv{\survfactor}
-\providecommand{\fsurvf}[1]{\survfactor\paren{#1}}
-<!-- "ff" shorthands for the factor function forms (\hazff = \hazfactorf, etc.). -->
+\def\fsurvf{\survfactorf}
 \def\ff{\factorf}
 \def\oddsff{\oddsfactorf}
 \def\hazff{\hazfactorf}

@@ -419,6 +419,8 @@
 \def\hazratio{\ratio}
 \def\hr{\ratio}
 \providecommand{\hrf}[1]{\ratio\paren{#1}}
+\def\rr{\ratio}
+\providecommand{\rrf}[1]{\ratio\paren{#1}}
 \def\loghaz{\lincomp}
 \def\diffloghaz{\diff \loghaz}
 \def\cuhaz{{\Lambda}}

@@ -430,9 +430,9 @@
 \providecommand{\riskratiof}[1]{\riskratio\paren{#1}}
 \def\rriskf{\riskratiof}
 \def\prevratio{\ratio_{\prev}}
-\def\pr{\prevratio}
+\def\prr{\prevratio}
 \providecommand{\prevratiof}[1]{\prevratio\paren{#1}}
-\def\prf{\prevratiof}
+\def\prrf{\prevratiof}
 \def\loghaz{\lincomp}
 \def\diffloghaz{\diff \loghaz}
 \def\cuhaz{{\Lambda}}

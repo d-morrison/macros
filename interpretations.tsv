@@ -432,9 +432,9 @@ name	interpretation
 \riskratiof	risk ratio function θ_π(·)
 \rriskf	risk ratio function (alias for \riskratiof)
 \prevratio	prevalence ratio θ_π (ratio symbol with prevalence subscript)
-\pr	prevalence ratio (alias for \prevratio)
+\prr	prevalence ratio (alias for \prevratio)
 \prevratiof	prevalence ratio function θ_π(·)
-\prf	prevalence ratio function (alias for \prevratiof)
+\prrf	prevalence ratio function (alias for \prevratiof)
 \loghaz	log-hazard symbol η
 \diffloghaz	difference in log-hazard Δη
 \cuhaz	cumulative hazard symbol Λ

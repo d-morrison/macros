@@ -342,6 +342,8 @@
 \def\vX{\vecf{X}}
 \def\vy{\vecf{y}}
 \def\vY{\vecf{Y}}
+\def\vz{\vecf{z}}
+\def\vZ{\vecf{Z}}
 \def\vD{\vecf{D}}
 \def\vd{\vecf{d}}
 \def\vT{\vecf{T}}
@@ -361,6 +363,7 @@
 \def\Xx1n{X_1=x_1, \ldots, X_n = x_n}
 \providecommand{\dprod}[2]{#1 \cdot #2}
 \def\dprodf{\dprod}
+\def\dpf{\dprodf}
 \providecommand{\tprod}[2]{\tp{#1} #2}
 \def\tprodf{\tprod}
 \providecommand{\iprod}[2]{\left\langle #1, #2 \right\rangle}
@@ -451,4 +454,6 @@
 \def\resid{r}
 \def\stdresid{r'}
 \def\modresid{r^*}
+\def\ub{\underbrace}
+\providecommand{\ubf}[2]{\ub{#1}_{#2}}
 \providecommand{\residv}{\vec{r}}

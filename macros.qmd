@@ -390,6 +390,7 @@
 \def\odds{\omega}
 \def\OR{\operatorname{OR}}
 \def\ratio{\theta}
+\providecommand{\ratiof}[1]{\ratio\paren{#1}}
 \def\ror{\ratio_{\odds}}
 \providecommand{\orf}[1]{\ror\paren{#1}}
 \def\logodds{\lincomp}

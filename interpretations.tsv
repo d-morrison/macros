@@ -344,6 +344,8 @@ name	interpretation
 \vX	random vector X (X̃)
 \vy	outcome vector y (ỹ)
 \vY	uppercase outcome vector Y (Ỹ)
+\vz	vector z (z̃)
+\vZ	random vector Z (Z̃)
 \vD	exposure/treatment vector D (D̃)
 \vd	exposure vector d lowercase (d̃)
 \vT	time vector T (T̃)
@@ -448,3 +450,5 @@ name	interpretation
 \signt	sign operator symbol
 \signf	sign function sign{·}
 \reals	real numbers ℝ
+\ub	underbrace shorthand (alias for \underbrace)
+\ubf	underbrace with subscript label \underbrace{·}_{label}

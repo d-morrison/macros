@@ -363,6 +363,7 @@
 \def\Xx1n{X_1=x_1, \ldots, X_n = x_n}
 \providecommand{\dprod}[2]{#1 \cdot #2}
 \def\dprodf{\dprod}
+\def\dpf{\dprodf}
 \providecommand{\tprod}[2]{\tp{#1} #2}
 \def\tprodf{\tprod}
 \providecommand{\iprod}[2]{\left\langle #1, #2 \right\rangle}

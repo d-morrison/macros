@@ -393,6 +393,7 @@ name	interpretation
 \OR	odds ratio label OR
 \ratio	generic ratio symbol θ (base for \ror, \hr, and similar ratio macros)
 \ror	ratio of odds (odds ratio) θ
+\orf	odds ratio function θ(·)
 \logodds	log-odds symbol η
 \logoddsf	log-odds function η(·)
 \difflogodds	difference in log-odds Δη

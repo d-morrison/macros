@@ -27,6 +27,12 @@ name	interpretation
 \Sf	survival function S(·) applied to argument
 \surv	survival function symbol (alias for \S)
 \survf	survival function applied to argument (alias for \Sf)
+\survratio	survival ratio θ_S (ratio symbol with survival subscript)
+\rsurv	survival ratio (alias for \survratio)
+\survr	survival ratio (alias for \survratio)
+\survratiof	survival ratio function θ_S(·)
+\rsurvf	survival ratio function (alias for \survratiof)
+\survrf	survival ratio function (alias for \survratiof)
 \riskset	risk set symbol ℛ (survival analysis)
 \risksetf	risk set at time t: ℛ(t)
 \Q	quantile function symbol Q
@@ -391,7 +397,10 @@ name	interpretation
 \lincomp	linear combination symbol η
 \odds	odds symbol ω
 \OR	odds ratio label OR
-\ror	ratio of odds (odds ratio) θ
+\ratio	generic ratio symbol θ (base for \ror, \hr, and similar ratio macros; subscript denotes the ratio type)
+\ratiof	generic ratio function θ(·)
+\ror	odds ratio θ_ω (ratio symbol with odds subscript)
+\orf	odds ratio function θ_ω(·)
 \logodds	log-odds symbol η
 \logoddsf	log-odds function η(·)
 \difflogodds	difference in log-odds Δη
@@ -404,6 +413,8 @@ name	interpretation
 \logoddst	log-odds text label
 \prob	probability symbol π
 \probs	probability symbol (alias for \prob)
+\risk	risk symbol π (used as the subscript for \riskratio)
+\prev	prevalence symbol π (used as the subscript for \prevratio)
 \probit	probit link function
 \oddsf	odds function odds{·}
 \doddsf	derivative of odds function odds′{·}
@@ -416,13 +427,39 @@ name	interpretation
 \rate	rate / hazard symbol λ
 \lograte	log-rate symbol η
 \haz	hazard function symbol λ (alias for \rate)
-\hazratio	hazard ratio symbol θ
+\hazratio	hazard ratio θ_λ (ratio symbol with hazard subscript)
 \hr	hazard ratio (alias for \hazratio)
-\hrf	hazard ratio function θ(·)
+\rhaz	hazard ratio (alias for \hazratio)
+\hazr	hazard ratio (alias for \hazratio)
+\hrf	hazard ratio function θ_λ(·)
+\rhazf	hazard ratio function (alias for \hrf)
+\hazrf	hazard ratio function (alias for \hrf)
+\rateratio	rate ratio θ_λ (ratio symbol with rate subscript)
+\rater	rate ratio (alias for \rateratio)
+\rrate	rate ratio (alias for \rateratio)
+\rateratiof	rate ratio function θ_λ(·)
+\raterf	rate ratio function (alias for \rateratiof)
+\rratef	rate ratio function (alias for \rateratiof)
+\riskratio	risk ratio θ_π (ratio symbol with risk subscript)
+\rrisk	risk ratio (alias for \riskratio)
+\riskr	risk ratio (alias for \riskratio)
+\riskratiof	risk ratio function θ_π(·)
+\rriskf	risk ratio function (alias for \riskratiof)
+\riskrf	risk ratio function (alias for \riskratiof)
+\prevratio	prevalence ratio θ_π (ratio symbol with prevalence subscript)
+\prr	prevalence ratio (alias for \prevratio)
+\prevratiof	prevalence ratio function θ_π(·)
+\prrf	prevalence ratio function (alias for \prevratiof)
 \loghaz	log-hazard symbol η
 \diffloghaz	difference in log-hazard Δη
 \cuhaz	cumulative hazard symbol Λ
 \cumhaz	cumulative hazard (alias for \cuhaz)
+\cuhazratio	cumulative hazard ratio θ_Λ (ratio symbol with cumulative-hazard subscript)
+\rcuhaz	cumulative hazard ratio (alias for \cuhazratio)
+\cuhazr	cumulative hazard ratio (alias for \cuhazratio)
+\cuhazratiof	cumulative hazard ratio function θ_Λ(·)
+\rcuhazf	cumulative hazard ratio function (alias for \cuhazratiof)
+\cuhazrf	cumulative hazard ratio function (alias for \cuhazratiof)
 \Surv	survival function (alias for \surv)
 \incidence	incidence rate (average hazard)
 \phaz	expected hazard E[λ] (Poisson hazard)

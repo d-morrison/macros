@@ -26,6 +26,12 @@
 \providecommand{\Sf}[1]{\S\paren{#1}}
 \def\surv{\distop{S}}
 \providecommand{\survf}[1]{\surv\paren{#1}}
+\def\survratio{\ratio_{\surv}}
+\def\rsurv{\survratio}
+\def\survr{\survratio}
+\providecommand{\survratiof}[1]{\survratio\paren{#1}}
+\def\rsurvf{\survratiof}
+\def\survrf{\survratiof}
 \def\riskset{\mathcal{R}}
 \providecommand{\risksetf}[1]{\riskset\paren{#1}}
 \def\Q{\distop{Q}}
@@ -389,7 +395,10 @@
 \def\lincomp{\eta}
 \def\odds{\omega}
 \def\OR{\operatorname{OR}}
-\def\ror{\theta}
+\def\ratio{\theta}
+\providecommand{\ratiof}[1]{\ratio\paren{#1}}
+\def\ror{\ratio_{\odds}}
+\providecommand{\orf}[1]{\ror\paren{#1}}
 \def\logodds{\lincomp}
 \providecommand{\logoddsf}[1]{\logodds \paren{#1}}
 \def\difflogodds{\diff \logodds}
@@ -402,6 +411,8 @@
 \def\logoddst{\text{log-odds}}
 \def\prob{\pi}
 \def\probs{\pi}
+\def\risk{\pi}
+\def\prev{\pi}
 \def\probit{\operatorname{probit}}
 \providecommand{\oddsf}[1]{\oddst\cb{#1}}
 \providecommand{\doddsf}[1]{{\oddst}'\cb{#1}}
@@ -414,13 +425,39 @@
 \def\rate{{\lambda}}
 \def\lograte{\lincomp}
 \def\haz{{\lambda}}
-\def\hazratio{\theta}
-\def\hr{\theta}
-\providecommand{\hrf}[1]{\theta\paren{#1}}
+\def\hazratio{\ratio_{\haz}}
+\def\hr{\hazratio}
+\def\rhaz{\hazratio}
+\def\hazr{\hazratio}
+\providecommand{\hrf}[1]{\hazratio\paren{#1}}
+\def\rhazf{\hrf}
+\def\hazrf{\hrf}
+\def\rateratio{\ratio_{\rate}}
+\def\rater{\rateratio}
+\def\rrate{\rateratio}
+\providecommand{\rateratiof}[1]{\rateratio\paren{#1}}
+\def\raterf{\rateratiof}
+\def\rratef{\rateratiof}
+\def\riskratio{\ratio_{\risk}}
+\def\rrisk{\riskratio}
+\def\riskr{\riskratio}
+\providecommand{\riskratiof}[1]{\riskratio\paren{#1}}
+\def\rriskf{\riskratiof}
+\def\riskrf{\riskratiof}
+\def\prevratio{\ratio_{\prev}}
+\def\prr{\prevratio}
+\providecommand{\prevratiof}[1]{\prevratio\paren{#1}}
+\def\prrf{\prevratiof}
 \def\loghaz{\lincomp}
 \def\diffloghaz{\diff \loghaz}
 \def\cuhaz{{\Lambda}}
 \def\cumhaz{\cuhaz}
+\def\cuhazratio{\ratio_{\cuhaz}}
+\def\rcuhaz{\cuhazratio}
+\def\cuhazr{\cuhazratio}
+\providecommand{\cuhazratiof}[1]{\cuhazratio\paren{#1}}
+\def\rcuhazf{\cuhazratiof}
+\def\cuhazrf{\cuhazratiof}
 \def\Surv{\surv}
 \def\incidence{\bar{\haz}}
 \def\phaz{\Expf{\haz}}

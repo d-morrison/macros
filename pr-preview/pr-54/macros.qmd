@@ -424,8 +424,12 @@
 \providecommand{\hrf}[1]{\hazratio\paren{#1}}
 \def\rateratio{\ratio_{\rate}}
 \def\rr{\rateratio}
+\def\rater{\rateratio}
+\def\rrate{\rateratio}
 \providecommand{\rateratiof}[1]{\rateratio\paren{#1}}
 \def\rrf{\rateratiof}
+\def\raterf{\rateratiof}
+\def\rratef{\rateratiof}
 \def\riskratio{\ratio_{\risk}}
 \def\rrisk{\riskratio}
 \def\riskr{\riskratio}

@@ -452,4 +452,6 @@
 \def\resid{r}
 \def\stdresid{r'}
 \def\modresid{r^*}
+\def\ub{\underbrace} % underbrace shorthand
+\providecommand{\ubf}[2]{\ub{#1}_{#2}} % underbrace with subscript label
 \providecommand{\residv}{\vec{r}}

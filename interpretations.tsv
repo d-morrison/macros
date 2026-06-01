@@ -27,6 +27,12 @@ name	interpretation
 \Sf	survival function S(·) applied to argument
 \surv	survival function symbol (alias for \S)
 \survf	survival function applied to argument (alias for \Sf)
+\survratio	survival ratio θ_S (ratio symbol with survival subscript)
+\rsurv	survival ratio (alias for \survratio)
+\survr	survival ratio (alias for \survratio)
+\survratiof	survival ratio function θ_S(·)
+\rsurvf	survival ratio function (alias for \survratiof)
+\survrf	survival ratio function (alias for \survratiof)
 \riskset	risk set symbol ℛ (survival analysis)
 \risksetf	risk set at time t: ℛ(t)
 \Q	quantile function symbol Q

@@ -405,6 +405,7 @@
 \def\prob{\pi}
 \def\probs{\pi}
 \def\risk{\pi}
+\def\prev{\pi}
 \def\probit{\operatorname{probit}}
 \providecommand{\oddsf}[1]{\oddst\cb{#1}}
 \providecommand{\doddsf}[1]{{\oddst}'\cb{#1}}
@@ -428,6 +429,10 @@
 \def\rrisk{\riskratio}
 \providecommand{\riskratiof}[1]{\riskratio\paren{#1}}
 \def\rriskf{\riskratiof}
+\def\prevratio{\ratio_{\prev}}
+\def\pr{\prevratio}
+\providecommand{\prevratiof}[1]{\prevratio\paren{#1}}
+\def\prf{\prevratiof}
 \def\loghaz{\lincomp}
 \def\diffloghaz{\diff \loghaz}
 \def\cuhaz{{\Lambda}}

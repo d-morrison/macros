@@ -407,6 +407,7 @@ name	interpretation
 \prob	probability symbol π
 \probs	probability symbol (alias for \prob)
 \risk	risk symbol π (used as the subscript for \riskratio)
+\prev	prevalence symbol π (used as the subscript for \prevratio)
 \probit	probit link function
 \oddsf	odds function odds{·}
 \doddsf	derivative of odds function odds′{·}
@@ -430,6 +431,10 @@ name	interpretation
 \rrisk	risk ratio (alias for \riskratio)
 \riskratiof	risk ratio function θ_π(·)
 \rriskf	risk ratio function (alias for \riskratiof)
+\prevratio	prevalence ratio θ_π (ratio symbol with prevalence subscript)
+\pr	prevalence ratio (alias for \prevratio)
+\prevratiof	prevalence ratio function θ_π(·)
+\prf	prevalence ratio function (alias for \prevratiof)
 \loghaz	log-hazard symbol η
 \diffloghaz	difference in log-hazard Δη
 \cuhaz	cumulative hazard symbol Λ

@@ -493,6 +493,15 @@
 \providecommand{\survfactorf}[1]{\survfactor\paren{#1}}
 \def\fsurv{\survfactor}
 \providecommand{\fsurvf}[1]{\survfactor\paren{#1}}
+<!-- "ff" shorthands for the factor function forms (\hazff = \hazfactorf, etc.). -->
+\def\ff{\factorf}
+\def\oddsff{\oddsfactorf}
+\def\hazff{\hazfactorf}
+\def\rateff{\ratefactorf}
+\def\riskff{\riskfactorf}
+\def\prevff{\prevfactorf}
+\def\cuhazff{\cuhazfactorf}
+\def\survff{\survfactorf}
 \def\Surv{\surv}
 \def\incidence{\bar{\haz}}
 \def\phaz{\Expf{\haz}}

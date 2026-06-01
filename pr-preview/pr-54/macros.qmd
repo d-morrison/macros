@@ -390,8 +390,8 @@
 \def\odds{\omega}
 \def\OR{\operatorname{OR}}
 \def\ratio{\theta}
-\def\ror{\ratio}
-\providecommand{\orf}[1]{\ratio\paren{#1}}
+\def\ror{\ratio_{\odds}}
+\providecommand{\orf}[1]{\ror\paren{#1}}
 \def\logodds{\lincomp}
 \providecommand{\logoddsf}[1]{\logodds \paren{#1}}
 \def\difflogodds{\diff \logodds}
@@ -404,6 +404,7 @@
 \def\logoddst{\text{log-odds}}
 \def\prob{\pi}
 \def\probs{\pi}
+\def\risk{\pi}
 \def\probit{\operatorname{probit}}
 \providecommand{\oddsf}[1]{\oddst\cb{#1}}
 \providecommand{\doddsf}[1]{{\oddst}'\cb{#1}}
@@ -416,11 +417,17 @@
 \def\rate{{\lambda}}
 \def\lograte{\lincomp}
 \def\haz{{\lambda}}
-\def\hazratio{\ratio}
-\def\hr{\ratio}
-\providecommand{\hrf}[1]{\ratio\paren{#1}}
-\def\rr{\ratio}
-\providecommand{\rrf}[1]{\ratio\paren{#1}}
+\def\hazratio{\ratio_{\haz}}
+\def\hr{\hazratio}
+\providecommand{\hrf}[1]{\hazratio\paren{#1}}
+\def\rateratio{\ratio_{\rate}}
+\def\rr{\rateratio}
+\providecommand{\rateratiof}[1]{\rateratio\paren{#1}}
+\def\rrf{\rateratiof}
+\def\riskratio{\ratio_{\risk}}
+\def\rrisk{\riskratio}
+\providecommand{\riskratiof}[1]{\riskratio\paren{#1}}
+\def\rriskf{\riskratiof}
 \def\loghaz{\lincomp}
 \def\diffloghaz{\diff \loghaz}
 \def\cuhaz{{\Lambda}}

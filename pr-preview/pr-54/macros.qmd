@@ -421,7 +421,11 @@
 \def\haz{{\lambda}}
 \def\hazratio{\ratio_{\haz}}
 \def\hr{\hazratio}
+\def\rhaz{\hazratio}
+\def\hazr{\hazratio}
 \providecommand{\hrf}[1]{\hazratio\paren{#1}}
+\def\rhazf{\hrf}
+\def\hazrf{\hrf}
 \def\rateratio{\ratio_{\rate}}
 \def\rr{\rateratio}
 \def\rater{\rateratio}
@@ -444,6 +448,12 @@
 \def\diffloghaz{\diff \loghaz}
 \def\cuhaz{{\Lambda}}
 \def\cumhaz{\cuhaz}
+\def\cuhazratio{\ratio_{\cuhaz}}
+\def\rcuhaz{\cuhazratio}
+\def\cuhazr{\cuhazratio}
+\providecommand{\cuhazratiof}[1]{\cuhazratio\paren{#1}}
+\def\rcuhazf{\cuhazratiof}
+\def\cuhazrf{\cuhazratiof}
 \def\Surv{\surv}
 \def\incidence{\bar{\haz}}
 \def\phaz{\Expf{\haz}}

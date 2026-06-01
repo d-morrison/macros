@@ -391,6 +391,7 @@
 \def\OR{\operatorname{OR}}
 \def\ratio{\theta}
 \def\ror{\ratio}
+\providecommand{\orf}[1]{\ratio\paren{#1}}
 \def\logodds{\lincomp}
 \providecommand{\logoddsf}[1]{\logodds \paren{#1}}
 \def\difflogodds{\diff \logodds}

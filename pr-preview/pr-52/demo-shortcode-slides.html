@@ -138,7 +138,6 @@
 </section>
 <section class="slide level2">
 
-<p>% vector z % vector Z % underbrace shorthand % underbrace with subscript label </p>
 <p>This page demonstrates the <a href="https://quarto.org/docs/authoring/includes.html"><code>include</code> shortcode</a> strategy for loading macros into a Quarto document.</p>
 <p>The <code>{{&lt; include macros.qmd &gt;}}</code> shortcode at the top of this file embeds the entire contents of <code>macros.qmd</code> inline at that point. Since <code>macros.qmd</code> contains only raw LaTeX macro definitions (<code>\def</code>, <code>\providecommand</code>, etc.), Quarto passes them through as raw LaTeX for PDF output (where they are processed inline in the document body as LaTeX commands) and as math for HTML/RevealJS output (where they are processed by MathJax).</p>
 <blockquote>

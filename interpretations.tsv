@@ -391,9 +391,9 @@ name	interpretation
 \lincomp	linear combination symbol η
 \odds	odds symbol ω
 \OR	odds ratio label OR
-\ratio	generic ratio symbol θ (base for \ror, \hr, and similar ratio macros)
-\ror	ratio of odds (odds ratio) θ
-\orf	odds ratio function θ(·)
+\ratio	generic ratio symbol θ (base for \ror, \hr, and similar ratio macros; subscript denotes the ratio type)
+\ror	odds ratio θ_ω (ratio symbol with odds subscript)
+\orf	odds ratio function θ_ω(·)
 \logodds	log-odds symbol η
 \logoddsf	log-odds function η(·)
 \difflogodds	difference in log-odds Δη
@@ -406,6 +406,7 @@ name	interpretation
 \logoddst	log-odds text label
 \prob	probability symbol π
 \probs	probability symbol (alias for \prob)
+\risk	risk symbol π (used as the subscript for \riskratio)
 \probit	probit link function
 \oddsf	odds function odds{·}
 \doddsf	derivative of odds function odds′{·}
@@ -418,11 +419,17 @@ name	interpretation
 \rate	rate / hazard symbol λ
 \lograte	log-rate symbol η
 \haz	hazard function symbol λ (alias for \rate)
-\hazratio	hazard ratio symbol θ
+\hazratio	hazard ratio θ_λ (ratio symbol with hazard subscript)
 \hr	hazard ratio (alias for \hazratio)
-\hrf	hazard ratio function θ(·)
-\rr	rate/risk ratio θ
-\rrf	rate/risk ratio function θ(·)
+\hrf	hazard ratio function θ_λ(·)
+\rateratio	rate ratio θ_λ (ratio symbol with rate subscript)
+\rr	rate ratio (alias for \rateratio)
+\rateratiof	rate ratio function θ_λ(·)
+\rrf	rate ratio function (alias for \rateratiof)
+\riskratio	risk ratio θ_π (ratio symbol with risk subscript)
+\rrisk	risk ratio (alias for \riskratio)
+\riskratiof	risk ratio function θ_π(·)
+\rriskf	risk ratio function (alias for \riskratiof)
 \loghaz	log-hazard symbol η
 \diffloghaz	difference in log-hazard Δη
 \cuhaz	cumulative hazard symbol Λ

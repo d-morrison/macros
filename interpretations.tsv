@@ -365,6 +365,7 @@ name	interpretation
 \Xx1n	paired sequence X₁=x₁, …, Xₙ=xₙ
 \dprod	dot product of two arguments a·b
 \dprodf	dot product a·b (alias for \dprod)
+\dpf	dot product a·b (alias for \dprodf)
 \tprod	transpose-based product x′y
 \tprodf	transpose-based product (alias for \tprod)
 \iprod	inner product ⟨x, y⟩

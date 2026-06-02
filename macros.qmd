@@ -531,34 +531,18 @@
 \def\ub{\underbrace}
 \providecommand{\ubf}[2]{\ub{#1}_{#2}}
 \providecommand{\residv}{\vec{r}}
-% ── Estimator macros (hat-wrapped estimand equivalents) ───────────────────────────
-% AI NOTE: For every new estimand macro group added above, add corresponding
-% estimator (hat-wrapped) versions in this section, following these rules:
-%   1. Zero-arg:  \def\hfoo{\hat{\foo}}
-%   2. One-arg function:  \providecommand{\hfoof}[1]{\hfoo\paren{#1}}
-%   3. One \def alias per estimand alias, pointing at the canonical estimator:
-%        \def\hfooalias{\hfoo}  (zero-arg)  and  \def\hfoofalias{\hfoof}  (function form)
-%   4. Add entries for ALL new macros to interpretations.tsv
-% See issue #58 for background and motivation.
-% Estimated probability / risk / prevalence (all = hat-pi)
 \def\hprob{\hat{\prob}}
 \def\hrisk{\hprob}
 \def\hprev{\hprob}
-% Estimated odds (hat-omega)
 \def\hodds{\hat{\odds}}
-% Estimated rate and hazard (hat-lambda; note: \hl = \hat\lambda is a generic alias)
 \def\hrate{\hat{\rate}}
 \def\hhaz{\hrate}
-% Estimated cumulative hazard (hat-Lambda)
 \def\hcuhaz{\hat{\cuhaz}}
 \def\hcumhaz{\hcuhaz}
-% Generic estimated ratio (hat-theta)
 \def\hratio{\hat{\ratio}}
 \providecommand{\hratiof}[1]{\hratio\paren{#1}}
-% Estimated odds ratio (hat-theta_omega)
 \def\hror{\hat{\ror}}
 \providecommand{\horf}[1]{\hror\paren{#1}}
-% Estimated hazard ratio (hat-theta_lambda)
 \def\hhazratio{\hat{\hazratio}}
 \def\hhr{\hhazratio}
 \def\hrhaz{\hhazratio}
@@ -566,80 +550,67 @@
 \providecommand{\hhrf}[1]{\hhazratio\paren{#1}}
 \def\hrhazf{\hhrf}
 \def\hhazrf{\hhrf}
-% Estimated rate ratio (hat-theta_lambda)
 \def\hrateratio{\hat{\rateratio}}
 \def\hrater{\hrateratio}
 \def\hrrate{\hrateratio}
 \providecommand{\hrateratiof}[1]{\hrateratio\paren{#1}}
 \def\hraterf{\hrateratiof}
 \def\hrratef{\hrateratiof}
-% Estimated risk ratio (hat-theta_pi)
 \def\hriskratio{\hat{\riskratio}}
 \def\hrrisk{\hriskratio}
 \def\hriskr{\hriskratio}
 \providecommand{\hriskratiof}[1]{\hriskratio\paren{#1}}
 \def\hrriskf{\hriskratiof}
 \def\hriskrf{\hriskratiof}
-% Estimated prevalence ratio (hat-theta_pi)
 \def\hprevratio{\hat{\prevratio}}
 \def\hprr{\hprevratio}
 \providecommand{\hprevratiof}[1]{\hprevratio\paren{#1}}
 \def\hprrf{\hprevratiof}
-% Estimated survival ratio (hat-theta_S)
 \def\hsurvratio{\hat{\survratio}}
 \def\hrsurv{\hsurvratio}
 \def\hsurvr{\hsurvratio}
 \providecommand{\hsurvratiof}[1]{\hsurvratio\paren{#1}}
 \def\hrsurvf{\hsurvratiof}
 \def\hsurvrf{\hsurvratiof}
-% Estimated cumulative hazard ratio (hat-theta_Lambda)
 \def\hcuhazratio{\hat{\cuhazratio}}
 \def\hrcuhaz{\hcuhazratio}
 \def\hcuhazr{\hcuhazratio}
 \providecommand{\hcuhazratiof}[1]{\hcuhazratio\paren{#1}}
 \def\hrcuhazf{\hcuhazratiof}
 \def\hcuhazrf{\hcuhazratiof}
-% Generic estimated factor (hat-theta)
 \def\hfactor{\hat{\factor}}
 \providecommand{\hfactorf}[1]{\hfactor\paren{#1}}
 \def\hff{\hfactorf}
-% Estimated odds factor (hat-theta_omega)
 \def\hoddsfactor{\hat{\oddsfactor}}
 \providecommand{\hoddsfactorf}[1]{\hoddsfactor\paren{#1}}
 \def\hfodds{\hoddsfactor}
 \def\hfoddsf{\hoddsfactorf}
 \def\hoddsff{\hoddsfactorf}
-% Estimated hazard factor (hat-theta_lambda)
 \def\hhazfactor{\hat{\hazfactor}}
 \providecommand{\hhazfactorf}[1]{\hhazfactor\paren{#1}}
 \def\hfhaz{\hhazfactor}
 \def\hfhazf{\hhazfactorf}
 \def\hhazff{\hhazfactorf}
-% Estimated rate factor (hat-theta_lambda)
 \def\hratefactor{\hat{\ratefactor}}
 \providecommand{\hratefactorf}[1]{\hratefactor\paren{#1}}
 \def\hfrate{\hratefactor}
 \def\hfratef{\hratefactorf}
 \def\hrateff{\hratefactorf}
-% Estimated risk factor (hat-theta_pi)
 \def\hriskfactor{\hat{\riskfactor}}
 \providecommand{\hriskfactorf}[1]{\hriskfactor\paren{#1}}
 \def\hfrisk{\hriskfactor}
 \def\hfriskf{\hriskfactorf}
 \def\hriskff{\hriskfactorf}
-% Estimated prevalence factor (hat-theta_pi)
 \def\hprevfactor{\hat{\prevfactor}}
 \providecommand{\hprevfactorf}[1]{\hprevfactor\paren{#1}}
 \def\hfprev{\hprevfactor}
 \def\hfprevf{\hprevfactorf}
 \def\hprevff{\hprevfactorf}
-% Estimated cumulative hazard factor (hat-theta_Lambda)
 \def\hcuhazfactor{\hat{\cuhazfactor}}
 \providecommand{\hcuhazfactorf}[1]{\hcuhazfactor\paren{#1}}
 \def\hfcuhaz{\hcuhazfactor}
 \def\hfcuhazf{\hcuhazfactorf}
 \def\hcuhazff{\hcuhazfactorf}
-% Estimated survival factor (hat-theta_S)
 \def\hsurvfactor{\hat{\survfactor}}
 \providecommand{\hsurvfactorf}[1]{\hsurvfactor\paren{#1}}
 \def\hfsurv{\hsurvfactor}

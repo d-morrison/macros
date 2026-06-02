@@ -11,7 +11,7 @@ title: "Macro Reference"
 # the $$ block into a real MathJax display-math element (not raw HTML).
 # Raw <div>...</div> blocks are passed through by pandoc without math processing.
 lines <- readLines("macros.qmd", warn = FALSE)
-lines <- lines[!grepl("^\\s*<!--", lines) & nzchar(trimws(lines))]
+lines <- lines[!grepl("^\\s*<!--", lines) & !grepl("^\\s*%", lines) & nzchar(trimws(lines))]
 
 # MathJax v3 does NOT support \providecommand.
 # Convert \providecommand{\name}[n]{body} to TeX primitive \def\name#1...#n{body},
@@ -49,6 +49,7 @@ parse_macros <- function(file_path = "macros.qmd") {
 
   # Remove HTML comments and blank lines
   lines <- grep("^\\s*<!--", lines, invert = TRUE, value = TRUE)
+  lines <- grep("^\\s*%", lines, invert = TRUE, value = TRUE)
   lines <- grep("^\\s*$", lines, invert = TRUE, value = TRUE)
 
   # Collect entries, joining multi-line definitions

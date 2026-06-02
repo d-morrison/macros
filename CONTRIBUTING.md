@@ -7,14 +7,15 @@ syntax works in all of them:
 
 | Path | How `macros.qmd` is used | `%` comment | `<!-- -->` comment |
 |---|---|---|---|
-| `macros-table.qmd` (MathJax embed + searchable table) | parsed line-by-line in R | stripped, OK | stripped, OK |
+| `macros-table.qmd` (MathJax embed + searchable table) | parsed line-by-line in R | **breaks** (only `<!--` is stripped; a `%` line is appended to and corrupts the preceding definition) | stripped, OK |
 | `macros-header.html` loader (HTML / RevealJS) | parsed line-by-line in JS | skipped, OK | skipped, OK |
 | `include-in-header: macros.qmd` (PDF) | inserted raw into the **LaTeX preamble** | OK (LaTeX comment) | **breaks** (`Missing \begin{document}`) |
 | `{{< include macros.qmd >}}` shortcode (PDF) | included as **markdown body**, run through pandoc | **breaks** (`Missing $`; pandoc emits the prose + stray `\commands`) | OK (pandoc drops it) |
 
-Because the two PDF strategies have opposite requirements, **the only safe
-choice is no comments at all**. Keep `macros.qmd` as a flat list of `\def` /
-`\providecommand` definitions. Put any explanatory notes here instead.
+Because no comment style is safe in every column (`%` breaks the R parser and
+the shortcode PDF; `<!-- -->` breaks the include-in-header PDF), **the only
+safe choice is no comments at all**. Keep `macros.qmd` as a flat list of
+`\def` / `\providecommand` definitions. Put any explanatory notes here instead.
 
 ## Adding a new estimand macro group
 

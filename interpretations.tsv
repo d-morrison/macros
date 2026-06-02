@@ -529,6 +529,7 @@ name	interpretation
 \cuhazff	cumulative hazard factor function (shorthand for \cuhazfactorf)
 \survff	survival factor function (shorthand for \survfactorf)
 \hprob	estimated probability π̂
+\hprobs	estimated probability symbol π̂ (alias for \hprob)
 \hrisk	estimated risk π̂ (alias for \hprob)
 \hprev	estimated prevalence π̂ (alias for \hprob)
 \hodds	estimated odds ω̂

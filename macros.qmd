@@ -532,6 +532,7 @@
 \providecommand{\ubf}[2]{\ub{#1}_{#2}}
 \providecommand{\residv}{\vec{r}}
 \def\hprob{\hat{\prob}}
+\def\hprobs{\hprob}
 \def\hrisk{\hprob}
 \def\hprev{\hprob}
 \def\hodds{\hat{\odds}}

@@ -536,18 +536,19 @@
 % estimator (hat-wrapped) versions in this section, following these rules:
 %   1. Zero-arg:  \def\hfoo{\hat{\foo}}
 %   2. One-arg function:  \providecommand{\hfoof}[1]{\hfoo\paren{#1}}
-%   3. One alias per estimand alias:  \def\hfooalias{\hfoo}  (or \hfoofaliasf{\hfoof})
+%   3. One \def alias per estimand alias, pointing at the canonical estimator:
+%        \def\hfooalias{\hfoo}  (zero-arg)  and  \def\hfoofalias{\hfoof}  (function form)
 %   4. Add entries for ALL new macros to interpretations.tsv
 % See issue #58 for background and motivation.
 % Estimated probability / risk / prevalence (all = hat-pi)
 \def\hprob{\hat{\prob}}
-\def\hrisk{\hat{\risk}}
-\def\hprev{\hat{\prev}}
+\def\hrisk{\hprob}
+\def\hprev{\hprob}
 % Estimated odds (hat-omega)
 \def\hodds{\hat{\odds}}
 % Estimated rate and hazard (hat-lambda; note: \hl = \hat\lambda is a generic alias)
 \def\hrate{\hat{\rate}}
-\def\hhaz{\hat{\haz}}
+\def\hhaz{\hrate}
 % Estimated cumulative hazard (hat-Lambda)
 \def\hcuhaz{\hat{\cuhaz}}
 \def\hcumhaz{\hcuhaz}

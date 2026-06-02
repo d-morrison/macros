@@ -204,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td><code>macros-table.qmd</code> (MathJax embed + searchable table)</td>
 <td>parsed line-by-line in R</td>
-<td>stripped, OK</td>
+<td><strong>breaks</strong> (only <code>&lt;!--</code> is stripped; a <code>%</code> line is appended to and corrupts the preceding definition)</td>
 <td>stripped, OK</td>
 </tr>
 <tr class="even">
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>Because the two PDF strategies have opposite requirements, <strong>the only safe choice is no comments at all</strong>. Keep <code>macros.qmd</code> as a flat list of <code>\def</code> / <code>\providecommand</code> definitions. Put any explanatory notes here instead.</p>
+<p>Because no comment style is safe in every column (<code>%</code> breaks the R parser and the shortcode PDF; <code>&lt;!-- --&gt;</code> breaks the include-in-header PDF), <strong>the only safe choice is no comments at all</strong>. Keep <code>macros.qmd</code> as a flat list of <code>\def</code> / <code>\providecommand</code> definitions. Put any explanatory notes here instead.</p>
 </section>
 <section id="adding-a-new-estimand-macro-group" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-new-estimand-macro-group">Adding a new estimand macro group</h2>

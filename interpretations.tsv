@@ -488,6 +488,7 @@ name	interpretation
 \signt	sign operator symbol
 \signf	sign function sign{·}
 \reals	real numbers ℝ
+\NA	not-available / missing-value placeholder (text "NA")
 \ub	underbrace shorthand (alias for \underbrace)
 \ubf	underbrace with subscript label \underbrace{·}_{label}
 \factor	generic factor symbol θ (base for \hazfactor, \riskfactor, and similar factor macros; compares one covariate pattern to the baseline; subscript denotes the factor type)

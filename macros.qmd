@@ -525,6 +525,7 @@
 \def\signt{\operatorname{sign}}
 \providecommand{\signf}[1]{\signt\cb{#1}}
 \def\reals{\mathbb{R}}
+\def\NA{\text{NA}}
 \def\resid{r}
 \def\stdresid{r'}
 \def\modresid{r^*}

@@ -67,6 +67,54 @@ This inserts the macro definitions for each output format:
 
 The table below uses macros defined with `\def` in `macros.qmd`, which work in all output formats that support MathJax or LaTeX:
 
+```{r}
+#| label: register-macros-with-pandoc
+#| echo: false
+#| results: asis
+
+# Register the macros with pandoc's static math parser (texmath).
+#
+# The include-in-header strategy above loads macros into MathJax (HTML/RevealJS)
+# and the LaTeX preamble (PDF) at *render* time. pandoc's texmath pre-pass,
+# however, never sees them, so when it tries to convert the `$...$` examples
+# below it warns "Could not convert TeX math \a, ...". Pandoc's latex_macros
+# extension *does* pick up bare \def definitions placed in the document body and
+# apply them to subsequent math, so emitting the definitions once (hidden) here
+# silences the warnings. These bare \def lines are not `$...$` math, so MathJax
+# ignores them in the browser: the visible examples below still render via the
+# include-in-header config, not this block. It only satisfies pandoc's static
+# parser and is NOT part of the demonstrated include-in-header mechanism.
+#
+# Excluded from PDF, where display:none has no effect; PDF already resolves the
+# macros via the preamble (\providecommand and all).
+defs <- readLines("macros.qmd", warn = FALSE)
+defs <- defs[!grepl("^\\s*<!--", defs) & nzchar(trimws(defs))]
+
+# texmath/MathJax need \def, not \providecommand:
+# \providecommand{\name}[n]{body} -> \def\name#1...#n{body}.
+defs <- vapply(defs, function(line) {
+  m <- regmatches(
+    line,
+    regexec(
+      "^\\\\providecommand\\{\\\\([^}]+)\\}(?:\\[(\\d+)\\])?\\{(.*)\\}\\s*$",
+      line,
+      perl = TRUE
+    )
+  )[[1]]
+  if (length(m) == 4L && nzchar(m[1L])) {
+    nargs    <- if (nzchar(m[3L])) as.integer(m[3L]) else 0L
+    args_str <- if (nargs > 0L) paste0("#", seq_len(nargs), collapse = "") else ""
+    return(paste0("\\def\\", m[2L], args_str, "{", m[4L], "}"))
+  }
+  line
+}, character(1L), USE.NAMES = FALSE)
+
+cat(':::: {.content-hidden when-format="pdf"}\n')
+cat('::: {style="display:none"}\n')
+cat(paste(defs, collapse = "\n"), "\n")
+cat(':::\n::::\n')
+```
+
 | Description | Code | Output |
 |---|---|---|
 | Greek: alpha | `\a` | $\a$ |

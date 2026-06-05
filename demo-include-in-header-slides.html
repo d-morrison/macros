@@ -492,6 +492,9 @@
 <section id="example-math" class="slide level2">
 <h2>Example math</h2>
 <p>The table below uses macros defined with <code>\def</code> in <code>macros.qmd</code>, which work in all output formats that support MathJax or LaTeX:</p>
+<div style="display:none">
+
+</div>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -509,52 +512,52 @@
 <tr class="odd">
 <td>Greek: alpha</td>
 <td><code>\a</code></td>
-<td><span class="math inline">\(\a\)</span></td>
+<td><span class="math inline">\(\alpha\)</span></td>
 </tr>
 <tr class="even">
 <td>Greek: beta</td>
 <td><code>\b</code></td>
-<td><span class="math inline">\(\b\)</span></td>
+<td><span class="math inline">\(\beta\)</span></td>
 </tr>
 <tr class="odd">
 <td>Greek: gamma</td>
 <td><code>\g</code></td>
-<td><span class="math inline">\(\g\)</span></td>
+<td><span class="math inline">\(\gamma\)</span></td>
 </tr>
 <tr class="even">
 <td>Greek: lambda</td>
 <td><code>\l</code></td>
-<td><span class="math inline">\(\l\)</span></td>
+<td><span class="math inline">\(\lambda\)</span></td>
 </tr>
 <tr class="odd">
 <td>Greek: sigma</td>
 <td><code>\s</code></td>
-<td><span class="math inline">\(\s\)</span></td>
+<td><span class="math inline">\(\sigma\)</span></td>
 </tr>
 <tr class="even">
 <td>Log-likelihood</td>
 <td><code>\llik</code></td>
-<td><span class="math inline">\(\llik\)</span></td>
+<td><span class="math inline">\(\ell\)</span></td>
 </tr>
 <tr class="odd">
 <td>Independent</td>
 <td><code>X \ind Y</code></td>
-<td><span class="math inline">\(X \ind Y\)</span></td>
+<td><span class="math inline">\(X \perp\!\!\!\perp Y\)</span></td>
 </tr>
 <tr class="even">
 <td>IID distributed</td>
 <td><code>X_i \siid \Normal(\m, \ss)</code></td>
-<td><span class="math inline">\(X_i \siid \Normal(\m, \ss)\)</span></td>
+<td><span class="math inline">\(X_i \ \sim_{\operatorname{iid}}\ \operatorname{N}(\mu, \sigma^2)\)</span></td>
 </tr>
 <tr class="odd">
 <td>Vector: mu</td>
 <td><code>\vm</code></td>
-<td><span class="math inline">\(\vm\)</span></td>
+<td><span class="math inline">\(\tilde{\mu}\)</span></td>
 </tr>
 <tr class="even">
 <td>Hat beta</td>
 <td><code>\hb</code></td>
-<td><span class="math inline">\(\hb\)</span></td>
+<td><span class="math inline">\(\hat \beta\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -579,32 +582,32 @@
 <tr class="odd">
 <td>Red</td>
 <td><code>\red{x}</code></td>
-<td><span class="math inline">\(\red{x}\)</span></td>
+<td><span class="math inline">\({\color{red}{x}}\)</span></td>
 </tr>
 <tr class="even">
 <td>Blue</td>
 <td><code>\blue{y}</code></td>
-<td><span class="math inline">\(\blue{y}\)</span></td>
+<td><span class="math inline">\({\color{blue}{y}}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Green</td>
 <td><code>\green{z}</code></td>
-<td><span class="math inline">\(\green{z}\)</span></td>
+<td><span class="math inline">\({\color{green}{z}}\)</span></td>
 </tr>
 <tr class="even">
 <td>Orange</td>
 <td><code>\orange{\mu}</code></td>
-<td><span class="math inline">\(\orange{\mu}\)</span></td>
+<td><span class="math inline">\({\color{orange}{\mu}}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Combined</td>
 <td><code>\red{x} + \blue{y} = \green{z}</code></td>
-<td><span class="math inline">\(\red{x} + \blue{y} = \green{z}\)</span></td>
+<td><span class="math inline">\({\color{red}{x}} + {\color{blue}{y}} = {\color{green}{z}}\)</span></td>
 </tr>
 <tr class="even">
 <td>Nested macros</td>
 <td><code>X_i \sim_{\red{\ind}} \blue{\Normal}(\orange{\mu_i}, \green{\ss})</code></td>
-<td><span class="math inline">\(X_i \sim_{\red{\ind}} \blue{\Normal}(\orange{\mu_i}, \green{\ss})\)</span></td>
+<td><span class="math inline">\(X_i \sim_{{\color{red}{\perp\!\!\!\perp}}} {\color{blue}{\operatorname{N}}}({\color{orange}{\mu_i}}, {\color{green}{\sigma^2}})\)</span></td>
 </tr>
 </tbody>
 </table>

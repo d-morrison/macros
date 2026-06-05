@@ -214,6 +214,59 @@
 </tbody>
 </table>
 </section>
+<section id="color-macros" class="slide level2">
+<h2>Color macros</h2>
+<p><code>macros.qmd</code> defines a one-argument macro for each of the 19 <a href="https://en.wikibooks.org/wiki/LaTeX/Colors#Predefined_colors">LaTeX base colors</a> (<code>\red</code>, <code>\blue</code>, <code>\green</code>, <code>\orange</code>, …), using the <code>\color</code> switch form (<code>{\color{red}{#1}}</code>), which is supported by MathJax (HTML/RevealJS), lualatex (PDF), and pandoc’s texmath parser (docx):</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Code</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Red</td>
+<td><code>$\red{x}$</code></td>
+<td><span class="math inline">\({\color{red}{x}}\)</span></td>
+</tr>
+<tr class="even">
+<td>Blue</td>
+<td><code>$\blue{y}$</code></td>
+<td><span class="math inline">\({\color{blue}{y}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Green</td>
+<td><code>$\green{z}$</code></td>
+<td><span class="math inline">\({\color{green}{z}}\)</span></td>
+</tr>
+<tr class="even">
+<td>Orange</td>
+<td><code>$\orange{\mu}$</code></td>
+<td><span class="math inline">\({\color{orange}{\mu}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Combined</td>
+<td><code>$\red{x} + \blue{y} = \green{z}$</code></td>
+<td><span class="math inline">\({\color{red}{x}} + {\color{blue}{y}} = {\color{green}{z}}\)</span></td>
+</tr>
+<tr class="even">
+<td>Nested macros</td>
+<td><code>$X_i \sim_{\red{\ind}} \blue{\Normal}(\orange{\mu_i}, \green{\ss})$</code></td>
+<td><span class="math inline">\(X_i \sim_{{\color{red}{\perp\!\!\!\perp}}} {\color{blue}{\operatorname{N}}}({\color{orange}{\mu_i}}, {\color{green}{\sigma^2}})\)</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note (docx):</strong> pandoc converts these equations to native Word math without warnings, but its docx writer drops the color styling, so in Word the equations render correctly in the default text color.</p>
+</blockquote>
+</section>
 <section id="providecommand-behavior-in-this-shortcode-demo" class="slide level2">
 <h2><code>\providecommand</code> behavior in this shortcode demo</h2>
 <p>The macro <code>\floor</code> in <code>macros.qmd</code> is defined with <code>\providecommand</code>. Compare this with a <code>\def</code> macro:</p>

@@ -79,3 +79,18 @@ The table below uses macros defined with `\def` in `macros.qmd`, which work in a
 | IID distributed | `X_i \siid \Normal(\m, \ss)` | $X_i \siid \Normal(\m, \ss)$ |
 | Vector: mu | `\vm` | $\vm$ |
 | Hat beta | `\hb` | $\hb$ |
+
+## Color macros
+
+`macros.qmd` defines a one-argument macro for each of the 19 [LaTeX base colors](https://en.wikibooks.org/wiki/LaTeX/Colors#Predefined_colors) (`\red`, `\blue`, `\green`, `\orange`, …), using the `\color` switch form (`{\color{red}{#1}}`), which is supported by MathJax (HTML/RevealJS) and lualatex (PDF):
+
+| Description | Code | Output |
+|---|---|---|
+| Red | `\red{x}` | $\red{x}$ |
+| Blue | `\blue{y}` | $\blue{y}$ |
+| Green | `\green{z}` | $\green{z}$ |
+| Orange | `\orange{\mu}` | $\orange{\mu}$ |
+| Combined | `\red{x} + \blue{y} = \green{z}` | $\red{x} + \blue{y} = \green{z}$ |
+| Nested macros | `X_i \sim_{\red{\ind}} \blue{\Normal}(\orange{\mu_i}, \green{\ss})` | $X_i \sim_{\red{\ind}} \blue{\Normal}(\orange{\mu_i}, \green{\ss})$ |
+
+> **Note (docx):** as described above, the `include-in-header` strategy does not load macros for docx output, so the color macros (like all other macros) are unavailable there. For docx, use the [include shortcode strategy](demo-shortcode.qmd) instead.

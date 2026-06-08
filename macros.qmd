@@ -97,6 +97,7 @@
 \def\defeq{\stackrel{\text{def}}{=}}
 \def\hb{\hat \beta}
 \def\hvb{\hat{\vb}}
+\def\hR{\hat{R}}
 \def\hk{\hat \kappa}
 \def\hkappa{\hat \kappa}
 \def\hl{\hat \lambda}

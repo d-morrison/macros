@@ -141,10 +141,13 @@
 \def\distiid{\siid}
 \def\tf{\therefore}
 \def\Lik{\mathscr{L}}
+\providecommand{\Likf}[1]{\Lik\paren{#1}}
 \def\llik{\ell}
 \def\loglik{\ell}
 \def\logl{\ell}
 \providecommand{\llikf}[1]{\llik \paren{#1}}
+\def\loglikf{\llikf}
+\def\loglf{\llikf}
 \def\deviation{e}
 \def\devn{\deviation}
 \providecommand{\deviationv}{\vec{\deviation}}
@@ -177,6 +180,7 @@
 \providecommand{\hessianf}[1]{\hess \paren{#1}}
 \providecommand{\starf}[1]{#1^*}
 \def\lik{\ell}
+\def\likf{\llikf}
 \providecommand{\est}[1]{\widehat{#1}}
 \providecommand{\esttmp}[1]{{\widehat{#1}}^*}
 \def\esttmpl{\esttmp{\lambda}}

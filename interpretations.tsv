@@ -141,10 +141,13 @@ name	interpretation
 \distiid	i.i.d. distributed (alias for \siid)
 \tf	therefore symbol (∴)
 \Lik	likelihood script symbol (ℒ)
+\Likf	likelihood function ℒ(·)
 \llik	log-likelihood symbol (ℓ)
 \loglik	log-likelihood symbol (alias for \llik)
 \logl	log-likelihood symbol (alias for \llik)
 \llikf	log-likelihood function ℓ(·)
+\loglikf	log-likelihood function ℓ(·) (alias for \llikf)
+\loglf	log-likelihood function ℓ(·) (alias for \llikf)
 \deviation	deviation symbol e
 \devn	deviation symbol (alias for \deviation)
 \deviationv	deviation vector ẽ
@@ -178,6 +181,7 @@ name	interpretation
 \hessianf	Hessian function (alias for \hessf)
 \starf	starred / optimal version of argument
 \lik	log-likelihood (alias for \llik)
+\likf	log-likelihood function ℓ(·) (alias for \llikf)
 \est	estimated / hat version of argument
 \esttmp	alternative estimate notation (·̂*)
 \esttmpl	alternative estimate of lambda

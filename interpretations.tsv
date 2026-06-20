@@ -98,6 +98,7 @@ name	interpretation
 \defeq	equals-by-definition (alias for \eqdef)
 \hb	estimated beta coefficient β̂
 \hvb	estimated beta vector (β̂-vector)
+\hR	Gelman-Rubin convergence diagnostic (potential scale reduction factor, R-hat)
 \hk	estimated kappa κ̂
 \hkappa	estimated kappa (alias for \hk)
 \hl	estimated lambda λ̂

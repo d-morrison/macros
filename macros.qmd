@@ -140,7 +140,7 @@
 \def\simiid{\siid}
 \def\distiid{\siid}
 \def\tf{\therefore}
-\def\Lik{\mathscr{L}}
+\def\Lik{\mathcal{L}}
 \def\llik{\ell}
 \def\loglik{\ell}
 \def\logl{\ell}

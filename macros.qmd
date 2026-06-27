@@ -336,7 +336,7 @@
 \providecommand{\erf}[1]{\err\paren{#1}}
 \renewcommand{\vec}[1]{\tilde{#1}}
 \providecommand{\vecf}[1]{\tilde{#1}}
-\providecommand{\v}[1]{\vecf{#1}}
+\def\v#1{\vecf{#1}}
 \providecommand{\matr}[1]{\mathbf{#1}}
 \def\mX{\matr{X}}
 \def\mx{\matr{x}}

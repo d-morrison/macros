@@ -425,6 +425,11 @@ name	interpretation
 \potmean	potential outcome mean μ_a (e.g. E[Y_a])
 \obsprob	observed outcome probability π(a) (given observed exposure a)
 \obsmean	observed outcome mean μ(a) (given observed exposure a)
+\py	potential outcome Y_a (shorthand for \potout)
+\ppi	potential outcome probability π_a (shorthand for \potprob)
+\pmu	potential outcome mean μ_a (shorthand for \potmean)
+\opi	observed outcome probability π(a) (shorthand for \obsprob)
+\omu	observed outcome mean μ(a) (shorthand for \obsmean)
 \probit	probit link function
 \oddsf	odds function odds{·}
 \doddsf	derivative of odds function odds′{·}

@@ -420,6 +420,11 @@ name	interpretation
 \probs	probability symbol (alias for \prob)
 \risk	risk symbol π (used as the subscript for \riskratio)
 \prev	prevalence symbol π (used as the subscript for \prevratio)
+\potout	potential outcome Y_a (outcome under intervened exposure a)
+\potprob	potential outcome probability π_a (e.g. Pr(Y_a=1) for binary Y)
+\potmean	potential outcome mean μ_a (e.g. E[Y_a])
+\obsprob	observed outcome probability π(a) (given observed exposure a)
+\obsmean	observed outcome mean μ(a) (given observed exposure a)
 \probit	probit link function
 \oddsf	odds function odds{·}
 \doddsf	derivative of odds function odds′{·}

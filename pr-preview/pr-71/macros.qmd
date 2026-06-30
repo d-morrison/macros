@@ -423,6 +423,11 @@
 \providecommand{\potmean}[1]{\mean_{#1}}
 \providecommand{\obsprob}[1]{\prob\paren{#1}}
 \providecommand{\obsmean}[1]{\mean\paren{#1}}
+\def\py{\potout}
+\def\ppi{\potprob}
+\def\pmu{\potmean}
+\def\opi{\obsprob}
+\def\omu{\obsmean}
 \def\probit{\operatorname{probit}}
 \providecommand{\oddsf}[1]{\oddst\cb{#1}}
 \providecommand{\doddsf}[1]{{\oddst}'\cb{#1}}

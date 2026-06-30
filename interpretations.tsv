@@ -146,6 +146,10 @@ name	interpretation
 \loglik	log-likelihood symbol (alias for \llik)
 \logl	log-likelihood symbol (alias for \llik)
 \llikf	log-likelihood function ℓ(·)
+\Likf	likelihood function ℒ(·)
+\loglikf	log-likelihood function ℓ(·) (alias for \llikf)
+\loglf	log-likelihood function ℓ(·) (alias for \llikf)
+\likf	log-likelihood function ℓ(·) (alias for \llikf)
 \deviation	deviation symbol e
 \devn	deviation symbol (alias for \deviation)
 \deviationv	deviation vector ẽ

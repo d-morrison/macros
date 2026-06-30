@@ -145,6 +145,10 @@
 \def\loglik{\ell}
 \def\logl{\ell}
 \providecommand{\llikf}[1]{\llik \paren{#1}}
+\providecommand{\Likf}[1]{\Lik\paren{#1}}
+\def\loglikf{\llikf}
+\def\loglf{\llikf}
+\def\likf{\llikf}
 \def\deviation{e}
 \def\devn{\deviation}
 \providecommand{\deviationv}{\vec{\deviation}}

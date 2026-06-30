@@ -475,6 +475,9 @@ name	interpretation
 \pdf	probability density function symbol f
 \pmf	probability mass function P(·)
 \cdf	cumulative distribution function symbol F
+\cdff	cumulative distribution function F(·) applied to argument
+\hcdf	estimated cumulative distribution function F̂
+\hcdff	estimated cumulative distribution function F̂(·) applied to argument
 \defLik	definitional expression for likelihood ℒ(θ)
 \defLogLik	definitional expression for log-likelihood ℓ
 \defScore	definitional expression for score function ℓ′

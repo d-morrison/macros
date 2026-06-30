@@ -511,6 +511,9 @@
 \def\pdf{\distop{f}}
 \providecommand{\pmf}[1]{\distop{P}\paren{#1}}
 \def\cdf{\distop{F}}
+\providecommand{\cdff}[1]{\cdf\paren{#1}}
+\def\hcdf{\mathop{\hat{\cdf}}\nolimits}
+\providecommand{\hcdff}[1]{\hcdf\paren{#1}}
 \def\defLik{\Lik(\theta) \eqdef \p(\vX = \vx | \Theta = \theta)}
 \def\defLogLik{\lik \eqdef \logf{\Lik(\vx|\th)}}
 \def\defScore{\score \eqdef \deriv{\th} \lik(\vx|\th)}

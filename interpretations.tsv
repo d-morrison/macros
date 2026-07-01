@@ -146,6 +146,10 @@ name	interpretation
 \loglik	log-likelihood symbol (alias for \llik)
 \logl	log-likelihood symbol (alias for \llik)
 \llikf	log-likelihood function ℓ(·)
+\Likf	likelihood function ℒ(·)
+\loglikf	log-likelihood function ℓ(·) (alias for \llikf)
+\loglf	log-likelihood function ℓ(·) (alias for \llikf)
+\likf	log-likelihood function ℓ(·) (alias for \llikf)
 \deviation	deviation symbol e
 \devn	deviation symbol (alias for \deviation)
 \deviationv	deviation vector ẽ
@@ -416,6 +420,16 @@ name	interpretation
 \probs	probability symbol (alias for \prob)
 \risk	risk symbol π (used as the subscript for \riskratio)
 \prev	prevalence symbol π (used as the subscript for \prevratio)
+\potout	potential outcome Y_a (outcome under intervened exposure a)
+\potprob	potential outcome probability π_a (e.g. Pr(Y_a=1) for binary Y)
+\potmean	potential outcome mean μ_a (e.g. E[Y_a])
+\obsprob	observed outcome probability π(a) (given observed exposure a)
+\obsmean	observed outcome mean μ(a) (given observed exposure a)
+\py	potential outcome Y_a (shorthand for \potout)
+\ppi	potential outcome probability π_a (shorthand for \potprob)
+\pmu	potential outcome mean μ_a (shorthand for \potmean)
+\opi	observed outcome probability π(a) (shorthand for \obsprob)
+\omu	observed outcome mean μ(a) (shorthand for \obsmean)
 \probit	probit link function
 \oddsf	odds function odds{·}
 \doddsf	derivative of odds function odds′{·}
@@ -471,6 +485,9 @@ name	interpretation
 \pdf	probability density function symbol f
 \pmf	probability mass function P(·)
 \cdf	cumulative distribution function symbol F
+\cdff	cumulative distribution function F(·) applied to argument
+\hcdf	estimated cumulative distribution function F̂
+\hcdff	estimated cumulative distribution function F̂(·) applied to argument
 \defLik	definitional expression for likelihood ℒ(θ)
 \defLogLik	definitional expression for log-likelihood ℓ
 \defScore	definitional expression for score function ℓ′

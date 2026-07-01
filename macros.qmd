@@ -145,6 +145,10 @@
 \def\loglik{\ell}
 \def\logl{\ell}
 \providecommand{\llikf}[1]{\llik \paren{#1}}
+\providecommand{\Likf}[1]{\Lik\paren{#1}}
+\def\loglikf{\llikf}
+\def\loglf{\llikf}
+\def\likf{\llikf}
 \def\deviation{e}
 \def\devn{\deviation}
 \providecommand{\deviationv}{\vec{\deviation}}
@@ -414,6 +418,16 @@
 \def\probs{\pi}
 \def\risk{\pi}
 \def\prev{\pi}
+\providecommand{\potout}[1]{Y_{#1}}
+\providecommand{\potprob}[1]{\prob_{#1}}
+\providecommand{\potmean}[1]{\mean_{#1}}
+\providecommand{\obsprob}[1]{\prob\paren{#1}}
+\providecommand{\obsmean}[1]{\mean\paren{#1}}
+\def\py{\potout}
+\def\ppi{\potprob}
+\def\pmu{\potmean}
+\def\opi{\obsprob}
+\def\omu{\obsmean}
 \def\probit{\operatorname{probit}}
 \providecommand{\oddsf}[1]{\oddst\cb{#1}}
 \providecommand{\doddsf}[1]{{\oddst}'\cb{#1}}
@@ -507,6 +521,9 @@
 \def\pdf{\distop{f}}
 \providecommand{\pmf}[1]{\distop{P}\paren{#1}}
 \def\cdf{\distop{F}}
+\providecommand{\cdff}[1]{\cdf\paren{#1}}
+\def\hcdf{\mathop{\hat{\cdf}}\nolimits}
+\providecommand{\hcdff}[1]{\hcdf\paren{#1}}
 \def\defLik{\Lik(\theta) \eqdef \p(\vX = \vx | \Theta = \theta)}
 \def\defLogLik{\lik \eqdef \logf{\Lik(\vx|\th)}}
 \def\defScore{\score \eqdef \deriv{\th} \lik(\vx|\th)}

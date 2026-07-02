@@ -190,6 +190,7 @@ name	interpretation
 \range	range / codomain (alias for \cR)
 \Range	range / codomain (alias for \cR)
 \rangef	range of a function ℛ(·)
+\seq	sequence (colon range) from first to second argument, e.g. 1:n
 \~	approximately equal (≈)
 \dapp	approximately equal dot notation (≐)
 \deriv	partial derivative operator ∂/∂(·)

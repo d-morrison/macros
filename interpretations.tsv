@@ -11,6 +11,8 @@ name	interpretation
 \Prf	Pr(·) probability expression
 \am	arg max operator
 \argmax	arg max operator (alias for \am)
+\amin	arg min operator
+\argmin	arg min operator (alias for \amin)
 \p	probability density/mass function symbol p
 \f	probability density function symbol f
 \F	cumulative distribution function symbol F

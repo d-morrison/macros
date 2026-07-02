@@ -10,6 +10,8 @@
 \providecommand{\Prf}[1]{\Pr\paren{#1}}
 \def\am{\arg \max}
 \def\argmax{\arg \max}
+\def\amin{\arg \min}
+\def\argmin{\arg \min}
 \def\p{\distop{p}}
 \def\f{\distop{f}}
 \def\F{\distop{F}}

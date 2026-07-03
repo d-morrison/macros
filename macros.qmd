@@ -114,6 +114,15 @@
 \def\hsurv{\mathop{\hat{\surv}}\nolimits}
 \def\hSurv{\mathop{\hat{\surv}}\nolimits}
 \providecommand{\hSurvf}[1]{\hSurv\paren{#1}}
+\def\emp{\text{emp}}
+\def\km{\text{KM}}
+\def\naa{\text{NA}}
+\def\hsurvemp{\hsurv_{\emp}}
+\def\hsurvkm{\hsurv_{\km}}
+\def\hsurvnaa{\hsurv_{\naa}}
+\providecommand{\hsurvempf}[1]{\hsurvemp\paren{#1}}
+\providecommand{\hsurvkmf}[1]{\hsurvkm\paren{#1}}
+\providecommand{\hsurvnaaf}[1]{\hsurvnaa\paren{#1}}
 \def\dist{\ \sim \ }
 \def\ddist{\ \dot{\sim} \ }
 \def\dsim{\ \dot{\sim} \ }

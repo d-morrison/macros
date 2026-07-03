@@ -117,12 +117,12 @@
 \def\emp{\text{emp}}
 \def\km{\text{KM}}
 \def\naa{\text{NA}}
-\def\hsurvemp{\hsurv_{\emp}}
-\def\hsurvkm{\hsurv_{\km}}
-\def\hsurvnaa{\hsurv_{\naa}}
-\providecommand{\hsurvempf}[1]{\hsurvemp\paren{#1}}
-\providecommand{\hsurvkmf}[1]{\hsurvkm\paren{#1}}
-\providecommand{\hsurvnaaf}[1]{\hsurvnaa\paren{#1}}
+\def\hsemp{\hsurv_{\emp}}
+\def\hskm{\hsurv_{\km}}
+\def\hsnaa{\hsurv_{\naa}}
+\providecommand{\hsempf}[1]{\hsemp\paren{#1}}
+\providecommand{\hskmf}[1]{\hskm\paren{#1}}
+\providecommand{\hsnaaf}[1]{\hsnaa\paren{#1}}
 \def\dist{\ \sim \ }
 \def\ddist{\ \dot{\sim} \ }
 \def\dsim{\ \dot{\sim} \ }

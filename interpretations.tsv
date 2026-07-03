@@ -636,3 +636,12 @@ name	interpretation
 \hfsurv	estimated survival factor (alias for \hsurvfactor)
 \hfsurvf	estimated survival factor function (alias for \hsurvfactorf)
 \hsurvff	estimated survival factor function (shorthand for \hsurvfactorf)
+\emp	empirical estimator label ("emp" subscript)
+\km	Kaplan-Meier estimator label ("KM" subscript)
+\naa	Nelson-Aalen estimator label ("NA" subscript)
+\hsurvemp	empirical survival function estimator Ŝ_emp
+\hsurvkm	Kaplan-Meier survival function estimator Ŝ_KM
+\hsurvnaa	Nelson-Aalen survival function estimator Ŝ_NA
+\hsurvempf	empirical survival function estimator Ŝ_emp(·) applied to argument
+\hsurvkmf	Kaplan-Meier survival function estimator Ŝ_KM(·) applied to argument
+\hsurvnaaf	Nelson-Aalen survival function estimator Ŝ_NA(·) applied to argument

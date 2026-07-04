@@ -194,7 +194,7 @@
 \def\lik{\ell}
 \providecommand{\est}[1]{\hat{#1}}
 \providecommand{\Est}[1]{\widehat{#1}}
-\providecommand{\esttmp}[1]{{\widehat{#1}}^*}
+\providecommand{\esttmp}[1]{{\Est{#1}}^*}
 \def\esttmpl{\esttmp{\lambda}}
 \def\cR{\mathcal{R}}
 \def\range{\mathcal{R}}

@@ -59,7 +59,7 @@ When adding a new estimator macro group, define both:
    and `\Est` for macros that used `\widehat` (operatorname-wrapped
    multi-letter symbols, e.g. `Var`, `Cov`, `SD`, `SE`) — mirror whichever
    width the original `\h...` macro chose. Alias chains mirror too: if
-   `\hfooalias{\hfoo}`, then `\efooalias{\efoo}`.
+   `\def\hfooalias{\hfoo}`, then `\def\efooalias{\efoo}`.
 3. **Add an `interpretations.tsv` entry for every new `\e...` macro too**
    (same rule as above).
 

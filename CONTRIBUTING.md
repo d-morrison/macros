@@ -36,6 +36,35 @@ following these rules:
 See [issue #58](https://github.com/d-morrison/macros/issues/58) for background
 and motivation on the estimator macros.
 
+## `\h...` vs `\e...` estimator macros
+
+`\hfoo`-style macros (e.g. `\hb`, `\hsurv`, `\hhazratio`) are the legacy
+estimator family: they apply the hat accent directly (`\hat{...}` /
+`\widehat{...}`), frozen for backward compatibility. Do not rename or
+remove them.
+
+`\efoo`-style macros are the parallel, forward-looking family: same
+estimators, but composed through the indirection macros `\est{#1}`
+(`\hat{#1}`) and `\Est{#1}` (`\widehat{#1}`) instead of applying the accent
+directly. If the estimator symbol ever changes, only `\est`/`\Est` need to
+change — every `\efoo` macro picks it up automatically, while the `\hfoo`
+family stays pinned to `\hat`/`\widehat` forever.
+
+When adding a new estimator macro group, define both:
+
+1. **Legacy (`\h...`):** as above — `\hat{...}` / `\widehat{...}` directly.
+2. **Forward-looking (`\e...`):** the same macro name with the leading `h`
+   replaced by `e`, composed through `\est`/`\Est` instead of `\hat`/`\widehat`.
+   Use `\est` for macros that used `\hat` (single symbols/short expressions)
+   and `\Est` for macros that used `\widehat` (operatorname-wrapped
+   multi-letter symbols, e.g. `Var`, `Cov`, `SD`, `SE`) — mirror whichever
+   width the original `\h...` macro chose. Alias chains mirror too: if
+   `\hfooalias{\hfoo}`, then `\efooalias{\efoo}`.
+3. **Add an `interpretations.tsv` entry for every new `\e...` macro too**
+   (same rule as above).
+
+See issue #75's follow-up discussion for background on this split.
+
 ## Before pushing
 
 Render the site and both demos to make sure nothing broke across the four

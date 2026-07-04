@@ -186,6 +186,7 @@ name	interpretation
 \starf	starred / optimal version of argument
 \lik	log-likelihood (alias for \llik)
 \est	estimated / hat version of argument
+\Est	estimated / wide-hat version of argument (for multi-character targets)
 \esttmp	alternative estimate notation (·̂*)
 \esttmpl	alternative estimate of lambda
 \cR	range / codomain symbol ℛ
@@ -645,3 +646,146 @@ name	interpretation
 \hsempf	empirical survival function estimator Ŝ_emp(·) applied to argument
 \hskmf	Kaplan-Meier survival function estimator Ŝ_KM(·) applied to argument
 \hsnaaf	Nelson-Aalen survival function estimator Ŝ_NA(·) applied to argument
+\eQ	estimated quantile function Q̂
+\equantile	estimated quantile function (alias for \eQ)
+\eQf	estimated quantile function Q̂(·) applied to argument
+\equantilef	estimated quantile function applied to argument (alias for \eQf)
+\ep	estimated probability density (hat p)
+\eb	estimated beta coefficient β̂
+\evb	estimated beta vector (β̂-vector)
+\eR	Gelman-Rubin convergence diagnostic (potential scale reduction factor, R-hat)
+\ek	estimated kappa κ̂
+\ekappa	estimated kappa (alias for \ek)
+\el	estimated lambda λ̂
+\ey	fitted / predicted value ŷ
+\es	estimated sigma σ̂
+\esig	estimated sigma (alias for \es)
+\eS	estimated covariance matrix Σ̂
+\eSig	estimated Sigma (alias for \eS)
+\eSigma	estimated Sigma (alias for \eS)
+\esurv	estimated survival function
+\eSurv	estimated survival function (alias for \esurv)
+\eSurvf	estimated survival function Ŝ(·) applied to argument
+\esemp	empirical survival function estimator Ŝ_emp
+\eskm	Kaplan-Meier survival function estimator Ŝ_KM
+\esnaa	Nelson-Aalen survival function estimator Ŝ_NA
+\esempf	empirical survival function estimator Ŝ_emp(·) applied to argument
+\eskmf	Kaplan-Meier survival function estimator Ŝ_KM(·) applied to argument
+\esnaaf	Nelson-Aalen survival function estimator Ŝ_NA(·) applied to argument
+\eth	estimated theta θ̂
+\ethml	maximum likelihood estimate of theta
+\eE	estimated expected value Ê[·]
+\eExp	estimated expected value (alias for \eE)
+\eExpf	estimated expected value (alias for \eE)
+\emu	estimated mean μ̂
+\emuf	estimated mean function μ̂(·)
+\evar	estimated variance operator (hat)
+\evart	estimated variance operator (alias for \evar)
+\ecovt	estimated covariance operator
+\eCovt	estimated covariance operator (alias)
+\eVar	estimated variance function V̂ar(·)
+\evarf	estimated variance function (alias for \eVar)
+\ecovf	estimated covariance function (alias)
+\ecort	estimated correlation operator
+\eCor	estimated correlation function Ĉor(·)
+\eCorf	estimated correlation function (alias)
+\eCors	estimated bivariate correlation
+\eSD	estimated standard deviation SD̂(·)
+\eSDf	estimated standard deviation (alias)
+\eset	estimated standard error operator ŝe
+\eSE	estimated standard error operator ŜE
+\eSEt	estimated SE operator (alias for \eSE)
+\ese	estimated standard error ŝe(·)
+\esef	estimated standard error (alias for \ese)
+\eSEf	estimated standard error function (alias)
+\eeinf	estimated Fisher information ℐ̂
+\eeinff	estimated Fisher information function ℐ̂(·)
+\edifflogodds	estimated difference in log-odds ΔΗ̂
+\ecdf	estimated cumulative distribution function F̂
+\ecdff	estimated cumulative distribution function F̂(·) applied to argument
+\eprob	estimated probability π̂
+\eprobs	estimated probability symbol π̂ (alias for \eprob)
+\erisk	estimated risk π̂ (alias for \eprob)
+\eprev	estimated prevalence π̂ (alias for \eprob)
+\eodds	estimated odds ω̂
+\erate	estimated rate λ̂
+\ehaz	estimated hazard λ̂ (alias for \erate)
+\ecuhaz	estimated cumulative hazard Λ̂
+\ecumhaz	estimated cumulative hazard (alias for \ecuhaz)
+\eratio	generic estimated ratio θ̂ (hat-wrapped \ratio)
+\eratiof	generic estimated ratio function θ̂(·)
+\eror	estimated odds ratio θ̂_ω (hat-wrapped \ror)
+\eorf	estimated odds ratio function θ̂_ω(·)
+\ehazratio	estimated hazard ratio θ̂_λ (estimator-wrapped \hazratio)
+\ehr	estimated hazard ratio (alias for \ehazratio)
+\erhaz	estimated hazard ratio (alias for \ehazratio)
+\ehazr	estimated hazard ratio (alias for \ehazratio)
+\ehrf	estimated hazard ratio function θ̂_λ(·)
+\erhazf	estimated hazard ratio function (alias for \ehrf)
+\ehazrf	estimated hazard ratio function (alias for \ehrf)
+\erateratio	estimated rate ratio θ̂_λ (hat-wrapped \rateratio)
+\erater	estimated rate ratio (alias for \erateratio)
+\errate	estimated rate ratio (alias for \erateratio)
+\erateratiof	estimated rate ratio function θ̂_λ(·)
+\eraterf	estimated rate ratio function (alias for \erateratiof)
+\erratef	estimated rate ratio function (alias for \erateratiof)
+\eriskratio	estimated risk ratio θ̂_π (hat-wrapped \riskratio)
+\errisk	estimated risk ratio (alias for \eriskratio)
+\eriskr	estimated risk ratio (alias for \eriskratio)
+\eriskratiof	estimated risk ratio function θ̂_π(·)
+\erriskf	estimated risk ratio function (alias for \eriskratiof)
+\eriskrf	estimated risk ratio function (alias for \eriskratiof)
+\eprevratio	estimated prevalence ratio θ̂_π (hat-wrapped \prevratio)
+\eprr	estimated prevalence ratio (alias for \eprevratio)
+\eprevratiof	estimated prevalence ratio function θ̂_π(·)
+\eprrf	estimated prevalence ratio function (alias for \eprevratiof)
+\esurvratio	estimated survival ratio θ̂_S (hat-wrapped \survratio)
+\ersurv	estimated survival ratio (alias for \esurvratio)
+\esurvr	estimated survival ratio (alias for \esurvratio)
+\esurvratiof	estimated survival ratio function θ̂_S(·)
+\ersurvf	estimated survival ratio function (alias for \esurvratiof)
+\esurvrf	estimated survival ratio function (alias for \esurvratiof)
+\ecuhazratio	estimated cumulative hazard ratio θ̂_Λ (hat-wrapped \cuhazratio)
+\ercuhaz	estimated cumulative hazard ratio (alias for \ecuhazratio)
+\ecuhazr	estimated cumulative hazard ratio (alias for \ecuhazratio)
+\ecuhazratiof	estimated cumulative hazard ratio function θ̂_Λ(·)
+\ercuhazf	estimated cumulative hazard ratio function (alias for \ecuhazratiof)
+\ecuhazrf	estimated cumulative hazard ratio function (alias for \ecuhazratiof)
+\efactor	generic estimated factor θ̂ (hat-wrapped \factor)
+\efactorf	generic estimated factor function θ̂(·)
+\eff	generic estimated factor function (shorthand for \efactorf)
+\eoddsfactor	estimated odds factor θ̂_ω (hat-wrapped \oddsfactor)
+\eoddsfactorf	estimated odds factor function θ̂_ω(·)
+\efodds	estimated odds factor (alias for \eoddsfactor)
+\efoddsf	estimated odds factor function (alias for \eoddsfactorf)
+\eoddsff	estimated odds factor function (shorthand for \eoddsfactorf)
+\ehazfactor	estimated hazard factor θ̂_λ (estimator-wrapped \hazfactor)
+\ehazfactorf	estimated hazard factor function θ̂_λ(·)
+\efhaz	estimated hazard factor (alias for \ehazfactor)
+\efhazf	estimated hazard factor function (alias for \ehazfactorf)
+\ehazff	estimated hazard factor function (shorthand for \ehazfactorf)
+\eratefactor	estimated rate factor θ̂_λ (hat-wrapped \ratefactor)
+\eratefactorf	estimated rate factor function θ̂_λ(·)
+\efrate	estimated rate factor (alias for \eratefactor)
+\efratef	estimated rate factor function (alias for \eratefactorf)
+\erateff	estimated rate factor function (shorthand for \eratefactorf)
+\eriskfactor	estimated risk factor θ̂_π (hat-wrapped \riskfactor)
+\eriskfactorf	estimated risk factor function θ̂_π(·)
+\efrisk	estimated risk factor (alias for \eriskfactor)
+\efriskf	estimated risk factor function (alias for \eriskfactorf)
+\eriskff	estimated risk factor function (shorthand for \eriskfactorf)
+\eprevfactor	estimated prevalence factor θ̂_π (hat-wrapped \prevfactor)
+\eprevfactorf	estimated prevalence factor function θ̂_π(·)
+\efprev	estimated prevalence factor (alias for \eprevfactor)
+\efprevf	estimated prevalence factor function (alias for \eprevfactorf)
+\eprevff	estimated prevalence factor function (shorthand for \eprevfactorf)
+\ecuhazfactor	estimated cumulative hazard factor θ̂_Λ (hat-wrapped \cuhazfactor)
+\ecuhazfactorf	estimated cumulative hazard factor function θ̂_Λ(·)
+\efcuhaz	estimated cumulative hazard factor (alias for \ecuhazfactor)
+\efcuhazf	estimated cumulative hazard factor function (alias for \ecuhazfactorf)
+\ecuhazff	estimated cumulative hazard factor function (shorthand for \ecuhazfactorf)
+\esurvfactor	estimated survival factor θ̂_S (hat-wrapped \survfactor)
+\esurvfactorf	estimated survival factor function θ̂_S(·)
+\efsurv	estimated survival factor (alias for \esurvfactor)
+\efsurvf	estimated survival factor function (alias for \esurvfactorf)
+\esurvff	estimated survival factor function (shorthand for \esurvfactorf)

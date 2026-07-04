@@ -169,6 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#macros.qmd-must-contain-only-macro-definitions-no-comments" id="toc-macros.qmd-must-contain-only-macro-definitions-no-comments" class="nav-link" data-scroll-target="#macros.qmd-must-contain-only-macro-definitions-no-comments"><code>macros.qmd</code> must contain only macro definitions — no comments</a></li>
   <li><a href="#adding-a-new-estimand-macro-group" id="toc-adding-a-new-estimand-macro-group" class="nav-link" data-scroll-target="#adding-a-new-estimand-macro-group">Adding a new estimand macro group</a></li>
+  <li><a href="#h...-vs-e...-estimator-macros" id="toc-h...-vs-e...-estimator-macros" class="nav-link" data-scroll-target="#h...-vs-e...-estimator-macros"><code>\h...</code> vs <code>\e...</code> estimator macros</a></li>
   <li><a href="#before-pushing" id="toc-before-pushing" class="nav-link" data-scroll-target="#before-pushing">Before pushing</a></li>
   </ul></li>
   </ul>
@@ -239,6 +240,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Add an entry for every new macro to <code>interpretations.tsv</code></strong> — the <code>macros-table.qmd</code> build fails if any macro is missing an interpretation.</li>
 </ol>
 <p>See <a href="https://github.com/d-morrison/macros/issues/58">issue #58</a> for background and motivation on the estimator macros.</p>
+</section>
+<section id="h...-vs-e...-estimator-macros" class="level2">
+<h2 class="anchored" data-anchor-id="h...-vs-e...-estimator-macros"><code>\h...</code> vs <code>\e...</code> estimator macros</h2>
+<p><code>\hfoo</code>-style macros (e.g.&nbsp;<code>\hb</code>, <code>\hsurv</code>, <code>\hhazratio</code>) are the legacy estimator family: they apply the hat accent directly (<code>\hat{...}</code> / <code>\widehat{...}</code>), frozen for backward compatibility. Do not rename or remove them.</p>
+<p><code>\efoo</code>-style macros are the parallel, forward-looking family: same estimators, but composed through the indirection macros <code>\est{#1}</code> (<code>\hat{#1}</code>) and <code>\Est{#1}</code> (<code>\widehat{#1}</code>) instead of applying the accent directly. If the estimator symbol ever changes, only <code>\est</code>/<code>\Est</code> need to change — every <code>\efoo</code> macro picks it up automatically, while the <code>\hfoo</code> family stays pinned to <code>\hat</code>/<code>\widehat</code> forever.</p>
+<p>When adding a new estimator macro group, define both:</p>
+<ol type="1">
+<li><strong>Legacy (<code>\h...</code>):</strong> as above — <code>\hat{...}</code> / <code>\widehat{...}</code> directly.</li>
+<li><strong>Forward-looking (<code>\e...</code>):</strong> the same macro name with the leading <code>h</code> replaced by <code>e</code>, composed through <code>\est</code>/<code>\Est</code> instead of <code>\hat</code>/<code>\widehat</code>. Use <code>\est</code> for macros that used <code>\hat</code> (single symbols/short expressions) and <code>\Est</code> for macros that used <code>\widehat</code> (operatorname-wrapped multi-letter symbols, e.g.&nbsp;<code>Var</code>, <code>Cov</code>, <code>SD</code>, <code>SE</code>) — mirror whichever width the original <code>\h...</code> macro chose. Alias chains mirror too: if <code>\def\hfooalias{\hfoo}</code>, then <code>\def\efooalias{\efoo}</code>.</li>
+<li><strong>Add an <code>interpretations.tsv</code> entry for every new <code>\e...</code> macro too</strong> (same rule as above).</li>
+</ol>
+<p>See issue #75’s follow-up discussion for background on this split.</p>
 </section>
 <section id="before-pushing" class="level2">
 <h2 class="anchored" data-anchor-id="before-pushing">Before pushing</h2>

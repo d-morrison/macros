@@ -28,9 +28,12 @@ jobs:
         any::knitr
         any::rmarkdown
         any::DT
-      # tinytex is not requested: _quarto.yml declares `format: html` only, so
-      # nothing here renders through LaTeX. The macros themselves are typeset
-      # client-side by MathJax, which needs no TeX installation on the runner.
+      # Required, despite _quarto.yml declaring only `format: html`:
+      # demo-shortcode.qmd and demo-include-in-header.qmd each override that
+      # with their own `pdf:` front matter, and the whole point of those pages
+      # is to show the macros reaching the LaTeX preamble. Without TinyTeX the
+      # render fails on them.
+      tinytex: true
 
   report-failure:
     needs: publish

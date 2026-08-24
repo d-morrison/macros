@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>macros – Demo: Loading Macros via include-in-header</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -447,20 +450,20 @@
 <section class="slide level2">
 
 <p>This page demonstrates the <code>include-in-header</code> strategy for loading macros. The YAML front matter of this file includes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb1-2"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb1-3"><a></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb1-4"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # MathJax macro config script</span></span>
-<span id="cb1-5"><a></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
-<span id="cb1-6"><a></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb1-7"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros.qmd</span><span class="co">           # raw LaTeX goes directly into preamble</span></span>
-<span id="cb1-8"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb1-9"><a></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> demo-include-in-header-slides.html</span></span>
-<span id="cb1-10"><a></a><span class="at">    </span><span class="fu">scrollable</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-11"><a></a><span class="at">    </span><span class="fu">center</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb1-12"><a></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb1-13"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # loader that reads macros.qmd</span></span>
-<span id="cb1-14"><a></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb1-2"><a aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb1-4"><a aria-label="4"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # MathJax macro config script</span></span>
+<span id="cb1-5"><a aria-label="5"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb1-6"><a aria-label="6"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb1-7"><a aria-label="7"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros.qmd</span><span class="co">           # raw LaTeX goes directly into preamble</span></span>
+<span id="cb1-8"><a aria-label="8"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb1-9"><a aria-label="9"></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> demo-include-in-header-slides.html</span></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="at">    </span><span class="fu">scrollable</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-11"><a aria-label="11"></a><span class="at">    </span><span class="fu">center</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-12"><a aria-label="12"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb1-13"><a aria-label="13"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros-header.html</span><span class="co">   # loader that reads macros.qmd</span></span>
+<span id="cb1-14"><a aria-label="14"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote>
 <p><strong>Note (HTML/RevealJS):</strong> <code>macros-header.html</code> is a small loader script (not a second macro-definition file). It reads <code>macros.qmd</code>, converts macro definitions to a MathJax config object, and sets <code>MathJax.tex.macros</code> before typesetting. For RevealJS, it also forces the built-in Reveal math plugin to use MathJax 3. This requires <code>macros.qmd</code> to be published as a static resource in the site output. <a href="demo-include-in-header-slides.html">View the RevealJS slides output</a>.</p>
 </blockquote>
@@ -471,16 +474,16 @@
 <p><strong>Note:</strong> This demo uses <code>macros-header.html</code> / <code>macros.qmd</code> because both files are at the root of this repository. When using this repository as a Git submodule (cloned into a <code>macros/</code> subdirectory), replace with <code>macros/macros-header.html</code> and <code>macros/macros.qmd</code>.</p>
 </blockquote>
 <p>The same configuration can be placed in a shared <code>_quarto.yml</code> to apply project-wide:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb2-2"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb2-3"><a></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb2-4"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span>
-<span id="cb2-5"><a></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
-<span id="cb2-6"><a></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb2-7"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span>
-<span id="cb2-8"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb2-9"><a></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
-<span id="cb2-10"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb2-2"><a aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb2-3"><a aria-label="3"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb2-4"><a aria-label="4"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span>
+<span id="cb2-5"><a aria-label="5"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb2-6"><a aria-label="6"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb2-7"><a aria-label="7"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros.qmd</span></span>
+<span id="cb2-8"><a aria-label="8"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb2-9"><a aria-label="9"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb2-10"><a aria-label="10"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This inserts the macro definitions for each output format:</p>
 <ul>
 <li><strong>PDF</strong>: <code>macros.qmd</code> goes into the LaTeX preamble via <code>include-in-header</code> — all macros work, including <code>\providecommand</code>.</li>

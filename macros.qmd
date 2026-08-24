@@ -562,6 +562,7 @@
 \def\modresid{r^*}
 \def\ub{\underbrace}
 \providecommand{\ubf}[2]{\ub{#1}_{#2}}
+\providecommand{\dims}[2]{\ub{#1}_{#2}}
 \providecommand{\residv}{\vec{r}}
 \def\hprob{\hat{\prob}}
 \def\hprobs{\hprob}

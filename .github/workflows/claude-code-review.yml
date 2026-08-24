@@ -1,44 +1,121 @@
+# PR review, delegated to Morrison-Lab/gha's reusable workflow.
+#
+# Do NOT add a top-level `concurrency:` block. The reusable workflow manages
+# per-PR concurrency on its own job; a PR-scoped group here deadlocks Actions
+# against the nested job and cancels the run (gha#437).
+#
+# Secrets are passed explicitly rather than via `secrets: inherit`, since this
+# repo is d-morrison-owned and gha is Morrison-Lab-owned; inheritance across
+# owners yields an empty token.
+#
+# There is deliberately no `pull_request:` trigger. claude.yml re-dispatches
+# this workflow after the agent pushes commits, so an agent-authored PR is
+# reviewed automatically. Adding a synchronize trigger on top would race that
+# dispatch, and the reusable workflow's cancel-in-progress concurrency would
+# cancel one of the two. A human-authored PR gets a review via `/review` or an
+# `@claude review` mention.
 name: Claude Code Review
 
 on:
-  pull_request:
-    types: [opened, synchronize, ready_for_review, reopened]
-    # Optional: Only run on specific file changes
-    # paths:
-    #   - "src/**/*.ts"
-    #   - "src/**/*.tsx"
-    #   - "src/**/*.js"
-    #   - "src/**/*.jsx"
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull request number to review'
+        required: true
+        type: string
 
 jobs:
-  claude-review:
-    # Optional: Filter by PR author
-    # if: |
-    #   github.event.pull_request.user.login == 'external-contributor' ||
-    #   github.event.pull_request.user.login == 'new-developer' ||
-    #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
-
+  # `/review` at the start of a PR comment from a trusted author dispatches an
+  # on-demand review, re-entering via the workflow_dispatch path below.
+  dispatch-on-comment:
+    if: >-
+      github.event_name == 'issue_comment' &&
+      github.event.issue.pull_request &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association) &&
+      (startsWith(github.event.comment.body, '/review') ||
+      (vars.CLAUDE_AGENT_DISABLED == 'true' &&
+      contains(github.event.comment.body, '@claude')))
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pull-requests: read
-      issues: read
-      id-token: write
-
+      actions: write        # dispatch this workflow via `gh workflow run`
+      issues: write         # acknowledge the /review comment
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Parse this workflow's ref
+        id: this-wf
+        uses: Morrison-Lab/gha/.github/actions/parse-workflow-ref@v2
         with:
-          fetch-depth: 1
+          workflow-ref: ${{ github.workflow_ref }}
 
-      - name: Run Claude Code Review
-        id: claude-review
-        uses: anthropics/claude-code-action@v1
+      # Only runs when the agent has been switched off repo-wide; with
+      # claude.yml live, `/review` is the sole comment trigger, so the two
+      # workflows never answer the same comment with two paid review runs.
+      - name: Check for an `@claude review` request
+        id: mention
+        if: ${{ vars.CLAUDE_AGENT_DISABLED == 'true' }}
+        uses: Morrison-Lab/gha/.github/actions/detect-review-request@v2
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
-          plugins: 'code-review@claude-code-plugins'
-          prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
+          comment-body: ${{ github.event.comment.body }}
 
+      - name: Dispatch a review for the commented PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          WF_PATH: ${{ steps.this-wf.outputs.path }}
+          # Passed via env, never inlined, so the comment body is a shell value
+          # rather than script text.
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          MENTION_MATCH: ${{ steps.mention.outputs.match }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          # The job-level `if:` can only pre-filter cheaply: Actions expressions
+          # cannot tell '/review' from '/reviewer', nor handle a newline after
+          # the command. Enforce the real match here.
+          if [[ "$COMMENT_BODY" =~ ^/review([[:space:]]|$) ]]; then
+            TRIGGER='/review'
+          elif [ "$MENTION_MATCH" = 'true' ]; then
+            TRIGGER='@claude review'
+          else
+            echo "Comment is neither a standalone '/review' command nor an '@claude review' request; skipping dispatch."
+            exit 0
+          fi
+          WF_FILE=$(basename "$WF_PATH")
+          # This job never checks out the repo, so the PR's head branch has to
+          # be looked up. --ref pins the dispatched run's check-runs to that
+          # branch rather than the default branch workflow_dispatch would
+          # otherwise fall back to.
+          PR_JSON=$(gh api "repos/$REPO/pulls/$PR_NUMBER")
+          PR_BRANCH=$(jq -r '.head.ref' <<< "$PR_JSON")
+          PR_HEAD_REPO=$(jq -r '.head.repo.full_name' <<< "$PR_JSON")
+          echo "Dispatching $WF_FILE to review PR #$PR_NUMBER ($PR_BRANCH) ($TRIGGER comment)."
+          # A fork PR's head branch exists only in the fork, so --ref cannot
+          # resolve there; drop it and accept the default-branch check-run
+          # attribution, which is the lesser problem.
+          REF_ARGS=(--ref "$PR_BRANCH")
+          if [ "$PR_HEAD_REPO" != "$REPO" ]; then
+            echo "::notice::PR #$PR_NUMBER is from a fork ($PR_HEAD_REPO); dispatching $WF_FILE without --ref."
+            REF_ARGS=()
+          fi
+          gh workflow run "$WF_FILE" --repo "$REPO" "${REF_ARGS[@]}" -f pr_number="$PR_NUMBER"
+          gh issue comment "$PR_NUMBER" --repo "$REPO" \
+            --body ":mag: \`$TRIGGER\` received -- dispatched a Claude review of this PR (see the [dispatch run]($RUN_URL)). The review posts as its own comment when it finishes." \
+            || echo "::warning::Could not acknowledge the $TRIGGER comment."
+
+  review:
+    # workflow_dispatch only; the issue_comment path re-enters through
+    # dispatch-on-comment above.
+    if: github.event_name != 'issue_comment'
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read   # lets the reviewer read CI status (github_ci MCP server)
+    uses: Morrison-Lab/gha/.github/workflows/claude-code-review.yml@v2
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+    with:
+      pr-number: ${{ inputs.pr_number }}

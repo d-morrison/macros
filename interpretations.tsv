@@ -513,6 +513,7 @@ name	interpretation
 \NA	not-available / missing-value placeholder (text "NA")
 \ub	underbrace shorthand (alias for \underbrace)
 \ubf	underbrace with subscript label \underbrace{·}_{label}
+\dim	underbrace annotation labeling an expression with its dimensions, e.g. \dim{X}{n \times p}
 \factor	generic factor symbol θ (base for \hazfactor, \riskfactor, and similar factor macros; compares one covariate pattern to the baseline; subscript denotes the factor type)
 \factorf	generic factor function θ(·)
 \oddsfactor	odds factor θ_ω (factor symbol with odds subscript; odds for a covariate pattern vs. baseline)

@@ -66,8 +66,8 @@ name	interpretation
 \NegBin	Negative Binomial label (long form)
 \vbeta	beta coefficient vector
 \vb	beta vector (alias for \vbeta)
-\v0	zero vector
-\vzero	zero vector (alias for \v0)
+\vzero	zero vector
+\vone	vector of ones
 \gb	Greek letter beta (alias for \b)
 \gg	Greek letter gamma (alias for \g)
 \gd	Greek letter delta (δ)
@@ -365,7 +365,6 @@ name	interpretation
 \vd	exposure vector d lowercase (d̃)
 \vT	time vector T (T̃)
 \vt	time vector t lowercase (t̃)
-\v1	vector of ones (1̃)
 \vpi	vector of probabilities π (π̃)
 \mat	matrix notation (alias for \matr)
 \dsn	sequence x₁, …, xₙ

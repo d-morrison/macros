@@ -4,4 +4,11 @@
 /*.deb
 .positai
 
+# Editor and OS residue. Do not rely on a contributor's global gitignore --- it
+# is invisible from inside the repo, so someone reading this file cannot tell
+# these are covered.
+.DS_Store
+.Rhistory
+.Rproj.user/
+
 **/*.quarto_ipynb

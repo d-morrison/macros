@@ -8,10 +8,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Serialize deploys so two pushes don't race on the gh-pages branch.
-concurrency:
-  group: gh-pages
-  cancel-in-progress: false
+# Note: Do not declare a top-level `concurrency: group: gh-pages` block here.
+# The reusable workflow manages `gh-pages` serialization internally on its
+# `deploy` job; a caller-level block naming that same group deadlocks GitHub
+# Actions against the nested job (Morrison-Lab/gha#809).
 
 jobs:
   publish:

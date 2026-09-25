@@ -486,7 +486,7 @@
 <span id="cb2-10"><a aria-label="10"></a><span class="at">      </span><span class="kw">-</span><span class="at"> macros/macros-header.html</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This inserts the macro definitions for each output format:</p>
 <ul>
-<li><strong>PDF</strong>: <code>macros.qmd</code> goes into the LaTeX preamble via <code>include-in-header</code> — all macros work, including <code>\providecommand</code>.</li>
+<li><strong>PDF</strong>: <code>macros.qmd</code> goes into the LaTeX preamble via <code>include-in-header</code> — macros work, including <code>\providecommand</code> (note that LaTeX’s font-encoding packages re-assert <code>\v</code> as a text caron accent at <code>\begin{document}</code>, so <code>\v{x}</code> produces no vector notation under <code>include-in-header</code> unless re-asserted in the preamble; use <code>\vec{x}</code> or <code>\vecf{x}</code> for robust cross-format vector notation).</li>
 <li><strong>HTML</strong>: <code>macros-header.html</code> is inserted via <code>include-in-header</code> and loads macros from <code>macros.qmd</code> into <code>MathJax.tex.macros</code>.</li>
 <li><strong>RevealJS</strong>: <code>macros-header.html</code> does the same loader step and switches the Reveal math plugin to MathJax 3, so slide math uses the same <code>macros.qmd</code> source.</li>
 <li><strong>docx</strong>: Word documents do not use a LaTeX preamble or MathJax header, so <code>include-in-header</code> has no effect on math rendering for docx. The <code>docx: default</code> entry above produces docx output without macro support.</li>
